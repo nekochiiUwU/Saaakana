@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Frames/Cursor.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Mob.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Camera.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Walls.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Projectile.tscn" type="PackedScene" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 15.4431, 30.1008 )
+
+[sub_resource type="ProceduralSky" id=3]
+
+[sub_resource type="Environment" id=4]
+background_mode = 4
+background_sky = SubResource( 3 )
+background_sky_custom_fov = 144.8
+background_energy = 16.0
+background_canvas_max_layer = 1
+ambient_light_energy = 0.0
+ambient_light_sky_contribution = 0.0
+fog_color = Color( 0.2, 0.262745, 0.329412, 1 )
+fog_sun_color = Color( 0, 0, 0, 1 )
+tonemap_mode = 3
+tonemap_exposure = 0.01
+tonemap_white = 16.0
+auto_exposure_scale = 0.01
+auto_exposure_min_luma = 16.0
+glow_enabled = true
+glow_bloom = 0.5
+glow_blend_mode = 0
+adjustment_enabled = true
+adjustment_brightness = 8.0
+
+[node name="Game" type="Node2D"]
+
+[node name="Projectile" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1480, 648 )
+
+[node name="Camera" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1536, 568 )
+rotation = -3.40339
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="Mob" type="KinematicBody2D" parent="."]
+position = Vector2( 1752, 688 )
+z_index = 1000
+collision_layer = 16
+collision_mask = 13
+script = ExtResource( 4 )
+
+[node name="Frame" type="AnimatedSprite" parent="Mob"]
+z_index = 1
+frames = SubResource( 1 )
+
+[node name="Collision" type="CollisionShape2D" parent="Mob"]
+visible = false
+shape = SubResource( 2 )
+
+[node name="Monde" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )
+
+[node name="Walls" parent="Monde" instance=ExtResource( 7 )]
+
+[node name="ColorRect" type="ColorRect" parent="Monde"]
+visible = false
+modulate = Color( 0.392157, 0.392157, 0.392157, 0.784314 )
+margin_left = -18264.0
+margin_top = -12936.0
+margin_right = -18224.0
+margin_bottom = -12896.0
+rect_scale = Vector2( 1000, 1000 )
+color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Sprite" parent="Monde"]
+process_priority = -1
+position = Vector2( -640, -640 )
+centered = false
+region_rect = Rect2( 0, 0, 4000, 4000 )
