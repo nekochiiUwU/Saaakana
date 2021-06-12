@@ -16,7 +16,6 @@ var MovementUp = false
 var OnClick = false
 var pressed = false
 var r = Vector3()
-var lastpos = Vector3()
 
 """ ===0=== """
 
@@ -63,9 +62,6 @@ func SelectAnim():
 	Camera.rotation.x = ( r.x      + Camera.rotation.y * 10) / 11
 	Camera.rotation.y = ( -Rotate.y + Camera.rotation.y * 10) / 11
 	Camera.rotation.z = ( -Rotate.z + Camera.rotation.z * 10) / 11
-	Camera.position.x = (lastpos.x + Camera.position.x * 10) / 11
-	Camera.position.y = (lastpos.y + Camera.position.y * 10) / 11 - 1
-	Camera.position.z = (lastpos.z + Camera.position.z * 10) / 11 - 1
 	rotation = Vector3(0, r.y, r.z)
 	rotationFactor = r
 	Rotate = Vector3()
@@ -123,10 +119,6 @@ func _process(delta):
 	Cooldown(delta)
 	get_input()
 	Movements(delta)
-	lastpos.x = (lastpos.x - Position3D.x)
-	lastpos.y = (lastpos.y - Position3D.y)
-	lastpos.y = (lastpos.z - Position3D.z)
 	SelectAnim()
-	lastpos = Position3D
 
 #	if (0 < position.x and 1280 > position.x and 0 < position.y and 720 > position.y):

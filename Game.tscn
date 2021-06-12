@@ -95,7 +95,6 @@ physics_material_override = SubResource( 3 )
 shape = SubResource( 4 )
 
 [node name="CSGBox" type="CSGBox" parent="\'Cest juste des test pour le fun/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="StaticBody2" type="StaticBody" parent="\'Cest juste des test pour le fun"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 4 )
