@@ -58,7 +58,8 @@ func _process(delta):
 		PlayerDistance = 400
 	zoom.x = ((Zoom[0] * (PlayerDistance / 400)) + lastZoom*2) / 3
 	zoom.y = ((Zoom[1] * (PlayerDistance / 400)) + lastZoom*2) / 3
-
+	UI.set_scale(zoom)
+	
 	position = (CameraPosition + lastPos * 10) / 11
 	UI.set_position((position - lastPos) * 5)
 	""".rotated(-Rotate))"""

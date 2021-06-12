@@ -5,7 +5,7 @@
 [ext_resource path="res://Frames/Light.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Player 1.gd" type="Script" id=4]
 [ext_resource path="res://Frames/unknown.png" type="Texture" id=5]
-[ext_resource path="res://Frames/Light Cone.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Wall.tscn" type="PackedScene" id=6]
 [ext_resource path="res://tilemap.tres" type="TileSet" id=7]
 [ext_resource path="res://TileMapPerso.tres" type="TileSet" id=8]
 [ext_resource path="res://Scripts/Player 2.gd" type="Script" id=9]
@@ -25,10 +25,9 @@ tonemap_white = 16.0
 auto_exposure_min_luma = 0.2
 auto_exposure_speed = 38.18
 glow_enabled = true
-glow_intensity = 0.01
-glow_strength = 1.95
-glow_bloom = 0.05
-glow_blend_mode = 1
+glow_bloom = 1.0
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 0.01
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -1228,6 +1227,9 @@ __meta__ = {
 
 [node name="Map" type="Node2D" parent="World"]
 
+[node name="Wall" parent="World/Map" instance=ExtResource( 6 )]
+position = Vector2( 31.5394, 961.287 )
+
 [node name="Environment" type="WorldEnvironment" parent="World/Map"]
 environment = SubResource( 3 )
 
@@ -1253,26 +1255,12 @@ collision_layer = 34
 collision_mask = 25
 script = ExtResource( 4 )
 
-[node name="Cone" type="Light2D" parent="Entities/Player 1"]
-position = Vector2( 0, 8 )
-rotation = -2.35619
-texture = ExtResource( 6 )
-offset = Vector2( 204.001, 205.497 )
-texture_scale = 3.0
-energy = 1.5
-range_z_min = -4096
-range_z_max = 4096
-range_layer_min = -512
-range_layer_max = 512
-shadow_enabled = true
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_filter = 5
-shadow_filter_smooth = 1.5
-
-[node name="Close" type="Light2D" parent="Entities/Player 1"]
+[node name="Light" type="Light2D" parent="Entities/Player 1"]
 position = Vector2( -0.353806, 0.520493 )
 rotation = -2.35619
 texture = ExtResource( 3 )
+texture_scale = 10.0
+energy = 2.0
 range_z_min = -4096
 range_z_max = 4096
 range_layer_min = -512
@@ -1305,26 +1293,12 @@ collision_layer = 34
 collision_mask = 25
 script = ExtResource( 9 )
 
-[node name="Cone" type="Light2D" parent="Entities/Player 2"]
-position = Vector2( 0, 8 )
-rotation = -2.35619
-texture = ExtResource( 6 )
-offset = Vector2( 204.001, 205.497 )
-texture_scale = 3.0
-energy = 1.5
-range_z_min = -4096
-range_z_max = 4096
-range_layer_min = -512
-range_layer_max = 512
-shadow_enabled = true
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_filter = 5
-shadow_filter_smooth = 1.5
-
-[node name="Close" type="Light2D" parent="Entities/Player 2"]
+[node name="Light" type="Light2D" parent="Entities/Player 2"]
 position = Vector2( -0.353806, 0.520493 )
 rotation = -2.35619
 texture = ExtResource( 3 )
+texture_scale = 10.0
+energy = 2.0
 range_z_min = -4096
 range_z_max = 4096
 range_layer_min = -512
