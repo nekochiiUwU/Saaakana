@@ -5,6 +5,8 @@ onready var Player2 = get_node("../../../Entities/Player 2")
 onready var UI = $UI
 onready var P1Hp = $UI/P1/FontHp/Hp
 onready var P1Auto = $UI/P1/FontAuto/Auto
+onready var P2Hp = $UI/P2/FontHp/Hp
+onready var P2Auto = $UI/P2/FontAuto/Auto
 var Rotate = 0
 var sensi = 0.3
 var SmoothCamera = 2
@@ -65,6 +67,8 @@ func _process(delta):
 	""".rotated(-Rotate))"""
 	P1Hp.set_size(Vector2(Player1.Hp * 4, 16))
 	P1Auto.set_size(Vector2(Player1.Auto, 12))
+	P2Hp.set_size(Vector2(Player2.Hp * 4, 16))
+	P2Auto.set_size(Vector2(Player2.Auto, 12))
 	lastPos = position
 	lastZoom = zoom.x
 	rotation = Rotate
