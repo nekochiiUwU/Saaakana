@@ -1,230 +1,57 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Frames/Background/Ground4K.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Camera.gd" type="Script" id=2]
 [ext_resource path="res://Frames/Light.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Player 1.gd" type="Script" id=4]
-[ext_resource path="res://Frames/unknown.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/Wall.tscn" type="PackedScene" id=6]
 [ext_resource path="res://tilemap.tres" type="TileSet" id=7]
 [ext_resource path="res://TileMapPerso.tres" type="TileSet" id=8]
 [ext_resource path="res://Scripts/Player 2.gd" type="Script" id=9]
-[ext_resource path="res://icon.png" type="Texture" id=10]
 [ext_resource path="res://Test.gd" type="Script" id=11]
+[ext_resource path="res://Frames/archer.png" type="Texture" id=12]
 
-[sub_resource type="BoxShape" id=1]
-margin = 0.01
-extents = Vector3( 0.32, 0.32, 0.001 )
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Fonts/Retro Gaming.ttf"
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="DynamicFont" id=2]
+size = 10
+font_data = SubResource( 1 )
+
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 10 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": true,
+"name": "New Anim 1",
+"speed": 60.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 11.1645, 41.9445 )
+
+[sub_resource type="BoxShape" id=5]
+margin = 0.01
+extents = Vector3( 0.2, 0.8, 0.2 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 12 ) ],
+"loop": false,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="PhysicsMaterial" id=3]
-friction = 79.0
+[sub_resource type="PhysicsMaterial" id=7]
+friction = 0.0
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=8]
 
-[sub_resource type="DynamicFontData" id=5]
-font_path = "res://Fonts/Retro Gaming.ttf"
-
-[sub_resource type="DynamicFont" id=6]
-size = 10
-font_data = SubResource( 5 )
-
-[sub_resource type="Environment" id=7]
-background_mode = 4
-background_sky_orientation = Basis( 1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693 )
-background_sky_rotation = Vector3( 0.349066, 0, 0 )
-background_sky_rotation_degrees = Vector3( 20, 0, 0 )
-background_color = Color( 0.25098, 0.219608, 0.219608, 1 )
-tonemap_mode = 3
-tonemap_white = 16.0
-auto_exposure_min_luma = 0.2
-auto_exposure_speed = 38.18
-glow_enabled = true
-glow_bloom = 1.0
-glow_blend_mode = 0
-glow_hdr_luminance_cap = 0.01
-
-[sub_resource type="SpriteFrames" id=8]
-animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "New Anim 1",
-"speed": 5.0
-} ]
+[sub_resource type="SpatialMaterial" id=9]
+roughness = 0.0
+distance_fade_mode = 1
+distance_fade_min_distance = 0.0
+distance_fade_max_distance = 1.0
 
 [node name="Game" type="Node2D"]
-
-[node name="\'Cest juste des test pour le fun" type="Spatial" parent="."]
-
-[node name="DirectionalLight" type="DirectionalLight" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 22, 12.7059, -11.8296 )
-shadow_enabled = true
-directional_shadow_mode = 1
-
-[node name="KinematicBody" type="KinematicBody" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3 )
-collision_mask = 0
-collision/safe_margin = 0.01
-script = ExtResource( 11 )
-
-[node name="Camera" type="Camera" parent="\'Cest juste des test pour le fun/KinematicBody"]
-transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1, 1 )
-doppler_tracking = 1
-fov = 90.0
-
-[node name="CollisionShape" type="CollisionShape" parent="\'Cest juste des test pour le fun/KinematicBody"]
-shape = SubResource( 1 )
-
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="\'Cest juste des test pour le fun/KinematicBody"]
-use_in_baked_light = true
-transparent = false
-frames = SubResource( 2 )
-
-[node name="StaticBody" type="StaticBody" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -1, 0 )
-physics_material_override = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="\'Cest juste des test pour le fun/StaticBody"]
-shape = SubResource( 4 )
-
-[node name="CSGBox" type="CSGBox" parent="\'Cest juste des test pour le fun/StaticBody"]
-
-[node name="StaticBody2" type="StaticBody" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 4 )
-physics_material_override = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="\'Cest juste des test pour le fun/StaticBody2"]
-shape = SubResource( 4 )
-
-[node name="CSGBox" type="CSGBox" parent="\'Cest juste des test pour le fun/StaticBody2"]
-use_collision = true
-
-[node name="StaticBody4" type="StaticBody" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4 )
-physics_material_override = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="\'Cest juste des test pour le fun/StaticBody4"]
-shape = SubResource( 4 )
-
-[node name="CSGBox" type="CSGBox" parent="\'Cest juste des test pour le fun/StaticBody4"]
-use_collision = true
-
-[node name="StaticBody5" type="StaticBody" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4 )
-physics_material_override = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="\'Cest juste des test pour le fun/StaticBody5"]
-shape = SubResource( 4 )
-
-[node name="CSGBox" type="CSGBox" parent="\'Cest juste des test pour le fun/StaticBody5"]
-use_collision = true
-
-[node name="StaticBody6" type="StaticBody" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 6 )
-physics_material_override = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="\'Cest juste des test pour le fun/StaticBody6"]
-shape = SubResource( 4 )
-
-[node name="CSGBox" type="CSGBox" parent="\'Cest juste des test pour le fun/StaticBody6"]
-use_collision = true
-
-[node name="StaticBody7" type="StaticBody" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6 )
-physics_material_override = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="\'Cest juste des test pour le fun/StaticBody7"]
-shape = SubResource( 4 )
-
-[node name="CSGBox" type="CSGBox" parent="\'Cest juste des test pour le fun/StaticBody7"]
-use_collision = true
-
-[node name="StaticBody8" type="StaticBody" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 6 )
-physics_material_override = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="\'Cest juste des test pour le fun/StaticBody8"]
-shape = SubResource( 4 )
-
-[node name="CSGBox" type="CSGBox" parent="\'Cest juste des test pour le fun/StaticBody8"]
-use_collision = true
-
-[node name="StaticBody9" type="StaticBody" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 6 )
-physics_material_override = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="\'Cest juste des test pour le fun/StaticBody9"]
-shape = SubResource( 4 )
-
-[node name="CSGBox" type="CSGBox" parent="\'Cest juste des test pour le fun/StaticBody9"]
-use_collision = true
-
-[node name="StaticBody10" type="StaticBody" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, 6 )
-physics_material_override = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="\'Cest juste des test pour le fun/StaticBody10"]
-shape = SubResource( 4 )
-
-[node name="CSGBox" type="CSGBox" parent="\'Cest juste des test pour le fun/StaticBody10"]
-use_collision = true
-
-[node name="StaticBody11" type="StaticBody" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, 4 )
-physics_material_override = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="\'Cest juste des test pour le fun/StaticBody11"]
-shape = SubResource( 4 )
-
-[node name="CSGBox" type="CSGBox" parent="\'Cest juste des test pour le fun/StaticBody11"]
-use_collision = true
-
-[node name="StaticBody12" type="StaticBody" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 6 )
-physics_material_override = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="\'Cest juste des test pour le fun/StaticBody12"]
-shape = SubResource( 4 )
-
-[node name="CSGBox" type="CSGBox" parent="\'Cest juste des test pour le fun/StaticBody12"]
-use_collision = true
-
-[node name="StaticBody13" type="StaticBody" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 6 )
-physics_material_override = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="\'Cest juste des test pour le fun/StaticBody13"]
-shape = SubResource( 4 )
-
-[node name="CSGBox" type="CSGBox" parent="\'Cest juste des test pour le fun/StaticBody13"]
-use_collision = true
-
-[node name="StaticBody14" type="StaticBody" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6 )
-physics_material_override = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="\'Cest juste des test pour le fun/StaticBody14"]
-shape = SubResource( 4 )
-
-[node name="CSGBox" type="CSGBox" parent="\'Cest juste des test pour le fun/StaticBody14"]
-use_collision = true
-
-[node name="StaticBody3" type="StaticBody" parent="\'Cest juste des test pour le fun"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-physics_material_override = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="\'Cest juste des test pour le fun/StaticBody3"]
-shape = SubResource( 4 )
-
-[node name="CSGBox" type="CSGBox" parent="\'Cest juste des test pour le fun/StaticBody3"]
-use_collision = true
 
 [node name="World" type="Node2D" parent="."]
 visible = false
@@ -292,7 +119,7 @@ margin_left = 1.0
 margin_top = 1.2182
 margin_right = 112.0
 margin_bottom = 14.2182
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Hp"
 scroll_active = false
@@ -384,7 +211,7 @@ margin_left = 3.05176e-05
 margin_top = -0.653625
 margin_right = 111.0
 margin_bottom = 12.3464
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Auto"
 scroll_active = false
@@ -659,7 +486,7 @@ light_mask = 524288
 margin_top = -1.00226
 margin_right = 270.0
 margin_bottom = 11.9977
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Spell 1"
 scroll_active = false
@@ -827,7 +654,7 @@ margin_left = -0.0427246
 margin_top = -0.860809
 margin_right = 134.957
 margin_bottom = 12.1392
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Spell 2"
 scroll_active = false
@@ -870,7 +697,7 @@ margin_left = 1.0
 margin_top = 1.2182
 margin_right = 112.0
 margin_bottom = 14.2182
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Hp"
 scroll_active = false
@@ -962,7 +789,7 @@ margin_left = 3.05176e-05
 margin_top = -0.653625
 margin_right = 111.0
 margin_bottom = 12.3464
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Auto"
 scroll_active = false
@@ -1237,7 +1064,7 @@ light_mask = 524288
 margin_top = -1.00226
 margin_right = 270.0
 margin_bottom = 11.9977
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Spell 1"
 scroll_active = false
@@ -1405,7 +1232,7 @@ margin_left = -0.0427246
 margin_top = -0.860809
 margin_right = 134.957
 margin_bottom = 12.1392
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Spell 2"
 scroll_active = false
@@ -1413,42 +1240,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Map" type="Node2D" parent="World"]
-
-[node name="Wall" parent="World/Map" instance=ExtResource( 6 )]
-position = Vector2( 31.5394, 961.287 )
-
-[node name="Environment" type="WorldEnvironment" parent="World/Map"]
-environment = SubResource( 7 )
-
-[node name="Background" type="Sprite" parent="World/Map"]
-texture = ExtResource( 1 )
-
-[node name="Map" type="Control" parent="World/Map"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Music" type="AudioStreamPlayer" parent="World/Map"]
+[node name="Map" parent="World" instance=ExtResource( 1 )]
 
 [node name="Entities" type="Node2D" parent="."]
 visible = false
 
 [node name="Player 1" type="KinematicBody2D" parent="Entities"]
 light_mask = 524288
-position = Vector2( -318.764, 849.63 )
+position = Vector2( -2663.98, -182.497 )
 z_index = 100
 collision_layer = 34
 collision_mask = 25
 script = ExtResource( 4 )
 
 [node name="Light" type="Light2D" parent="Entities/Player 1"]
-position = Vector2( -0.353806, 0.520493 )
 rotation = -2.35619
 texture = ExtResource( 3 )
 texture_scale = 10.0
+color = Color( 0, 0.501961, 1, 1 )
 energy = 2.0
 range_z_min = -4096
 range_z_max = 4096
@@ -1461,32 +1270,32 @@ shadow_filter_smooth = 1.3
 
 [node name="Frame" type="AnimatedSprite" parent="Entities/Player 1"]
 light_mask = 524288
-position = Vector2( 0, 1.18921 )
+position = Vector2( 3.05176e-05, 0 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 100
-frames = SubResource( 8 )
+frames = SubResource( 3 )
 animation = "New Anim 1"
 playing = true
 
-[node name="Collision" type="CollisionPolygon2D" parent="Entities/Player 1"]
-visible = false
-position = Vector2( 0, -8.00002 )
-scale = Vector2( 1, 0.8125 )
-polygon = PoolVector2Array( 0, -19.6923, -16, 39.3846, 0, 29.5385, 16, 39.3846 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Player 1"]
+position = Vector2( 1.17986, 1.41583 )
+z_index = 4096
+shape = SubResource( 4 )
 
 [node name="Player 2" type="KinematicBody2D" parent="Entities"]
 light_mask = 524288
-position = Vector2( 213.452, 888.108 )
+position = Vector2( 216, 888 )
 z_index = 100
 collision_layer = 34
 collision_mask = 25
 script = ExtResource( 9 )
 
 [node name="Light" type="Light2D" parent="Entities/Player 2"]
-position = Vector2( -0.353806, 0.520493 )
+position = Vector2( 0, 0.00012207 )
 rotation = -2.35619
 texture = ExtResource( 3 )
 texture_scale = 10.0
+color = Color( 1, 0.498039, 0, 1 )
 energy = 2.0
 range_z_min = -4096
 range_z_max = 4096
@@ -1499,18 +1308,18 @@ shadow_filter_smooth = 1.3
 
 [node name="Frame" type="AnimatedSprite" parent="Entities/Player 2"]
 light_mask = 524288
-position = Vector2( 0, 1.18921 )
+position = Vector2( 0, 6.10352e-05 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 100
-frames = SubResource( 8 )
+frames = SubResource( 3 )
 animation = "New Anim 1"
 playing = true
 
-[node name="Collision" type="CollisionPolygon2D" parent="Entities/Player 2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Player 2"]
 visible = false
-position = Vector2( 0, -8 )
-scale = Vector2( 1, 0.8125 )
-polygon = PoolVector2Array( 0, -19.6923, -16, 39.3846, 0, 29.5385, 16, 39.3846 )
+position = Vector2( 1.17986, 1.41583 )
+z_index = 4096
+shape = SubResource( 4 )
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
@@ -1524,3 +1333,179 @@ visible = false
 tile_set = ExtResource( 8 )
 format = 1
 tile_data = PoolIntArray( 131088, 0, 131075, 131090, 0, 131076, 131092, 0, 131075, 131094, 0, 131076, 131096, 0, 131075, 131098, 0, 131076, 131100, 0, 131075, 131102, 0, 131076, 262160, 0, 131075, 262162, 0, 131076, 262164, 0, 131075, 262166, 0, 131076, 262168, 0, 131075, 262170, 0, 131076, 262172, 0, 131075, 262174, 0, 131076, 393232, 0, 131075, 393234, 0, 131076, 393236, 0, 131075, 393238, 0, 0, 393240, 0, 1, 393242, 0, 2, 393244, 0, 131075, 393246, 0, 131076, 524300, 0, 0, 524302, 0, 2, 524304, 0, 131075, 524306, 0, 131076, 524308, 0, 0, 524310, 0, 65540, 524312, 0, 65537, 524314, 0, 65538, 524316, 0, 131075, 524318, 0, 131076, 655370, 0, 0, 655372, 0, 65540, 655374, 0, 65539, 655376, 0, 1, 655378, 0, 1, 655380, 0, 65540, 655382, 0, 65537, 655384, 0, 3, 655386, 0, 131074, 655388, 0, 131075, 655390, 0, 131076, 786442, 0, 131072, 786444, 0, 4, 786446, 0, 196608, 786448, 0, 196609, 786450, 0, 196610, 786452, 0, 65537, 786454, 0, 3, 786456, 0, 131074, 786458, 0, 131076, 786460, 0, 131075, 786462, 0, 131076, 917514, 0, 0, 917516, 0, 65540, 917518, 0, 196610, 917520, 0, 196609, 917522, 0, 196608, 917524, 0, 3, 917526, 0, 131075, 917528, 0, 131075, 917530, 0, 131076, 917532, 0, 131075, 917534, 0, 131076, 1048582, 0, 0, 1048584, 0, 1, 1048586, 0, 65540, 1048588, 0, 196608, 1048590, 0, 196608, 1048592, 0, 196609, 1048594, 0, 3, 1048596, 0, 131074, 1048598, 0, 131075, 1048600, 0, 131076, 1048602, 0, 131075, 1048604, 0, 131076, 1048606, 0, 131075, 1179654, 0, 131072, 1179656, 0, 131073, 1179658, 0, 4, 1179660, 0, 131073, 1179662, 0, 131073, 1179664, 0, 131073, 1179666, 0, 131074, 1179668, 0, 131076, 1179670, 0, 131075, 1179672, 0, 131076, 1179674, 0, 131075, 1179676, 0, 131076, 1179678, 0, 131075, 1310730, 0, 131072, 1310732, 0, 131074 )
+
+[node name="Cest juste des test pour le fun" type="Spatial" parent="."]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Cest juste des test pour le fun"]
+transform = Transform( 1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 20.7453, 10.1261 )
+visible = false
+light_energy = 0.03
+shadow_enabled = true
+directional_shadow_split_1 = 0.05
+directional_shadow_split_2 = 0.1
+directional_shadow_split_3 = 0.2
+directional_shadow_normal_bias = 0.0
+directional_shadow_depth_range = 1
+
+[node name="KinematicBody" type="KinematicBody" parent="Cest juste des test pour le fun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3 )
+collision_mask = 0
+collision/safe_margin = 0.01
+script = ExtResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cest juste des test pour le fun/KinematicBody"]
+shape = SubResource( 5 )
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Cest juste des test pour le fun/KinematicBody"]
+transform = Transform( 1, -1.49012e-08, 1.63913e-07, 1.49012e-08, 1, 2.44249e-15, -1.63913e-07, 0, 1, 0, 0, 0 )
+layers = 524288
+double_sided = false
+frames = SubResource( 6 )
+
+[node name="Camera" type="Camera" parent="Cest juste des test pour le fun/KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 2.38419e-07, 0, -2.38419e-07, 1, 0, 1.5359, 11.6603 )
+doppler_tracking = 2
+fov = 90.0
+
+[node name="StaticBody" type="StaticBody" parent="Cest juste des test pour le fun"]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -1, 0 )
+physics_material_override = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cest juste des test pour le fun/StaticBody"]
+shape = SubResource( 8 )
+
+[node name="CSGBox" type="CSGBox" parent="Cest juste des test pour le fun/StaticBody"]
+use_in_baked_light = true
+lod_max_distance = 10000.0
+lod_max_hysteresis = 10000.0
+
+[node name="StaticBody2" type="StaticBody" parent="Cest juste des test pour le fun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 4 )
+physics_material_override = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cest juste des test pour le fun/StaticBody2"]
+shape = SubResource( 8 )
+
+[node name="CSGBox" type="CSGBox" parent="Cest juste des test pour le fun/StaticBody2"]
+use_collision = true
+
+[node name="StaticBody4" type="StaticBody" parent="Cest juste des test pour le fun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4 )
+physics_material_override = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cest juste des test pour le fun/StaticBody4"]
+shape = SubResource( 8 )
+
+[node name="CSGBox" type="CSGBox" parent="Cest juste des test pour le fun/StaticBody4"]
+use_collision = true
+
+[node name="StaticBody5" type="StaticBody" parent="Cest juste des test pour le fun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4 )
+physics_material_override = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cest juste des test pour le fun/StaticBody5"]
+shape = SubResource( 8 )
+
+[node name="CSGBox" type="CSGBox" parent="Cest juste des test pour le fun/StaticBody5"]
+use_collision = true
+
+[node name="StaticBody6" type="StaticBody" parent="Cest juste des test pour le fun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 6 )
+physics_material_override = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cest juste des test pour le fun/StaticBody6"]
+shape = SubResource( 8 )
+
+[node name="CSGBox" type="CSGBox" parent="Cest juste des test pour le fun/StaticBody6"]
+use_collision = true
+
+[node name="StaticBody7" type="StaticBody" parent="Cest juste des test pour le fun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 6 )
+physics_material_override = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cest juste des test pour le fun/StaticBody7"]
+shape = SubResource( 8 )
+
+[node name="CSGBox" type="CSGBox" parent="Cest juste des test pour le fun/StaticBody7"]
+use_collision = true
+
+[node name="StaticBody8" type="StaticBody" parent="Cest juste des test pour le fun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 6 )
+physics_material_override = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cest juste des test pour le fun/StaticBody8"]
+shape = SubResource( 8 )
+
+[node name="CSGBox" type="CSGBox" parent="Cest juste des test pour le fun/StaticBody8"]
+use_collision = true
+
+[node name="StaticBody9" type="StaticBody" parent="Cest juste des test pour le fun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 6 )
+physics_material_override = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cest juste des test pour le fun/StaticBody9"]
+shape = SubResource( 8 )
+
+[node name="CSGBox" type="CSGBox" parent="Cest juste des test pour le fun/StaticBody9"]
+use_collision = true
+
+[node name="StaticBody10" type="StaticBody" parent="Cest juste des test pour le fun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, 6 )
+physics_material_override = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cest juste des test pour le fun/StaticBody10"]
+shape = SubResource( 8 )
+
+[node name="CSGBox" type="CSGBox" parent="Cest juste des test pour le fun/StaticBody10"]
+use_collision = true
+
+[node name="StaticBody11" type="StaticBody" parent="Cest juste des test pour le fun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, 4 )
+physics_material_override = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cest juste des test pour le fun/StaticBody11"]
+shape = SubResource( 8 )
+
+[node name="CSGBox" type="CSGBox" parent="Cest juste des test pour le fun/StaticBody11"]
+use_collision = true
+
+[node name="StaticBody12" type="StaticBody" parent="Cest juste des test pour le fun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 6 )
+physics_material_override = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cest juste des test pour le fun/StaticBody12"]
+shape = SubResource( 8 )
+
+[node name="CSGBox" type="CSGBox" parent="Cest juste des test pour le fun/StaticBody12"]
+use_collision = true
+
+[node name="StaticBody13" type="StaticBody" parent="Cest juste des test pour le fun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 2, 6 )
+physics_material_override = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cest juste des test pour le fun/StaticBody13"]
+shape = SubResource( 8 )
+
+[node name="CSGBox" type="CSGBox" parent="Cest juste des test pour le fun/StaticBody13"]
+use_collision = true
+
+[node name="StaticBody14" type="StaticBody" parent="Cest juste des test pour le fun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6 )
+physics_material_override = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cest juste des test pour le fun/StaticBody14"]
+shape = SubResource( 8 )
+
+[node name="CSGBox" type="CSGBox" parent="Cest juste des test pour le fun/StaticBody14"]
+use_collision = true
+
+[node name="StaticBody3" type="StaticBody" parent="Cest juste des test pour le fun"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+physics_material_override = SubResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Cest juste des test pour le fun/StaticBody3"]
+shape = SubResource( 8 )
+
+[node name="CSGBox" type="CSGBox" parent="Cest juste des test pour le fun/StaticBody3"]
+use_collision = true
+material = SubResource( 9 )

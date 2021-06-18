@@ -17,7 +17,6 @@ func Movement(delta):
 	velocity = (velocity.normalized().rotated(Rotate) * speed) * (delta * 60)
 	velocity = move_and_collide(velocity)
 	if velocity:
-		NodeAnimation.animation = "Explosion"
 		NodeAnimation.frame = 0
 		End = true
 	velocity = Vector2()
@@ -29,10 +28,9 @@ func Launch(LauncherPosition: Vector2, LauncherDirection):
 	velocity = (velocity.normalized().rotated(Rotate) * speed)
 
 func EndAnimWaiter():
-	WhiteLight.energy -= 0.3
-	RedLight.energy -= 0.3
-	if NodeAnimation.frame == 5:
-		queue_free()
+	WhiteLight.energy -= 0.25
+	RedLight.energy -= 0.5
+	queue_free()
 
 """"""
 
@@ -41,5 +39,5 @@ func _process(delta):
 		EndAnimWaiter()
 	else:
 		visible = true
-		velocity.y -= 1
+		velocity.x = 1
 		Movement(delta)

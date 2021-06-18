@@ -1,0 +1,175 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Frames/Background/Background.png" type="Texture" id=2]
+
+[sub_resource type="Environment" id=1]
+background_sky_orientation = Basis( 1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693 )
+background_sky_rotation = Vector3( 0.349066, 0, 0 )
+background_sky_rotation_degrees = Vector3( 20, 0, 0 )
+background_color = Color( 0.25098, 0.219608, 0.219608, 1 )
+auto_exposure_enabled = true
+ss_reflections_enabled = true
+ssao_blur = 2
+dof_blur_far_transition = 44.79
+dof_blur_far_quality = 2
+dof_blur_near_quality = 2
+glow_enabled = true
+glow_intensity = 8.0
+glow_bloom = 0.01
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 0.01
+adjustment_enabled = true
+
+[node name="Map" type="Node2D"]
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+scale = Vector2( 1000, 1000 )
+texture = ExtResource( 2 )
+
+[node name="Map" type="Control" parent="."]
+margin_right = 56.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wall" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 896, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall28" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 1152, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall29" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 128, 512 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall30" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 384, 512 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall31" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 1408, 768 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall14" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 1152, 512 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall15" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 1664, 768 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall16" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 896, 512 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall17" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 640, 512 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall18" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 384, 960 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall19" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 640, 1216 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall20" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 384, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall21" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( -128, 1536 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall22" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 128, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall23" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( -384, 768 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall24" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( -128, 512 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall2" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 640, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall3" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 1408, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall7" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 2432, 1280 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall8" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 2176, 1536 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall9" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 1664, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall10" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 2432, 1536 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall11" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 2432, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall12" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 1920, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall13" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 2176, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall4" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 1792, 1664 )
+rotation = 0.785398
+scale = Vector2( 56.6, 56.6 )
+
+[node name="Wall25" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 0, 1664 )
+rotation = 0.785398
+scale = Vector2( 56.6, 56.6 )
+
+[node name="Wall26" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 512, 1088 )
+rotation = 0.785398
+scale = Vector2( 56.6, 56.6 )
+
+[node name="Wall32" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 1280, 640 )
+rotation = 0.785398
+scale = Vector2( 56.6, 56.6 )
+
+[node name="Wall27" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( -256, 640 )
+rotation = 0.785398
+scale = Vector2( 56.6, 56.6 )
+
+[node name="Wall5" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 2048, 1408 )
+rotation = 0.785398
+scale = Vector2( 56.6, 56.6 )
+
+[node name="Wall6" parent="Map" instance=ExtResource( 1 )]
+position = Vector2( 2304, 1152 )
+rotation = 0.785398
+scale = Vector2( 56.6, 56.6 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-onready var _Projectile = preload("res://Scenes/Projectile.tscn")
+onready var _Auto = preload("res://Scenes/Fleche.tscn")
 
 var Hp = 100
 var Auto = 0
@@ -94,9 +94,9 @@ func get_input():
 	if Input.is_action_pressed("Shoot"):
 		if Auto > 15 and not OnClick:
 			Auto -= 15
-			var Projectile = _Projectile.instance()
-			get_parent().add_child(Projectile)
-			Projectile.Launch(position, Rotate)
+			var Auto = _Auto.instance()
+			get_parent().add_child(Auto)
+			Auto.Launch(position, Rotate)
 		OnClick = true
 	else:
 		OnClick = false

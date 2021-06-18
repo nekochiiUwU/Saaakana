@@ -9,6 +9,7 @@ var Rotate = Vector3()
 var rotationFactor = Vector3()
 var collision_info = 0
 var velocity = Vector3()
+var velocityY = Vector3()
 var MovementRight = false
 var MovementLeft = false
 var MovementDown = false
@@ -20,6 +21,12 @@ var r = Vector3()
 """ ===0=== """
 
 func Movements(delta):
+	velocityY = velocity
+	velocityY.x = 0 
+	velocityY.z = 0
+	velocity.y = 0 
+	velocityY = (velocityY.normalized() * speed) * (delta * 60)
+	velocityY = move_and_collide(velocityY)
 	velocity = (velocity.normalized().rotated(Vector3(0, 1, 0), rotationFactor.y) * speed) * (delta * 60)
 	velocity = move_and_collide(velocity)
 	velocity = Vector3()

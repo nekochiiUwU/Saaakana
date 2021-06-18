@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-onready var _Projectile = preload("res://Scenes/Projectile.tscn")
+onready var _Projectile = preload("res://Scenes/Fleche.tscn")
 
 var Hp = 100
 var Auto = 0
