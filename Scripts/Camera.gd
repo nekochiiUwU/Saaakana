@@ -19,11 +19,11 @@ var UnZoom = 0
 
 func get_imput(delta):
 	if Input.is_action_pressed("Zoom [+]"):
-		Zoom[0] -= delta
-		Zoom[1] -= delta
+		Zoom[0] -= delta + (Zoom[0] / 100)
+		Zoom[1] -= delta + (Zoom[1] / 100)
 	if Input.is_action_pressed("Zoom [-]"):
-		Zoom[0] += delta
-		Zoom[1] += delta
+		Zoom[0] += delta + (Zoom[0] / 100)
+		Zoom[1] += delta + (Zoom[1] / 100)
 	if Input.is_action_just_pressed("Fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen
 	if Input.is_action_just_pressed("Mouse Capture"):

@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var _Projectile = preload("res://Scenes/Fleche.tscn")
-
+onready var Frame = $Frame
 var Hp = 100
 var Auto = 0
 var speed = 4
@@ -25,34 +25,34 @@ func Movements(delta):
 	velocity = Vector2()
 
 func SelectAnim():
-	"""
+	rotation = Rotate
 	if MovementDown and not MovementRight and not MovementLeft:
-		rotation_degrees = 180
-		rotationFactor = rotation
-	if MovementUp and not MovementRight and not MovementLeft:
-		rotation_degrees = 0
-		rotationFactor = rotation
-	if MovementRight and not MovementDown and not MovementUp:
-		rotation_degrees = 90
-		rotationFactor = rotation
-	if MovementLeft and not MovementDown and not MovementUp:
-		rotation_degrees = 270
-		rotationFactor = rotation
-	
-	if MovementDown and MovementLeft and not MovementRight and not MovementUp:
-		rotation_degrees = 225
-		rotationFactor = rotation
-	if MovementUp and MovementRight and not MovementLeft and not MovementDown:
-		rotation_degrees = 45
-		rotationFactor = rotation
-	if MovementRight and MovementDown and not MovementLeft and not MovementUp:
-		rotation_degrees = 135
-		rotationFactor = rotation
-	if MovementLeft and MovementUp and not MovementRight and not MovementDown:
-		rotation_degrees = 315
-		rotationFactor = rotation
-	"""
-	rotation = rotationFactor + Rotate
+		Frame.rotation_degrees = -rotation_degrees + 90
+		Frame.animation = "Walk Right"
+	elif MovementUp and not MovementRight and not MovementLeft:
+		Frame.rotation_degrees = -rotation_degrees + 270
+		Frame.animation = "Walk Right"
+	elif MovementRight and not MovementDown and not MovementUp:
+		Frame.rotation_degrees = -rotation_degrees + 0
+		Frame.animation = "Walk Right"
+	elif MovementLeft and not MovementDown and not MovementUp:
+		Frame.rotation_degrees = -rotation_degrees + 180
+		Frame.animation = "Walk Right"
+	elif MovementDown and MovementLeft and not MovementRight and not MovementUp:
+		Frame.rotation_degrees = -rotation_degrees + 135
+		Frame.animation = "Walk Right"
+	elif MovementUp and MovementRight and not MovementLeft and not MovementDown:
+		Frame.rotation_degrees = -rotation_degrees + 315
+		Frame.animation = "Walk Right"
+	elif MovementRight and MovementDown and not MovementLeft and not MovementUp:
+		Frame.rotation_degrees = -rotation_degrees + 45
+		Frame.animation = "Walk Right"
+	elif MovementLeft and MovementUp and not MovementRight and not MovementDown:
+		Frame.rotation_degrees = -rotation_degrees + 225
+		Frame.animation = "Walk Right"
+	else:
+		Frame.rotation_degrees = -rotation_degrees
+		Frame.animation = "Stand"
 
 
 """"" ===0=== """
@@ -115,5 +115,4 @@ func _process(delta):
 	get_input()
 	Movements(delta)
 	SelectAnim()
-
 #	if (0 < position.x and 1280 > position.x and 0 < position.y and 720 > position.y):
