@@ -2,10 +2,11 @@ extends KinematicBody2D
 
 onready var _Auto = preload("res://Scenes/Fleche.tscn")
 onready var Frame = $Frame
-var Hp = 100
+
+var Hp = 1000
 var Auto = 0
 var speed = 4
-var sensi = 0.02
+var sensi = 2
 var Rotate = 0
 var rotationFactor = 0
 var collision_info = 0
@@ -18,49 +19,45 @@ var OnClick = false
 
 """ ===0=== """
 
+func SelectAnim():
+	if MovementDown and not MovementRight and not MovementLeft:
+		Frame.animation = "Walk Right"
+	elif MovementUp and not MovementRight and not MovementLeft:
+		Frame.animation = "Walk Right"
+	elif MovementRight and not MovementDown and not MovementUp:
+		Frame.animation = "Walk Right"
+	elif MovementLeft and not MovementDown and not MovementUp:
+		Frame.animation = "Walk Right"
+	elif MovementDown and MovementLeft and not MovementRight and not MovementUp:
+		Frame.animation = "Walk Right"
+	elif MovementUp and MovementRight and not MovementLeft and not MovementDown:
+		Frame.animation = "Walk Right"
+	elif MovementRight and MovementDown and not MovementLeft and not MovementUp:
+		Frame.animation = "Walk Right"
+	elif MovementLeft and MovementUp and not MovementRight and not MovementDown:
+		Frame.animation = "Walk Right"
+	else:
+		Frame.animation = "Stand"
+	
+	while rotation_degrees > 180:
+		rotation_degrees -= 360
+	while rotation_degrees < -180:
+		rotation_degrees += 360
+
+	if -90 < rotation_degrees and rotation_degrees < 90:
+		Frame.flip_v = false
+	else:
+		Frame.flip_v = true
+
+""" ===0=== """
+
 func Movements(delta):
 	velocity = (velocity.normalized() * speed) * (delta * 60)
 	""".rotated(Rotate)"""
 	velocity = move_and_collide(velocity)
 	velocity = Vector2()
 
-
-func SelectAnim():
-	rotation = Rotate
-	if MovementDown and not MovementRight and not MovementLeft:
-		Frame.rotation_degrees = -rotation_degrees + 90
-		Frame.animation = "Walk Right"
-	elif MovementUp and not MovementRight and not MovementLeft:
-		Frame.rotation_degrees = -rotation_degrees + 270
-		Frame.animation = "Walk Right"
-	elif MovementRight and not MovementDown and not MovementUp:
-		Frame.rotation_degrees = -rotation_degrees + 0
-		Frame.animation = "Walk Right"
-	elif MovementLeft and not MovementDown and not MovementUp:
-		Frame.rotation_degrees = -rotation_degrees + 180
-		Frame.animation = "Walk Right"
-	elif MovementDown and MovementLeft and not MovementRight and not MovementUp:
-		Frame.rotation_degrees = -rotation_degrees + 135
-		Frame.animation = "Walk Right"
-	elif MovementUp and MovementRight and not MovementLeft and not MovementDown:
-		Frame.rotation_degrees = -rotation_degrees + 315
-		Frame.animation = "Walk Right"
-	elif MovementRight and MovementDown and not MovementLeft and not MovementUp:
-		Frame.rotation_degrees = -rotation_degrees + 45
-		Frame.animation = "Walk Right"
-	elif MovementLeft and MovementUp and not MovementRight and not MovementDown:
-		Frame.rotation_degrees = -rotation_degrees + 225
-		Frame.animation = "Walk Right"
-	else:
-		Frame.rotation_degrees = -rotation_degrees
-		Frame.animation = "Stand"
-
-
 """"" ===0=== """
-
-func _input(event):
-	if event is InputEventMouseMotion:
-		Rotate += deg2rad(event.relative.x * (sensi*10))
 
 func get_input():
 	MovementRight = false
@@ -87,30 +84,29 @@ func get_input():
 		MovementUp = false
 	
 	if Input.is_action_pressed("Rotation +"):
-		Rotate += sensi
+		rotation_degrees += sensi
 	if Input.is_action_pressed("Rotation -"):
-		Rotate -= sensi
-		Rotate -= sensi
+		rotation_degrees -= sensi
 	
 	if Input.is_action_pressed("Shoot"):
-		if Auto > 15 and not OnClick:
-			Auto -= 15
+		if Auto > 50 and not OnClick:
+			Auto -= 50
 			var Auto = _Auto.instance()
 			get_parent().add_child(Auto)
-			Auto.Launch(position, Rotate)
+			Auto.Launch(position, rotation_degrees)
 		OnClick = true
 	else:
 		OnClick = false
 
 func Cooldown(delta):
-	if Auto < 30:
+	if Auto < 100:
 		Auto += (delta * 60)
 
 """ ===0=== """
 
 func _ready():
 	visible = true
-	Hp = rand_range(1, 100)
+	Hp = rand_range(1, 1000)
 
 func _process(delta):
 	Cooldown(delta)

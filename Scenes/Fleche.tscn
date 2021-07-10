@@ -54,3 +54,8 @@ shadow_enabled = true
 shadow_gradient_length = 0.2
 shadow_filter = 5
 shadow_filter_smooth = 13.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true

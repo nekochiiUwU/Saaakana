@@ -5,16 +5,16 @@ extends KinematicBody2D
 onready var NodeAnimation = $Animations
 onready var WhiteLight = $Light
 onready var RedLight = $RedLight
+onready var Time = $Timer
 
 var velocity = Vector2()
 var speed = 15
-var Rotate = 0
 var End = false
+
 """"""
 
 func Movement(delta):
-	rotation = Rotate
-	velocity = (velocity.normalized().rotated(Rotate) * speed) * (delta * 60)
+	velocity = (velocity.normalized().rotated(rotation) * speed) * (delta * 60)
 	velocity = move_and_collide(velocity)
 	if velocity:
 		NodeAnimation.frame = 0
@@ -24,8 +24,9 @@ func Movement(delta):
 func Launch(LauncherPosition: Vector2, LauncherDirection):
 	visible = false
 	position = LauncherPosition
-	Rotate = LauncherDirection
-	velocity = (velocity.normalized().rotated(Rotate) * speed)
+	rotation_degrees = LauncherDirection
+	velocity = (velocity.normalized().rotated(rotation) * speed)
+	
 
 func EndAnimWaiter():
 	WhiteLight.energy -= 0.25
@@ -35,7 +36,7 @@ func EndAnimWaiter():
 """"""
 
 func _process(delta):
-	if End:
+	if End or not Time.get_time_left():
 		EndAnimWaiter()
 	else:
 		visible = true

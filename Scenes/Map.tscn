@@ -9,6 +9,9 @@ background_sky_orientation = Basis( 1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 
 background_sky_rotation = Vector3( 0.349066, 0, 0 )
 background_sky_rotation_degrees = Vector3( 20, 0, 0 )
 background_color = Color( 0.25098, 0.219608, 0.219608, 1 )
+tonemap_mode = 3
+tonemap_exposure = 0.1
+tonemap_white = 16.0
 auto_exposure_enabled = true
 auto_exposure_scale = 0.05
 ssao_blur = 2
@@ -24,150 +27,145 @@ glow_blend_mode = 0
 [node name="Environment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
-[node name="Map" type="Control" parent="Environment"]
-margin_right = 56.0
-margin_bottom = 64.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Wall" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 896, 1792 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall28" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 1152, 1792 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall29" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 128, 512 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall30" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 384, 512 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall31" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 1408, 768 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall14" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 1152, 512 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall15" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 1664, 768 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall16" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 896, 512 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall17" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 640, 512 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall18" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 384, 960 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall19" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 640, 1216 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall20" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 384, 1792 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall21" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( -128, 1536 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall22" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 128, 1792 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall23" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( -384, 768 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall24" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( -128, 512 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall2" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 640, 1792 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall3" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 1408, 1792 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall7" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 2432, 1280 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall8" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 2176, 1536 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall9" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 1664, 1792 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall10" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 2432, 1536 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall11" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 2432, 1792 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall12" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 1920, 1792 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall13" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 2176, 1792 )
-scale = Vector2( 40, 40 )
-
-[node name="Wall4" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 1792, 1664 )
-rotation = 0.785398
-scale = Vector2( 56.6, 56.6 )
-
-[node name="Wall25" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 0, 1664 )
-rotation = 0.785398
-scale = Vector2( 56.6, 56.6 )
-
-[node name="Wall26" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 512, 1088 )
-rotation = 0.785398
-scale = Vector2( 56.6, 56.6 )
-
-[node name="Wall32" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 1280, 640 )
-rotation = 0.785398
-scale = Vector2( 56.6, 56.6 )
-
-[node name="Wall27" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( -256, 640 )
-rotation = 0.785398
-scale = Vector2( 56.6, 56.6 )
-
-[node name="Wall5" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 2048, 1408 )
-rotation = 0.785398
-scale = Vector2( 56.6, 56.6 )
-
-[node name="Wall6" parent="Environment/Map" instance=ExtResource( 1 )]
-position = Vector2( 2304, 1152 )
-rotation = 0.785398
-scale = Vector2( 56.6, 56.6 )
+[node name="Music" type="AudioStreamPlayer" parent="."]
 
 [node name="Background" type="Sprite" parent="."]
 scale = Vector2( 1000, 1000 )
 texture = ExtResource( 2 )
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Wall" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 896, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall28" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 1152, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall29" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 128, 512 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall30" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 384, 512 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall31" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 1408, 768 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall14" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 1152, 512 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall15" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 1664, 768 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall16" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 896, 512 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall17" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 640, 512 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall18" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 384, 960 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall19" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 640, 1216 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall20" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 384, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall21" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( -128, 1536 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall22" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 128, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall23" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( -384, 768 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall24" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( -128, 512 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall2" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 640, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall3" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 1408, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall7" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 2432, 1280 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall8" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 2176, 1536 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall9" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 1664, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall10" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 2432, 1536 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall11" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 2432, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall12" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 1920, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall13" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 2176, 1792 )
+scale = Vector2( 40, 40 )
+
+[node name="Wall4" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 1792, 1664 )
+rotation = 0.785398
+scale = Vector2( 56.6, 56.6 )
+
+[node name="Wall25" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 0, 1664 )
+rotation = 0.785398
+scale = Vector2( 56.6, 56.6 )
+
+[node name="Wall26" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 512, 1088 )
+rotation = 0.785398
+scale = Vector2( 56.6, 56.6 )
+
+[node name="Wall32" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 1280, 640 )
+rotation = 0.785398
+scale = Vector2( 56.6, 56.6 )
+
+[node name="Wall27" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( -256, 640 )
+rotation = 0.785398
+scale = Vector2( 56.6, 56.6 )
+
+[node name="Wall5" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 2048, 1408 )
+rotation = 0.785398
+scale = Vector2( 56.6, 56.6 )
+
+[node name="Wall6" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 2304, 1152 )
+rotation = 0.785398
+scale = Vector2( 56.6, 56.6 )
