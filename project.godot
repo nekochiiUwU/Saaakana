@@ -135,6 +135,29 @@ Fullscreen={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Solid"
+2d_physics/layer_2="Liquid1"
+2d_physics/layer_3="Liquid2"
+2d_physics/layer_4="Bush"
+2d_physics/layer_5="Hole"
+2d_physics/layer_6="None1"
+2d_physics/layer_7="None2"
+2d_physics/layer_8="Dashable"
+2d_physics/layer_9="Burnable"
+2d_physics/layer_10="Breakable"
+2d_physics/layer_11="Team1"
+2d_physics/layer_12="Team2"
+2d_physics/layer_13="Team3"
+2d_physics/layer_14="Team4"
+2d_physics/layer_15="Neutral"
+2d_physics/layer_16="Enemy"
+2d_physics/layer_17="P1"
+2d_physics/layer_18="P2"
+2d_physics/layer_19="P3"
+2d_physics/layer_20="P4"
+
 [physics]
 
 common/enable_pause_aware_picking=true

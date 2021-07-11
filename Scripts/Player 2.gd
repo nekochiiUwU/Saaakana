@@ -4,7 +4,9 @@ onready var _Auto = preload("res://Scenes/Fleche.tscn")
 onready var Frame = $Frame
 
 var Hp = 1000
+var MaxHp = 1000
 var Auto = 0
+var AutoDamage = 100
 var speed = 4
 var sensi = 2
 var Rotate = 0
@@ -94,7 +96,7 @@ func get_input():
 			Auto -= 50
 			var Auto = _Auto.instance()
 			get_parent().add_child(Auto)
-			Auto.Launch(position, rotation_degrees)
+			Auto.Launch(position, rotation_degrees, AutoDamage, 0b11010000000000000001)
 		OnClick = true
 	else:
 		OnClick = false
@@ -103,10 +105,13 @@ func Cooldown(delta):
 	if Auto < 100:
 		Auto += (delta * 60)
 
+	if Hp < MaxHp / 4:
+		Hp += MaxHp * delta
+
 """ ===0=== """
 
 func _ready():
-	Hp = rand_range(1, 1000)
+	""""""
 
 func _process(delta):
 	Cooldown(delta)

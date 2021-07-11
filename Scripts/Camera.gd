@@ -14,7 +14,7 @@ var SmoothCamera = 2
 var lastPos = Vector2()
 var CameraPosition = Vector2()
 var PlayerDistance = 0
-var Zoom = [1, 1]
+var Zoom = [0.3, 0.3]
 var lastZoom = 1
 var UnZoom = 0
 
@@ -44,17 +44,17 @@ func _process(delta):
 		PlayerDistance = PlayerDistance.x
 	else:
 		PlayerDistance = PlayerDistance.y
-	if PlayerDistance < 400:
-		PlayerDistance = 400
-	zoom.x = ((Zoom[0] * (PlayerDistance / 400)) + lastZoom*2) / 3
-	zoom.y = ((Zoom[1] * (PlayerDistance / 400)) + lastZoom*2) / 3
+	if PlayerDistance < 100:
+		PlayerDistance = 100
+	zoom.x = ((Zoom[0] * (PlayerDistance / 100)) + lastZoom*2) / 3
+	zoom.y = ((Zoom[1] * (PlayerDistance / 100)) + lastZoom*2) / 3
 	UI.set_scale(zoom)
 	
 	position = (CameraPosition + lastPos * 10) / 11
 	UI.set_position((position - lastPos) * 5)
-	P1Hp.set_size(Vector2(round(Player1.Hp / 2), 16))
+	P1Hp.set_size(Vector2((Player1.Hp * 500) / Player1.MaxHp, 16))
 	P1Auto.set_size(Vector2(Player1.Auto, 12))
-	P2Hp.set_size(Vector2(round(Player2.Hp / 2), 16))
+	P2Hp.set_size(Vector2((Player2.Hp * 500) / Player2.MaxHp, 16))
 	P2Auto.set_size(Vector2(Player2.Auto, 12))
 	lastPos = position
 	lastZoom = zoom.x

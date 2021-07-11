@@ -4,9 +4,12 @@ onready var _Auto = preload("res://Scenes/Fleche.tscn")
 onready var Frame = $Frame
 
 var Hp = 1000
+var MaxHp = 1000
 var Auto = 0
+var AutoDamage = 100
 var speed = 4
 var sensi = 2
+var rotationSensi = 200
 var Rotate = 0
 var rotationFactor = 0
 var collision_info = 0
@@ -16,7 +19,6 @@ var MovementLeft = false
 var MovementDown = false
 var MovementUp = false
 var OnClick = false
-
 """ ===0=== """
 
 func SelectAnim():
@@ -59,7 +61,7 @@ func Movements(delta):
 
 """"" ===0=== """
 
-func get_input():
+func get_input(delta):
 	MovementRight = false
 	MovementLeft = false
 	MovementDown = false
@@ -84,16 +86,16 @@ func get_input():
 		MovementUp = false
 	
 	if Input.is_action_pressed("Rotation +"):
-		rotation_degrees += sensi
+		rotation_degrees += rotationSensi * delta
 	if Input.is_action_pressed("Rotation -"):
-		rotation_degrees -= sensi
+		rotation_degrees -= rotationSensi * delta
 	
 	if Input.is_action_pressed("Shoot"):
 		if Auto > 50 and not OnClick:
 			Auto -= 50
 			var Auto = _Auto.instance()
 			get_parent().add_child(Auto)
-			Auto.Launch(position, rotation_degrees)
+			Auto.Launch(position, rotation_degrees, AutoDamage, 0b11100000000000000001)
 		OnClick = true
 	else:
 		OnClick = false
@@ -105,12 +107,11 @@ func Cooldown(delta):
 """ ===0=== """
 
 func _ready():
-	visible = true
-	Hp = rand_range(1, 1000)
+	""""""
 
 func _process(delta):
 	Cooldown(delta)
-	get_input()
+	get_input(delta)
 	Movements(delta)
 	SelectAnim()
 

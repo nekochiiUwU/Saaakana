@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Camera.gd" type="Script" id=2]
-[ext_resource path="res://Frames/Light.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Player 1.gd" type="Script" id=4]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(4).png" type="Texture" id=5]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(5).png" type="Texture" id=6]
@@ -43,27 +42,14 @@ extents = Vector2( 8, 30 )
 
 [node name="Camera" type="Camera2D" parent="World/Cameras"]
 light_mask = 524288
-position = Vector2( -0.460571, 929.287 )
 z_index = 4095
 current = true
 smoothing_enabled = true
 smoothing_speed = 10.0
 script = ExtResource( 2 )
 
-[node name="UILight" type="Light2D" parent="World/Cameras/Camera"]
-light_mask = 524288
-z_index = 4096
-texture = ExtResource( 3 )
-texture_scale = 50.0
-energy = 4.0
-range_z_max = 4096
-range_layer_min = -512
-range_layer_max = 512
-range_item_cull_mask = 524288
-shadow_item_cull_mask = 0
-
 [node name="UI" type="ReferenceRect" parent="World/Cameras/Camera"]
-light_mask = 524288
+light_mask = 0
 border_color = Color( 1, 1, 1, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -78,7 +64,7 @@ __meta__ = {
 light_mask = 524288
 margin_left = -914.0
 margin_top = -490.031
-margin_right = -594.0
+margin_right = -414.0
 margin_bottom = -474.031
 color = Color( 0.22847, 0.363281, 0.277281, 1 )
 __meta__ = {
@@ -89,7 +75,7 @@ __meta__ = {
 light_mask = 524288
 margin_left = 2.0
 margin_top = 2.0
-margin_right = 322.0
+margin_right = 502.0
 margin_bottom = 18.0
 color = Color( 0.0313726, 1, 0, 1 )
 __meta__ = {
@@ -646,8 +632,8 @@ __meta__ = {
 }
 
 [node name="P2" type="ReferenceRect" parent="World/Cameras/Camera/UI"]
-margin_left = 1500.0
-margin_right = 1500.0
+margin_left = 1300.0
+margin_right = 1300.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -655,9 +641,9 @@ __meta__ = {
 [node name="FontHp" type="ColorRect" parent="World/Cameras/Camera/UI/P2"]
 light_mask = 524288
 margin_left = -914.0
-margin_top = -490.031
-margin_right = -594.0
-margin_bottom = -474.031
+margin_top = -490.0
+margin_right = -414.0
+margin_bottom = -474.0
 color = Color( 0.22847, 0.363281, 0.277281, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -667,7 +653,7 @@ __meta__ = {
 light_mask = 524288
 margin_left = 2.0
 margin_top = 2.0
-margin_right = 322.0
+margin_right = 502.0
 margin_bottom = 18.0
 color = Color( 0.0313726, 1, 0, 1 )
 __meta__ = {
@@ -1224,68 +1210,45 @@ __meta__ = {
 }
 
 [node name="Map" parent="World" instance=ExtResource( 1 )]
-position = Vector2( -2.99658, 5.99341 )
 
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="Player 1" type="KinematicBody2D" parent="Entities"]
 light_mask = 524288
-position = Vector2( -1003.44, 997.502 )
+position = Vector2( -100, 0 )
 z_index = 100
-collision_layer = 34
-collision_mask = 25
+collision_layer = 66560
 script = ExtResource( 4 )
-
-[node name="Light" type="Light2D" parent="Entities/Player 1"]
-rotation = -2.35619
-texture = ExtResource( 3 )
-texture_scale = 5.0
-color = Color( 0.894118, 0.784314, 1, 1 )
-energy = 3.0
-shadow_enabled = true
-shadow_buffer_size = 1024
 
 [node name="Frame" type="AnimatedSprite" parent="Entities/Player 1"]
 light_mask = 524288
 z_index = 100
 frames = SubResource( 3 )
 animation = "Walk Right"
-frame = 3
+frame = 2
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Player 1"]
-visible = false
+[node name="Player" type="CollisionShape2D" parent="Entities/Player 1"]
 position = Vector2( 1, 0 )
 z_index = 4096
 shape = SubResource( 4 )
 
 [node name="Player 2" type="KinematicBody2D" parent="Entities"]
 light_mask = 524288
-position = Vector2( 995.547, -996.794 )
+position = Vector2( 100, 0 )
 z_index = 100
-collision_layer = 34
-collision_mask = 25
+collision_layer = 133120
 script = ExtResource( 9 )
 
-[node name="Light" type="Light2D" parent="Entities/Player 2"]
-rotation = -2.35619
-texture = ExtResource( 3 )
-texture_scale = 5.0
-color = Color( 0.784314, 1, 0.894118, 1 )
-energy = 3.0
-shadow_enabled = true
-shadow_buffer_size = 1024
+[node name="Player" type="CollisionShape2D" parent="Entities/Player 2"]
+position = Vector2( 1, 0 )
+z_index = 4096
+shape = SubResource( 4 )
 
 [node name="Frame" type="AnimatedSprite" parent="Entities/Player 2"]
 light_mask = 524288
 z_index = 100
 frames = SubResource( 3 )
 animation = "Walk Right"
-frame = 3
+frame = 2
 playing = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Player 2"]
-visible = false
-position = Vector2( 1, 0 )
-z_index = 4096
-shape = SubResource( 4 )
