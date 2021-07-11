@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Camera.gd" type="Script" id=2]
+[ext_resource path="res://Frames/Personnages/Archer/Animations/archer tir.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Player 1.gd" type="Script" id=4]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(4).png" type="Texture" id=5]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(5).png" type="Texture" id=6]
@@ -28,6 +29,11 @@ animations = [ {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "Stand",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Tir",
 "speed": 5.0
 } ]
 
@@ -1224,8 +1230,7 @@ script = ExtResource( 4 )
 light_mask = 524288
 z_index = 100
 frames = SubResource( 3 )
-animation = "Walk Right"
-frame = 2
+animation = "Tir"
 playing = true
 
 [node name="Player" type="CollisionShape2D" parent="Entities/Player 1"]
@@ -1236,12 +1241,12 @@ shape = SubResource( 4 )
 [node name="Player 2" type="KinematicBody2D" parent="Entities"]
 light_mask = 524288
 position = Vector2( 100, 0 )
+rotation = 3.14159
 z_index = 100
 collision_layer = 133120
 script = ExtResource( 9 )
 
 [node name="Player" type="CollisionShape2D" parent="Entities/Player 2"]
-position = Vector2( 1, 0 )
 z_index = 4096
 shape = SubResource( 4 )
 
@@ -1249,6 +1254,5 @@ shape = SubResource( 4 )
 light_mask = 524288
 z_index = 100
 frames = SubResource( 3 )
-animation = "Walk Right"
-frame = 2
+animation = "Tir"
 playing = true

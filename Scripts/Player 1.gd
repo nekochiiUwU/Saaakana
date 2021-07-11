@@ -7,9 +7,10 @@ var Hp = 1000
 var MaxHp = 1000
 var Auto = 0
 var AutoDamage = 100
+var AutoCast = 5
 var speed = 4
 var sensi = 2
-var rotationSensi = 200
+var rotationSensi = 128
 var Rotate = 0
 var rotationFactor = 0
 var collision_info = 0
@@ -18,11 +19,14 @@ var MovementRight = false
 var MovementLeft = false
 var MovementDown = false
 var MovementUp = false
+var ShootAuto = false
 var OnClick = false
 """ ===0=== """
 
 func SelectAnim():
-	if MovementDown and not MovementRight and not MovementLeft:
+	if ShootAuto:
+		Frame.animation = "Tir"
+	elif MovementDown and not MovementRight and not MovementLeft:
 		Frame.animation = "Walk Right"
 	elif MovementUp and not MovementRight and not MovementLeft:
 		Frame.animation = "Walk Right"
@@ -92,12 +96,18 @@ func get_input(delta):
 	
 	if Input.is_action_pressed("Shoot"):
 		if Auto > 50 and not OnClick:
-			Auto -= 50
-			var Auto = _Auto.instance()
-			get_parent().add_child(Auto)
-			Auto.Launch(position, rotation_degrees, AutoDamage, 0b11100000000000000001)
-		OnClick = true
+			if AutoCast:
+				AutoCast -= 1
+				ShootAuto = true
+			else:
+				Auto -= 50
+				var Auto = _Auto.instance()
+				get_parent().add_child(Auto)
+				Auto.Launch(position, rotation_degrees, AutoDamage, 0b11100000000000000001)
+				OnClick = true
+				AutoCast = 5
 	else:
+		ShootAuto = false
 		OnClick = false
 
 func Cooldown(delta):
