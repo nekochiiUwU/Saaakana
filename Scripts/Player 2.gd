@@ -106,7 +106,7 @@ func Cooldown(delta):
 		Auto += (delta * 60)
 
 	if Hp < MaxHp / 4:
-		Hp += MaxHp * delta
+		Hp += (MaxHp / 100) * delta
 
 """ ===0=== """
 

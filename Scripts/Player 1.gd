@@ -103,6 +103,9 @@ func get_input(delta):
 func Cooldown(delta):
 	if Auto < 100:
 		Auto += (delta * 60)
+		
+	if Hp < MaxHp / 4:
+		Hp += (MaxHp / 100) * delta
 
 """ ===0=== """
 
