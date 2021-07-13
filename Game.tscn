@@ -26,14 +26,14 @@ animations = [ {
 "name": "Walk Right",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 13 ) ],
-"loop": true,
-"name": "Stand",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "Tir",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "Stand",
 "speed": 5.0
 } ]
 

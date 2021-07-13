@@ -105,6 +105,7 @@ func get_input(delta):
 				get_parent().add_child(Auto)
 				Auto.Launch(position, rotation_degrees, AutoDamage, 0b11100000000000000001)
 				OnClick = true
+				ShootAuto = false
 				AutoCast = 5
 	else:
 		ShootAuto = false
