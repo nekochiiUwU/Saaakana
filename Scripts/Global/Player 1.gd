@@ -6,14 +6,16 @@ onready var Frame = $Frame
 var Hp = 1000
 var MaxHp = 1000
 var Auto = 0
-var AutoDamage = 100
+var AutoDamage = 50
 var AutoCast = 5
-var speed = 4
+var speed = 3
+var speedtick = speed
 var sensi = 2
 var rotationSensi = 128
 var Rotate = 0
 var rotationFactor = 0
 var collision_info = 0
+var ShootAutoRelease = 0
 var velocity = Vector2()
 var MovementRight = false
 var MovementLeft = false
@@ -21,11 +23,15 @@ var MovementDown = false
 var MovementUp = false
 var ShootAuto = false
 var OnClick = false
+
 """ ===0=== """
 
 func SelectAnim():
 	if ShootAuto:
 		Frame.animation = "Tir"
+	elif ShootAutoRelease:
+		Frame.animation = "Release"
+		ShootAutoRelease -=1
 	elif MovementDown and not MovementRight and not MovementLeft:
 		Frame.animation = "Walk Right"
 	elif MovementUp and not MovementRight and not MovementLeft:
@@ -58,7 +64,7 @@ func SelectAnim():
 """ ===0=== """
 
 func Movements(delta):
-	velocity = (velocity.normalized() * speed) * (delta * 60)
+	velocity = (velocity.normalized() * speedtick) * (delta * 60)
 	""".rotated(Rotate)"""
 	velocity = move_and_collide(velocity)
 	velocity = Vector2()
@@ -94,19 +100,20 @@ func get_input(delta):
 	if Input.is_action_pressed("Rotation -"):
 		rotation_degrees -= rotationSensi * delta
 	
-	if Input.is_action_pressed("Shoot"):
-		if Auto > 50 and not OnClick:
+	if Input.is_action_pressed("Spell0"):
+		if not OnClick:
 			if AutoCast:
 				AutoCast -= 1
 				ShootAuto = true
+				speedtick /= 3
 			else:
-				Auto -= 50
 				var Auto = _Auto.instance()
 				get_parent().add_child(Auto)
-				Auto.Launch(position, rotation_degrees, AutoDamage, 0b11100000000000000001)
+				Auto.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees, AutoDamage, 0b11100000000000000001)
 				OnClick = true
 				ShootAuto = false
-				AutoCast = 5
+				AutoCast = 7
+				ShootAutoRelease = 5
 	else:
 		ShootAuto = false
 		OnClick = false
@@ -124,6 +131,7 @@ func _ready():
 	""""""
 
 func _process(delta):
+	speedtick = speed
 	Cooldown(delta)
 	get_input(delta)
 	Movements(delta)
