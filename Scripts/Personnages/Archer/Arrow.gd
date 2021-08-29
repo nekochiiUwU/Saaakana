@@ -38,10 +38,9 @@ func _physics_process(delta):
 		else:
 			queue_free()
 		var r = rotation_degrees
-		if collision.normal.angle() >= 0:
-			rotation = collision.normal.angle() - rotation
-		else:
-			rotation = collision.normal.angle() - rotation
+		rotation = collision.normal.angle() - rotation
+		# rotation = collision.remainder.rotated(rotation))
+		print(velocity)
 		print((collision.normal.angle()/PI)*360, " - ", r, " = ", rotation_degrees)
 
 func _on_Area_body_entered(body):
