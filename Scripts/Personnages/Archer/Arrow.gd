@@ -10,7 +10,7 @@ var velocity = Vector2(1, 0)
 var speed = 15
 var End = 0
 var Damage = 100
-
+var Bounce = 1
 """"""
 
 
@@ -19,27 +19,9 @@ func Launch(LauncherPosition: Vector2, LauncherDirection, _Damage, CollisionLaye
 	position = LauncherPosition
 	rotation_degrees = LauncherDirection
 	Damage = _Damage
-	collision_mask = CollisionLayer
 	Hitbox.collision_mask = CollisionLayer
 	Hitbox.set_collision_layer_bit(20, false)
 	velocity = Vector2(speed, 0)
-
-func _physics_process(delta):
-	velocity = velocity.normalized().rotated(rotation) * (delta * 60)
-
-	var collision = move_and_collide(velocity)
-	if collision:
-		rotation = velocity.angle()
-		if collision.collider.has_method("hit"):
-			collision.collider.hit()
-
-func _on_Area2D_body_entered(body):
-	print('uwuwowo')
-	
-func EndAnimWaiter():
-	if End.get_parent().name  == "Entities":
-		End.Hp -= Damage
-	queue_free()
 
 func _process(delta):
 	if End:
@@ -47,6 +29,25 @@ func _process(delta):
 	else:
 		visible = true
 
+func _physics_process(delta):
+	var collision = velocity.rotated(rotation) * (delta * 60)
+	collision = move_and_collide(collision)
+	if collision:
+		if Bounce > 0:
+			Bounce -= 1
+		else:
+			queue_free()
+		var r = rotation_degrees
+		if collision.normal.angle() >= 0:
+			rotation = collision.normal.angle() - rotation
+		else:
+			rotation = collision.normal.angle() - rotation
+		print((collision.normal.angle()/PI)*360, " - ", r, " = ", rotation_degrees)
 
-func _on_Area_area_entered(area):
+func _on_Area_body_entered(body):
 	End = Hitbox.get_overlapping_bodies()[0]
+
+func EndAnimWaiter():
+	if End.get_parent().name  == "Entities":
+		End.Hp -= Damage
+	queue_free()

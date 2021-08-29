@@ -1,0 +1,1179 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Global/Camera.gd" type="Script" id=1]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Fonts/Retro Gaming.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+font_data = SubResource( 1 )
+
+[node name="Camera" type="Camera2D"]
+light_mask = 524288
+z_index = 4095
+current = true
+smoothing_enabled = true
+smoothing_speed = 10.0
+script = ExtResource( 1 )
+
+[node name="UI" type="ReferenceRect" parent="."]
+light_mask = 0
+border_color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P1" type="ReferenceRect" parent="UI"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FontHp" type="ColorRect" parent="UI/P1"]
+light_mask = 524288
+margin_left = -914.0
+margin_top = -490.031
+margin_right = -414.0
+margin_bottom = -474.031
+color = Color( 0.22847, 0.363281, 0.277281, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hp" type="ColorRect" parent="UI/P1/FontHp"]
+light_mask = 524288
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 502.0
+margin_bottom = 18.0
+color = Color( 0.0313726, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="UI/P1/FontHp/Hp"]
+light_mask = 524288
+margin_left = 1.0
+margin_top = 1.2182
+margin_right = 112.0
+margin_bottom = 14.2182
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Hp"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FontMana" type="ColorRect" parent="UI/P1"]
+light_mask = 524288
+margin_left = -912.0
+margin_top = -471.0
+margin_right = -592.0
+margin_bottom = -465.0
+color = Color( 0.0196078, 0.196078, 0.196078, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mana" type="ColorRect" parent="UI/P1/FontMana"]
+light_mask = 524288
+margin_left = 0.132385
+margin_top = 1.05942
+margin_right = 300.132
+margin_bottom = 5.05942
+color = Color( 0, 1, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FontAuto" type="ColorRect" parent="UI/P1"]
+light_mask = 0
+margin_left = -901.0
+margin_top = -456.153
+margin_right = -871.0
+margin_bottom = -443.153
+rect_rotation = 89.9999
+color = Color( 0.0980392, 0.0980392, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Auto" type="ColorRect" parent="UI/P1/FontAuto"]
+light_mask = 524288
+margin_left = 2.0
+margin_top = -2.0
+margin_right = 32.0
+margin_bottom = 11.0
+color = Color( 0.980392, 0.980392, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T0" type="ColorRect" parent="UI/P1/FontAuto/Auto"]
+light_mask = 524288
+margin_left = -3.05176e-05
+margin_top = 12.0
+margin_right = 30.0
+margin_bottom = 13.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T1" type="ColorRect" parent="UI/P1/FontAuto/Auto"]
+light_mask = 524288
+margin_left = 13.9999
+margin_top = 10.0
+margin_right = 14.9999
+margin_bottom = 12.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T2" type="ColorRect" parent="UI/P1/FontAuto/Auto"]
+light_mask = 524288
+margin_left = 29.0
+margin_top = 10.0
+margin_right = 30.0
+margin_bottom = 12.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="UI/P1/FontAuto/Auto"]
+light_mask = 524288
+margin_left = 3.05176e-05
+margin_top = -0.653625
+margin_right = 111.0
+margin_bottom = 12.3464
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Auto"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FontSpell1" type="ColorRect" parent="UI/P1"]
+light_mask = 0
+margin_left = -891.0
+margin_top = -456.153
+margin_right = -591.0
+margin_bottom = -443.153
+color = Color( 0.0980392, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spell1" type="ColorRect" parent="UI/P1/FontSpell1"]
+light_mask = 524288
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 302.0
+margin_bottom = 15.0
+color = Color( 0.980392, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T0" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_top = 11.973
+margin_right = 300.0
+margin_bottom = 12.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T1" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_top = 9.97299
+margin_right = 1.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T2" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 15.0
+margin_top = 9.97299
+margin_right = 16.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T3" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 30.0
+margin_top = 9.97299
+margin_right = 31.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T4" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 45.0
+margin_top = 9.97299
+margin_right = 46.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T5" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 60.0
+margin_top = 9.97299
+margin_right = 61.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T6" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 75.0
+margin_top = 9.97299
+margin_right = 76.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T7" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 90.0
+margin_top = 9.97299
+margin_right = 91.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T8" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 105.0
+margin_top = 9.97299
+margin_right = 106.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T9" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 120.0
+margin_top = 9.97299
+margin_right = 121.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T10" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 135.0
+margin_top = 9.97299
+margin_right = 136.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T11" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 150.0
+margin_top = 9.97299
+margin_right = 151.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T12" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 165.0
+margin_top = 9.97299
+margin_right = 166.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T13" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 180.0
+margin_top = 9.97299
+margin_right = 181.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T14" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 195.0
+margin_top = 9.97299
+margin_right = 196.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T15" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 210.0
+margin_top = 9.97299
+margin_right = 211.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T16" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 225.0
+margin_top = 9.97299
+margin_right = 226.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T17" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 240.0
+margin_top = 9.97299
+margin_right = 241.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T18" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 255.0
+margin_top = 9.97299
+margin_right = 256.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T19" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 270.0
+margin_top = 9.97299
+margin_right = 271.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T20" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 285.0
+margin_top = 9.97299
+margin_right = 286.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T21" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 299.0
+margin_top = 9.97299
+margin_right = 300.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="UI/P1/FontSpell1/Spell1"]
+light_mask = 524288
+margin_top = -1.00226
+margin_right = 270.0
+margin_bottom = 11.9977
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Spell 1"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FontSpell2" type="ColorRect" parent="UI/P1"]
+light_mask = 0
+margin_left = -890.957
+margin_top = -440.017
+margin_right = -740.957
+margin_bottom = -428.017
+color = Color( 0.0980392, 0.0392157, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spell2" type="ColorRect" parent="UI/P1/FontSpell2"]
+light_mask = 524288
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 152.0
+margin_bottom = 14.0
+color = Color( 0.980392, 0.392157, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T0" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = -0.0427246
+margin_top = 10.8676
+margin_right = 149.957
+margin_bottom = 11.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T1" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = -0.0427246
+margin_top = 8.86755
+margin_right = 0.957275
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T2" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 14.9573
+margin_top = 8.86755
+margin_right = 15.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T3" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 29.9573
+margin_top = 8.86755
+margin_right = 30.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T4" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 44.9573
+margin_top = 8.86755
+margin_right = 45.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T5" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 59.9573
+margin_top = 8.86755
+margin_right = 60.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T6" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 74.9573
+margin_top = 8.86755
+margin_right = 75.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T7" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 89.9573
+margin_top = 8.86755
+margin_right = 90.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T8" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 104.957
+margin_top = 8.86755
+margin_right = 105.957
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T9" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 119.957
+margin_top = 8.86755
+margin_right = 120.957
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T10" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 134.957
+margin_top = 8.86755
+margin_right = 135.957
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T11" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 149.0
+margin_top = 8.868
+margin_right = 150.0
+margin_bottom = 10.868
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="UI/P1/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = -0.0427246
+margin_top = -0.860809
+margin_right = 134.957
+margin_bottom = 12.1392
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Spell 2"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P2" type="ReferenceRect" parent="UI"]
+margin_left = 1300.0
+margin_right = 1300.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FontHp" type="ColorRect" parent="UI/P2"]
+light_mask = 524288
+margin_left = -914.0
+margin_top = -490.0
+margin_right = -414.0
+margin_bottom = -474.0
+color = Color( 0.22847, 0.363281, 0.277281, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hp" type="ColorRect" parent="UI/P2/FontHp"]
+light_mask = 524288
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 502.0
+margin_bottom = 18.0
+color = Color( 0.0313726, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="UI/P2/FontHp/Hp"]
+light_mask = 524288
+margin_left = 1.0
+margin_top = 1.2182
+margin_right = 112.0
+margin_bottom = 14.2182
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Hp"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FontMana" type="ColorRect" parent="UI/P2"]
+light_mask = 524288
+margin_left = -912.0
+margin_top = -471.0
+margin_right = -592.0
+margin_bottom = -465.0
+color = Color( 0.0196078, 0.196078, 0.196078, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mana" type="ColorRect" parent="UI/P2/FontMana"]
+light_mask = 524288
+margin_left = 0.132385
+margin_top = 1.05942
+margin_right = 300.132
+margin_bottom = 5.05942
+color = Color( 0, 1, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FontAuto" type="ColorRect" parent="UI/P2"]
+light_mask = 0
+margin_left = -901.0
+margin_top = -456.153
+margin_right = -871.0
+margin_bottom = -443.153
+rect_rotation = 89.9999
+color = Color( 0.0980392, 0.0980392, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Auto" type="ColorRect" parent="UI/P2/FontAuto"]
+light_mask = 524288
+margin_left = 2.0
+margin_top = -2.0
+margin_right = 32.0
+margin_bottom = 11.0
+color = Color( 0.980392, 0.980392, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T0" type="ColorRect" parent="UI/P2/FontAuto/Auto"]
+light_mask = 524288
+margin_left = -3.05176e-05
+margin_top = 12.0
+margin_right = 30.0
+margin_bottom = 13.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T1" type="ColorRect" parent="UI/P2/FontAuto/Auto"]
+light_mask = 524288
+margin_left = 13.9999
+margin_top = 10.0
+margin_right = 14.9999
+margin_bottom = 12.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T2" type="ColorRect" parent="UI/P2/FontAuto/Auto"]
+light_mask = 524288
+margin_left = 29.0
+margin_top = 10.0
+margin_right = 30.0
+margin_bottom = 12.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="UI/P2/FontAuto/Auto"]
+light_mask = 524288
+margin_left = 3.05176e-05
+margin_top = -0.653625
+margin_right = 111.0
+margin_bottom = 12.3464
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Auto"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FontSpell1" type="ColorRect" parent="UI/P2"]
+light_mask = 0
+margin_left = -891.0
+margin_top = -456.153
+margin_right = -591.0
+margin_bottom = -443.153
+color = Color( 0.0980392, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spell1" type="ColorRect" parent="UI/P2/FontSpell1"]
+light_mask = 524288
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 302.0
+margin_bottom = 15.0
+color = Color( 0.980392, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T0" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_top = 11.973
+margin_right = 300.0
+margin_bottom = 12.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T1" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_top = 9.97299
+margin_right = 1.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T2" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 15.0
+margin_top = 9.97299
+margin_right = 16.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T3" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 30.0
+margin_top = 9.97299
+margin_right = 31.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T4" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 45.0
+margin_top = 9.97299
+margin_right = 46.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T5" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 60.0
+margin_top = 9.97299
+margin_right = 61.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T6" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 75.0
+margin_top = 9.97299
+margin_right = 76.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T7" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 90.0
+margin_top = 9.97299
+margin_right = 91.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T8" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 105.0
+margin_top = 9.97299
+margin_right = 106.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T9" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 120.0
+margin_top = 9.97299
+margin_right = 121.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T10" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 135.0
+margin_top = 9.97299
+margin_right = 136.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T11" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 150.0
+margin_top = 9.97299
+margin_right = 151.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T12" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 165.0
+margin_top = 9.97299
+margin_right = 166.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T13" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 180.0
+margin_top = 9.97299
+margin_right = 181.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T14" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 195.0
+margin_top = 9.97299
+margin_right = 196.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T15" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 210.0
+margin_top = 9.97299
+margin_right = 211.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T16" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 225.0
+margin_top = 9.97299
+margin_right = 226.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T17" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 240.0
+margin_top = 9.97299
+margin_right = 241.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T18" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 255.0
+margin_top = 9.97299
+margin_right = 256.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T19" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 270.0
+margin_top = 9.97299
+margin_right = 271.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T20" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 285.0
+margin_top = 9.97299
+margin_right = 286.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T21" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_left = 299.0
+margin_top = 9.97299
+margin_right = 300.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="UI/P2/FontSpell1/Spell1"]
+light_mask = 524288
+margin_top = -1.00226
+margin_right = 270.0
+margin_bottom = 11.9977
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Spell 1"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FontSpell2" type="ColorRect" parent="UI/P2"]
+light_mask = 0
+margin_left = -890.957
+margin_top = -440.017
+margin_right = -740.957
+margin_bottom = -428.017
+color = Color( 0.0980392, 0.0392157, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spell2" type="ColorRect" parent="UI/P2/FontSpell2"]
+light_mask = 524288
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 152.0
+margin_bottom = 14.0
+color = Color( 0.980392, 0.392157, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T0" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = -0.0427246
+margin_top = 10.8676
+margin_right = 149.957
+margin_bottom = 11.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T1" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = -0.0427246
+margin_top = 8.86755
+margin_right = 0.957275
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T2" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 14.9573
+margin_top = 8.86755
+margin_right = 15.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T3" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 29.9573
+margin_top = 8.86755
+margin_right = 30.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T4" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 44.9573
+margin_top = 8.86755
+margin_right = 45.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T5" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 59.9573
+margin_top = 8.86755
+margin_right = 60.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T6" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 74.9573
+margin_top = 8.86755
+margin_right = 75.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T7" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 89.9573
+margin_top = 8.86755
+margin_right = 90.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T8" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 104.957
+margin_top = 8.86755
+margin_right = 105.957
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T9" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 119.957
+margin_top = 8.86755
+margin_right = 120.957
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T10" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 134.957
+margin_top = 8.86755
+margin_right = 135.957
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T11" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = 149.0
+margin_top = 8.868
+margin_right = 150.0
+margin_bottom = 10.868
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="UI/P2/FontSpell2/Spell2"]
+light_mask = 524288
+margin_left = -0.0427246
+margin_top = -0.860809
+margin_right = 134.957
+margin_bottom = 12.1392
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Spell 2"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

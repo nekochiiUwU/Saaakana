@@ -53,7 +53,7 @@ func SelectAnim():
 		Frame.animation = "Walk Right"
 	else:
 		Frame.animation = "Stand"
-	
+
 	while rotation_degrees > 180:
 		rotation_degrees -= 360
 	while rotation_degrees < -180:
@@ -97,12 +97,12 @@ func get_input(delta):
 	if MovementDown and MovementUp:
 		MovementDown = false
 		MovementUp = false
-	
+
 	if Input.is_action_pressed("Rotation +"):
 		rotation_degrees += rotationSensi * delta
 	if Input.is_action_pressed("Rotation -"):
 		rotation_degrees -= rotationSensi * delta
-	
+
 	if Input.is_action_pressed("Spell0"):
 		if not OnClick:
 			if QCast:
@@ -112,7 +112,7 @@ func get_input(delta):
 			else:
 				var Q = _Auto.instance()
 				get_parent().add_child(Q)
-				Q.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees, QDamage, 0b11100000000000000001)
+				Q.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees, QDamage, 0b11100000000000000000)
 				OnClick = true
 				ShootQ = false
 				QCast = 7
@@ -124,7 +124,6 @@ func get_input(delta):
 func Cooldown(delta):
 	if Q < 100:
 		Q += (delta * 60)
-		
 	if Hp < MaxHp / 4:
 		Hp += (MaxHp / 100) * delta
 
