@@ -7,7 +7,7 @@ onready var Hitbox = $Area
 
 var launcher = []
 var velocity = Vector2(1, 0)
-var speed = 15
+var speed = 10
 var End = 0
 var Damage = 100
 var Bounce = 1
@@ -38,13 +38,17 @@ func _physics_process(delta):
 		else:
 			queue_free()
 		var r = rotation_degrees
-		rotation = collision.normal.angle() - rotation
+		velocity = collision.normal.rotated(rotation_degrees)
+
+		# rotation_degrees = (collision.normal.angle() / (2*PI)) * 360 - ((collision.normal.angle() / (2*PI)) * 360 + rotation_degrees)
+		# rotation = collision.normal.angle() - rotation
 		# rotation = collision.remainder.rotated(rotation))
 		print(velocity)
-		print((collision.normal.angle()/PI)*360, " - ", r, " = ", rotation_degrees)
+		print("\n", (collision.normal.angle()/(2*PI))*360, "° \n", r, "° \n", rotation_degrees, "°\n")
 
 func _on_Area_body_entered(body):
-	End = Hitbox.get_overlapping_bodies()[0]
+	#End = Hitbox.get_overlapping_bodies()[0]
+	pass
 
 func EndAnimWaiter():
 	if End.get_parent().name  == "Entities":
