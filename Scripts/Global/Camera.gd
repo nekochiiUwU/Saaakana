@@ -25,6 +25,13 @@ func get_imput(delta):
 	if Input.is_action_pressed("Zoom [-]"):
 		Zoom[0] += delta + (Zoom[0] / 100)
 		Zoom[1] += delta + (Zoom[1] / 100)
+	if Input.is_action_pressed("Fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
+	if Input.is_action_just_pressed("Mouse Capture"):
+		if Input.get_mouse_mode():
+			Input.set_mouse_mode(0)
+		else:
+			Input.set_mouse_mode(2)
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -53,9 +60,9 @@ func _process(delta):
 	position = (CameraPosition + lastPos * 10) / 11
 	UI.set_position((position - lastPos) * 5)
 	P1Hp.set_size(Vector2((Player1.Hp * 500) / Player1.MaxHp, 16))
-	P1Q.set_size(Vector2(Player1.Q, 12))
+	P1Q.set_size(Vector2(((Player1.QCD - Player1.Q) + P1Q.get_size()[0]) / 2, 12))
 	P2Hp.set_size(Vector2((Player2.Hp * 500) / Player2.MaxHp, 16))
-	P2Q.set_size(Vector2(Player2.Q, 12))
+	P2Q.set_size(Vector2(((Player2.QCD - Player2.Q) + P2Q.get_size()[0]) / 2, 12))
 	lastPos = position
 	lastZoom = zoom.x
 	rotation = Rotate

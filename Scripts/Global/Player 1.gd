@@ -1,16 +1,38 @@
 extends KinematicBody2D
 
-onready var _Auto = preload("res://Scenes/Personnages/Archer/Arrow.tscn")
+onready var _QSpell = preload("res://Scenes/Personnages/Archer/Arrow.tscn")
 onready var Frame = $Frame
 
 var Hp = 1000
 var MaxHp = 1000
 
 var Q = 0
+var QCD = 20
 var QCast = 5
 var QDamage = 50
 var ShootQRelease = 0
 var ShootQ = false
+
+var W = 0
+var WCD = 100
+var WCast = 5
+var WDamage = 50
+var ShootWRelease = 0
+var ShootW = false
+
+var E = 0
+var ECD = 100
+var ECast = 5
+var EDamage = 50
+var ShootERelease = 0
+var ShootE = false
+
+var R = 0
+var RCD = 100
+var RCast = 5
+var RDamage = 50
+var ShootRRelease = 0
+var ShootR = false
 
 var speed = 3
 var speedtick = speed
@@ -97,34 +119,35 @@ func get_input(delta):
 	if MovementDown and MovementUp:
 		MovementDown = false
 		MovementUp = false
-
+		
 	if Input.is_action_pressed("Rotation +"):
 		rotation_degrees += rotationSensi * delta
 	if Input.is_action_pressed("Rotation -"):
 		rotation_degrees -= rotationSensi * delta
 
 	if Input.is_action_pressed("Spell0"):
-		if not OnClick:
+		if not OnClick and not Q > 0:
 			if QCast:
 				QCast -= 1
 				ShootQ = true
 				speedtick /= 3
 			else:
-				var Q = _Auto.instance()
-				get_parent().add_child(Q)
-				Q.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees, QDamage, 0b11100000000000000000)
+				var QSpell = _QSpell.instance()
+				get_parent().add_child(QSpell)
+				QSpell.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees, QDamage, 0b11100000000000000000)
 				OnClick = true
 				ShootQ = false
-				QCast = 7
 				ShootQRelease = 5
+				Q = QCD
 	else:
+		QCast = 7
 		ShootQ = false
 		OnClick = false
 
 func Cooldown(delta):
-	if Q < 100:
-		Q += (delta * 60)
-	if Hp < MaxHp / 4:
+	if Q > 0:
+		Q -= (delta * 60)
+	if Hp < MaxHp:
 		Hp += (MaxHp / 100) * delta
 
 """ ===0=== """

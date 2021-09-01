@@ -1,19 +1,18 @@
 extends KinematicBody2D
 
 """"""
-
 onready var NodeAnimation = $Animations
 onready var Hitbox = $Area
-
 var launcher = []
 var velocity = Vector2(1, 0)
 var speed = 10
 var End = 0
 var Damage = 100
 var Bounce = 1
+var collision = false
 """"""
 
-
+# Fonction d'Init
 func Launch(LauncherPosition: Vector2, LauncherDirection, _Damage, CollisionLayer):
 	visible = false
 	position = LauncherPosition
@@ -21,7 +20,7 @@ func Launch(LauncherPosition: Vector2, LauncherDirection, _Damage, CollisionLaye
 	Damage = _Damage
 	Hitbox.collision_mask = CollisionLayer
 	Hitbox.set_collision_layer_bit(20, false)
-	velocity = Vector2(speed, 0)
+	velocity = Vector2(1, 0).rotated(rotation)
 
 func _process(delta):
 	if End:
@@ -30,27 +29,29 @@ func _process(delta):
 		visible = true
 
 func _physics_process(delta):
-	var collision = velocity.rotated(rotation) * (delta * 60)
+	# Mouvement
+	collision = velocity * speed * (delta * 60)
 	collision = move_and_collide(collision)
+
 	if collision:
+		# Compteur de rebond
 		if Bounce > 0:
 			Bounce -= 1
 		else:
 			queue_free()
-		var r = rotation_degrees
-		velocity = collision.normal.rotated(rotation_degrees)
+		# Rebond
+		var u = (velocity.dot(collision.normal) / collision.normal.dot(collision.normal)) * collision.normal
+		var w = velocity - u
+		velocity = w - u
+		rotation = atan2(velocity.y, velocity.x)
 
-		# rotation_degrees = (collision.normal.angle() / (2*PI)) * 360 - ((collision.normal.angle() / (2*PI)) * 360 + rotation_degrees)
-		# rotation = collision.normal.angle() - rotation
-		# rotation = collision.remainder.rotated(rotation))
-		print(velocity)
-		print("\n", (collision.normal.angle()/(2*PI))*360, "° \n", r, "° \n", rotation_degrees, "°\n")
-
+# Joueur touché
 func _on_Area_body_entered(body):
-	#End = Hitbox.get_overlapping_bodies()[0]
-	pass
+	End = Hitbox.get_overlapping_bodies()
 
+# Application des dégats
 func EndAnimWaiter():
-	if End.get_parent().name  == "Entities":
-		End.Hp -= Damage
+	for item in End:
+		if item.get_parent().name  == "Entities":
+			item.Hp -= Damage
 	queue_free()
