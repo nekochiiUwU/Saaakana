@@ -1,19 +1,19 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scripts/Personnages/Archer/Arrow.gd" type="Script" id=1]
-[ext_resource path="res://Frames/Personnages/Archer/Fleche.png" type="Texture" id=2]
+[ext_resource path="res://Frames/Personnages/Archer/Fleche.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Personnages/Archer/Q.gd" type="Script" id=2]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "Base",
-"speed": 15.0
-}, {
 "frames": [  ],
 "loop": false,
 "name": "Explosion",
 "speed": 60.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Base",
+"speed": 15.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -23,15 +23,13 @@ extents = Vector2( 1, 1 )
 extents = Vector2( 1.5, 2 )
 
 [node name="Projectile" type="KinematicBody2D"]
-light_mask = 524289
 position = Vector2( 16, 0 )
 z_index = 10
 collision_layer = 0
 collision_mask = 513
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Animations" type="AnimatedSprite" parent="."]
-light_mask = 524289
 z_index = 101
 frames = SubResource( 1 )
 animation = "Base"

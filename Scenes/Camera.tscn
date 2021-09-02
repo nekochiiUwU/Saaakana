@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Global/Camera.gd" type="Script" id=1]
+[ext_resource path="res://Frames/Light.png" type="Texture" id=2]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Fonts/Retro Gaming.ttf"
@@ -9,9 +10,15 @@ font_path = "res://Fonts/Retro Gaming.ttf"
 size = 10
 font_data = SubResource( 1 )
 
+[sub_resource type="Environment" id=3]
+background_mode = 4
+tonemap_exposure = 0.9
+glow_enabled = true
+glow_intensity = 2.0
+glow_hdr_scale = 0.0
+
 [node name="Camera" type="Camera2D"]
 light_mask = 524288
-z_index = 4095
 current = true
 smoothing_enabled = true
 smoothing_speed = 10.0
@@ -25,17 +32,22 @@ __meta__ = {
 }
 
 [node name="P1" type="ReferenceRect" parent="UI"]
+light_mask = 0
+margin_left = -912.0
+margin_top = -471.0
+margin_right = -912.0
+margin_bottom = -471.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="FontHp" type="ColorRect" parent="UI/P1"]
-light_mask = 524288
-margin_left = -914.0
-margin_top = -490.031
-margin_right = -414.0
-margin_bottom = -474.031
-color = Color( 0.22847, 0.363281, 0.277281, 1 )
+light_mask = 0
+margin_left = -2.0
+margin_top = -19.031
+margin_right = 498.0
+margin_bottom = -3.031
+color = Color( 0.227451, 0.364706, 0.278431, 0.392157 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -46,13 +58,15 @@ margin_left = 2.0
 margin_top = 2.0
 margin_right = 502.0
 margin_bottom = 18.0
+rect_pivot_offset = Vector2( -192, -55.969 )
 color = Color( 0.0313726, 1, 0, 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Text" type="RichTextLabel" parent="UI/P1/FontHp/Hp"]
-light_mask = 524288
+light_mask = 0
 margin_left = 1.0
 margin_top = 1.2182
 margin_right = 112.0
@@ -65,132 +79,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FontMana" type="ColorRect" parent="UI/P1"]
-light_mask = 524288
-margin_left = -912.0
-margin_top = -471.0
-margin_right = -592.0
-margin_bottom = -465.0
-color = Color( 0.0196078, 0.196078, 0.196078, 0.392157 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Mana" type="ColorRect" parent="UI/P1/FontMana"]
-light_mask = 524288
-margin_left = 0.132385
-margin_top = 1.05942
-margin_right = 300.132
-margin_bottom = 5.05942
-color = Color( 0, 1, 1, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FontAuto" type="ColorRect" parent="UI/P1"]
+[node name="FontQ" type="ColorRect" parent="UI/P1"]
 light_mask = 0
-margin_left = -901.0
-margin_top = -456.153
-margin_right = -871.0
-margin_bottom = -443.153
-rect_rotation = 89.9999
-color = Color( 0.0980392, 0.0980392, 0, 1 )
+margin_left = 160.0
+margin_top = 28.0
+margin_right = 295.0
+margin_bottom = 41.0
+color = Color( 0.0980392, 0, 0, 0.392157 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Auto" type="ColorRect" parent="UI/P1/FontAuto"]
+[node name="Q" type="ColorRect" parent="UI/P1/FontQ"]
 light_mask = 524288
 margin_left = 2.0
-margin_top = -2.0
-margin_right = 32.0
-margin_bottom = 11.0
-color = Color( 0.980392, 0.980392, 0, 1 )
+margin_top = 2.0
+margin_right = 138.0
+margin_bottom = 15.0
+color = Color( 0.992157, 1, 0, 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="T0" type="ColorRect" parent="UI/P1/FontAuto/Auto"]
-light_mask = 524288
-margin_left = -3.05176e-05
+[node name="T0" type="ColorRect" parent="UI/P1/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_top = 12.0
-margin_right = 30.0
+margin_right = 136.0
 margin_bottom = 13.0
 color = Color( 0, 0, 0, 0.784314 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T1" type="ColorRect" parent="UI/P1/FontAuto/Auto"]
-light_mask = 524288
-margin_left = 13.9999
-margin_top = 10.0
-margin_right = 14.9999
-margin_bottom = 12.0
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T2" type="ColorRect" parent="UI/P1/FontAuto/Auto"]
-light_mask = 524288
-margin_left = 29.0
-margin_top = 10.0
-margin_right = 30.0
-margin_bottom = 12.0
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Text" type="RichTextLabel" parent="UI/P1/FontAuto/Auto"]
-light_mask = 524288
-margin_left = 3.05176e-05
-margin_top = -0.653625
-margin_right = 111.0
-margin_bottom = 12.3464
-custom_fonts/normal_font = SubResource( 2 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "Auto"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FontSpell1" type="ColorRect" parent="UI/P1"]
+[node name="T1" type="ColorRect" parent="UI/P1/FontQ/Q"]
+visible = false
 light_mask = 0
-margin_left = -891.0
-margin_top = -456.153
-margin_right = -591.0
-margin_bottom = -443.153
-color = Color( 0.0980392, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Spell1" type="ColorRect" parent="UI/P1/FontSpell1"]
-light_mask = 524288
-margin_left = 2.0
-margin_top = 2.0
-margin_right = 302.0
-margin_bottom = 15.0
-color = Color( 0.980392, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T0" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
-margin_top = 11.973
-margin_right = 300.0
-margin_bottom = 12.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T1" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
 margin_top = 9.97299
 margin_right = 1.0
 margin_bottom = 11.973
@@ -199,8 +124,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T2" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T2" type="ColorRect" parent="UI/P1/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 15.0
 margin_top = 9.97299
 margin_right = 16.0
@@ -210,8 +136,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T3" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T3" type="ColorRect" parent="UI/P1/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 30.0
 margin_top = 9.97299
 margin_right = 31.0
@@ -221,8 +148,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T4" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T4" type="ColorRect" parent="UI/P1/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 45.0
 margin_top = 9.97299
 margin_right = 46.0
@@ -232,8 +160,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T5" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T5" type="ColorRect" parent="UI/P1/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 60.0
 margin_top = 9.97299
 margin_right = 61.0
@@ -243,8 +172,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T6" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T6" type="ColorRect" parent="UI/P1/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 75.0
 margin_top = 9.97299
 margin_right = 76.0
@@ -254,8 +184,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T7" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T7" type="ColorRect" parent="UI/P1/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 90.0
 margin_top = 9.97299
 margin_right = 91.0
@@ -265,8 +196,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T8" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T8" type="ColorRect" parent="UI/P1/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 105.0
 margin_top = 9.97299
 margin_right = 106.0
@@ -276,8 +208,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T9" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T9" type="ColorRect" parent="UI/P1/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 120.0
 margin_top = 9.97299
 margin_right = 121.0
@@ -287,8 +220,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T10" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T10" type="ColorRect" parent="UI/P1/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 135.0
 margin_top = 9.97299
 margin_right = 136.0
@@ -298,175 +232,222 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T11" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 150.0
-margin_top = 9.97299
-margin_right = 151.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T12" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 165.0
-margin_top = 9.97299
-margin_right = 166.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T13" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 180.0
-margin_top = 9.97299
-margin_right = 181.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T14" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 195.0
-margin_top = 9.97299
-margin_right = 196.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T15" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 210.0
-margin_top = 9.97299
-margin_right = 211.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T16" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 225.0
-margin_top = 9.97299
-margin_right = 226.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T17" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 240.0
-margin_top = 9.97299
-margin_right = 241.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T18" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 255.0
-margin_top = 9.97299
-margin_right = 256.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T19" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 270.0
-margin_top = 9.97299
-margin_right = 271.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T20" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 285.0
-margin_top = 9.97299
-margin_right = 286.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T21" type="ColorRect" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 299.0
-margin_top = 9.97299
-margin_right = 300.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Text" type="RichTextLabel" parent="UI/P1/FontSpell1/Spell1"]
-light_mask = 524288
-margin_top = -1.00226
-margin_right = 270.0
-margin_bottom = 11.9977
+[node name="Text" type="RichTextLabel" parent="UI/P1/FontQ/Q"]
+light_mask = 0
+margin_top = -1.0
+margin_right = 136.0
+margin_bottom = 12.0
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "Spell 1"
+text = "Q Spell"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FontSpell2" type="ColorRect" parent="UI/P1"]
+[node name="FontW" type="ColorRect" parent="UI/P1"]
 light_mask = 0
-margin_left = -890.957
-margin_top = -440.017
-margin_right = -740.957
-margin_bottom = -428.017
-color = Color( 0.0980392, 0.0392157, 0, 1 )
+margin_left = 16.0
+margin_top = 7.0
+margin_right = 151.0
+margin_bottom = 20.0
+color = Color( 0.0980392, 0, 0, 0.392157 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Spell2" type="ColorRect" parent="UI/P1/FontSpell2"]
+[node name="W" type="ColorRect" parent="UI/P1/FontW"]
 light_mask = 524288
 margin_left = 2.0
 margin_top = 2.0
-margin_right = 152.0
-margin_bottom = 14.0
-color = Color( 0.980392, 0.392157, 0, 1 )
+margin_right = 138.0
+margin_bottom = 15.0
+color = Color( 0.980392, 0.482353, 0, 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="T0" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
-light_mask = 524288
-margin_left = -0.0427246
-margin_top = 10.8676
-margin_right = 149.957
-margin_bottom = 11.8676
+[node name="T0" type="ColorRect" parent="UI/P1/FontW/W"]
+visible = false
+light_mask = 0
+margin_top = 12.0
+margin_right = 136.0
+margin_bottom = 13.0
 color = Color( 0, 0, 0, 0.784314 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T1" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
+[node name="T1" type="ColorRect" parent="UI/P1/FontW/W"]
+visible = false
+light_mask = 0
+margin_top = 9.97299
+margin_right = 1.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T2" type="ColorRect" parent="UI/P1/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 15.0
+margin_top = 9.97299
+margin_right = 16.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T3" type="ColorRect" parent="UI/P1/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 30.0
+margin_top = 9.97299
+margin_right = 31.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T4" type="ColorRect" parent="UI/P1/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 45.0
+margin_top = 9.97299
+margin_right = 46.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T5" type="ColorRect" parent="UI/P1/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 60.0
+margin_top = 9.97299
+margin_right = 61.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T6" type="ColorRect" parent="UI/P1/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 75.0
+margin_top = 9.97299
+margin_right = 76.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T7" type="ColorRect" parent="UI/P1/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 90.0
+margin_top = 9.97299
+margin_right = 91.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T8" type="ColorRect" parent="UI/P1/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 105.0
+margin_top = 9.97299
+margin_right = 106.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T9" type="ColorRect" parent="UI/P1/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 120.0
+margin_top = 9.97299
+margin_right = 121.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T10" type="ColorRect" parent="UI/P1/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 135.0
+margin_top = 9.97299
+margin_right = 136.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="UI/P1/FontW/W"]
+light_mask = 0
+margin_top = -1.0
+margin_right = 136.0
+margin_bottom = 12.0
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "W Spell"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FontE" type="ColorRect" parent="UI/P1"]
+visible = false
+light_mask = 0
+margin_left = 160.0
+margin_top = 11.0
+margin_right = 297.0
+margin_bottom = 23.0
+color = Color( 0.0666667, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="E" type="ColorRect" parent="UI/P1/FontE"]
+modulate = Color( 1, 0, 0, 1 )
 light_mask = 524288
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 138.0
+margin_bottom = 14.0
+color = Color( 0.980392, 0.27451, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="T0" type="ColorRect" parent="UI/P1/FontE/E"]
+light_mask = 0
+margin_top = 11.0
+margin_right = 136.0
+margin_bottom = 12.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T1" type="ColorRect" parent="UI/P1/FontE/E"]
+light_mask = 0
 margin_left = -0.0427246
 margin_top = 8.86755
 margin_right = 0.957275
@@ -476,8 +457,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T2" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T2" type="ColorRect" parent="UI/P1/FontE/E"]
+light_mask = 0
 margin_left = 14.9573
 margin_top = 8.86755
 margin_right = 15.9573
@@ -487,8 +468,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T3" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T3" type="ColorRect" parent="UI/P1/FontE/E"]
+light_mask = 0
 margin_left = 29.9573
 margin_top = 8.86755
 margin_right = 30.9573
@@ -498,8 +479,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T4" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T4" type="ColorRect" parent="UI/P1/FontE/E"]
+light_mask = 0
 margin_left = 44.9573
 margin_top = 8.86755
 margin_right = 45.9573
@@ -509,8 +490,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T5" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T5" type="ColorRect" parent="UI/P1/FontE/E"]
+light_mask = 0
 margin_left = 59.9573
 margin_top = 8.86755
 margin_right = 60.9573
@@ -520,8 +501,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T6" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T6" type="ColorRect" parent="UI/P1/FontE/E"]
+light_mask = 0
 margin_left = 74.9573
 margin_top = 8.86755
 margin_right = 75.9573
@@ -531,8 +512,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T7" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T7" type="ColorRect" parent="UI/P1/FontE/E"]
+light_mask = 0
 margin_left = 89.9573
 margin_top = 8.86755
 margin_right = 90.9573
@@ -542,8 +523,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T8" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T8" type="ColorRect" parent="UI/P1/FontE/E"]
+light_mask = 0
 margin_left = 104.957
 margin_top = 8.86755
 margin_right = 105.957
@@ -553,8 +534,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T9" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T9" type="ColorRect" parent="UI/P1/FontE/E"]
+light_mask = 0
 margin_left = 119.957
 margin_top = 8.86755
 margin_right = 120.957
@@ -564,8 +545,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T10" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T10" type="ColorRect" parent="UI/P1/FontE/E"]
+light_mask = 0
 margin_left = 134.957
 margin_top = 8.86755
 margin_right = 135.957
@@ -575,32 +556,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T11" type="ColorRect" parent="UI/P1/FontSpell2/Spell2"]
-light_mask = 524288
-margin_left = 149.0
-margin_top = 8.868
-margin_right = 150.0
-margin_bottom = 10.868
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Text" type="RichTextLabel" parent="UI/P1/FontSpell2/Spell2"]
-light_mask = 524288
-margin_left = -0.0427246
-margin_top = -0.860809
-margin_right = 134.957
-margin_bottom = 12.1392
+[node name="Text" type="RichTextLabel" parent="UI/P1/FontE/E"]
+light_mask = 0
+margin_top = -1.0
+margin_right = 136.0
+margin_bottom = 12.0
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "Spell 2"
+text = "E Spell"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="P2" type="ReferenceRect" parent="UI"]
+light_mask = 0
 margin_left = 1300.0
 margin_right = 1300.0
 __meta__ = {
@@ -608,12 +578,12 @@ __meta__ = {
 }
 
 [node name="FontHp" type="ColorRect" parent="UI/P2"]
-light_mask = 524288
+light_mask = 0
 margin_left = -914.0
-margin_top = -490.0
+margin_top = -490.031
 margin_right = -414.0
-margin_bottom = -474.0
-color = Color( 0.22847, 0.363281, 0.277281, 1 )
+margin_bottom = -474.031
+color = Color( 0.0666667, 0, 0, 0.392157 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -626,11 +596,12 @@ margin_right = 502.0
 margin_bottom = 18.0
 color = Color( 0.0313726, 1, 0, 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Text" type="RichTextLabel" parent="UI/P2/FontHp/Hp"]
-light_mask = 524288
+light_mask = 0
 margin_left = 1.0
 margin_top = 1.2182
 margin_right = 112.0
@@ -643,132 +614,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FontMana" type="ColorRect" parent="UI/P2"]
-light_mask = 524288
-margin_left = -912.0
-margin_top = -471.0
-margin_right = -592.0
-margin_bottom = -465.0
-color = Color( 0.0196078, 0.196078, 0.196078, 0.392157 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Mana" type="ColorRect" parent="UI/P2/FontMana"]
-light_mask = 524288
-margin_left = 0.132385
-margin_top = 1.05942
-margin_right = 300.132
-margin_bottom = 5.05942
-color = Color( 0, 1, 1, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FontAuto" type="ColorRect" parent="UI/P2"]
+[node name="FontQ" type="ColorRect" parent="UI/P2"]
 light_mask = 0
-margin_left = -901.0
-margin_top = -456.153
-margin_right = -871.0
-margin_bottom = -443.153
-rect_rotation = 89.9999
-color = Color( 0.0980392, 0.0980392, 0, 1 )
+margin_left = -756.0
+margin_top = -443.0
+margin_right = -621.0
+margin_bottom = -430.0
+color = Color( 0.0666667, 0, 0, 0.392157 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Auto" type="ColorRect" parent="UI/P2/FontAuto"]
+[node name="Q" type="ColorRect" parent="UI/P2/FontQ"]
 light_mask = 524288
 margin_left = 2.0
-margin_top = -2.0
-margin_right = 32.0
-margin_bottom = 11.0
-color = Color( 0.980392, 0.980392, 0, 1 )
+margin_top = 2.0
+margin_right = 138.0
+margin_bottom = 15.0
+color = Color( 0.992157, 1, 0, 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="T0" type="ColorRect" parent="UI/P2/FontAuto/Auto"]
-light_mask = 524288
-margin_left = -3.05176e-05
+[node name="T0" type="ColorRect" parent="UI/P2/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_top = 12.0
-margin_right = 30.0
+margin_right = 136.0
 margin_bottom = 13.0
 color = Color( 0, 0, 0, 0.784314 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T1" type="ColorRect" parent="UI/P2/FontAuto/Auto"]
-light_mask = 524288
-margin_left = 13.9999
-margin_top = 10.0
-margin_right = 14.9999
-margin_bottom = 12.0
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T2" type="ColorRect" parent="UI/P2/FontAuto/Auto"]
-light_mask = 524288
-margin_left = 29.0
-margin_top = 10.0
-margin_right = 30.0
-margin_bottom = 12.0
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Text" type="RichTextLabel" parent="UI/P2/FontAuto/Auto"]
-light_mask = 524288
-margin_left = 3.05176e-05
-margin_top = -0.653625
-margin_right = 111.0
-margin_bottom = 12.3464
-custom_fonts/normal_font = SubResource( 2 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "Auto"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FontSpell1" type="ColorRect" parent="UI/P2"]
+[node name="T1" type="ColorRect" parent="UI/P2/FontQ/Q"]
+visible = false
 light_mask = 0
-margin_left = -891.0
-margin_top = -456.153
-margin_right = -591.0
-margin_bottom = -443.153
-color = Color( 0.0980392, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Spell1" type="ColorRect" parent="UI/P2/FontSpell1"]
-light_mask = 524288
-margin_left = 2.0
-margin_top = 2.0
-margin_right = 302.0
-margin_bottom = 15.0
-color = Color( 0.980392, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T0" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
-margin_top = 11.973
-margin_right = 300.0
-margin_bottom = 12.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T1" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
 margin_top = 9.97299
 margin_right = 1.0
 margin_bottom = 11.973
@@ -777,8 +659,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T2" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T2" type="ColorRect" parent="UI/P2/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 15.0
 margin_top = 9.97299
 margin_right = 16.0
@@ -788,8 +671,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T3" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T3" type="ColorRect" parent="UI/P2/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 30.0
 margin_top = 9.97299
 margin_right = 31.0
@@ -799,8 +683,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T4" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T4" type="ColorRect" parent="UI/P2/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 45.0
 margin_top = 9.97299
 margin_right = 46.0
@@ -810,8 +695,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T5" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T5" type="ColorRect" parent="UI/P2/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 60.0
 margin_top = 9.97299
 margin_right = 61.0
@@ -821,8 +707,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T6" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T6" type="ColorRect" parent="UI/P2/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 75.0
 margin_top = 9.97299
 margin_right = 76.0
@@ -832,8 +719,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T7" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T7" type="ColorRect" parent="UI/P2/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 90.0
 margin_top = 9.97299
 margin_right = 91.0
@@ -843,8 +731,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T8" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T8" type="ColorRect" parent="UI/P2/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 105.0
 margin_top = 9.97299
 margin_right = 106.0
@@ -854,8 +743,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T9" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T9" type="ColorRect" parent="UI/P2/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 120.0
 margin_top = 9.97299
 margin_right = 121.0
@@ -865,8 +755,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T10" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
+[node name="T10" type="ColorRect" parent="UI/P2/FontQ/Q"]
+visible = false
+light_mask = 0
 margin_left = 135.0
 margin_top = 9.97299
 margin_right = 136.0
@@ -876,175 +767,221 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T11" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 150.0
-margin_top = 9.97299
-margin_right = 151.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T12" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 165.0
-margin_top = 9.97299
-margin_right = 166.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T13" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 180.0
-margin_top = 9.97299
-margin_right = 181.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T14" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 195.0
-margin_top = 9.97299
-margin_right = 196.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T15" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 210.0
-margin_top = 9.97299
-margin_right = 211.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T16" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 225.0
-margin_top = 9.97299
-margin_right = 226.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T17" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 240.0
-margin_top = 9.97299
-margin_right = 241.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T18" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 255.0
-margin_top = 9.97299
-margin_right = 256.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T19" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 270.0
-margin_top = 9.97299
-margin_right = 271.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T20" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 285.0
-margin_top = 9.97299
-margin_right = 286.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="T21" type="ColorRect" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
-margin_left = 299.0
-margin_top = 9.97299
-margin_right = 300.0
-margin_bottom = 11.973
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Text" type="RichTextLabel" parent="UI/P2/FontSpell1/Spell1"]
-light_mask = 524288
-margin_top = -1.00226
-margin_right = 270.0
-margin_bottom = 11.9977
+[node name="Text" type="RichTextLabel" parent="UI/P2/FontQ/Q"]
+light_mask = 0
+margin_top = -1.0
+margin_right = 136.0
+margin_bottom = 12.0
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "Spell 1"
+text = "Q Spell"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FontSpell2" type="ColorRect" parent="UI/P2"]
+[node name="FontW" type="ColorRect" parent="UI/P2"]
 light_mask = 0
-margin_left = -890.957
-margin_top = -440.017
-margin_right = -740.957
-margin_bottom = -428.017
-color = Color( 0.0980392, 0.0392157, 0, 1 )
+margin_left = -900.0
+margin_top = -464.0
+margin_right = -765.0
+margin_bottom = -451.0
+color = Color( 0.0980392, 0, 0, 0.392157 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Spell2" type="ColorRect" parent="UI/P2/FontSpell2"]
+[node name="W" type="ColorRect" parent="UI/P2/FontW"]
 light_mask = 524288
 margin_left = 2.0
 margin_top = 2.0
-margin_right = 152.0
-margin_bottom = 14.0
-color = Color( 0.980392, 0.392157, 0, 1 )
+margin_right = 138.0
+margin_bottom = 15.0
+color = Color( 0.980392, 0.482353, 0, 1 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="T0" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
-light_mask = 524288
-margin_left = -0.0427246
-margin_top = 10.8676
-margin_right = 149.957
-margin_bottom = 11.8676
+[node name="T0" type="ColorRect" parent="UI/P2/FontW/W"]
+visible = false
+light_mask = 0
+margin_top = 12.0
+margin_right = 136.0
+margin_bottom = 13.0
 color = Color( 0, 0, 0, 0.784314 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T1" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
+[node name="T1" type="ColorRect" parent="UI/P2/FontW/W"]
+visible = false
+light_mask = 0
+margin_top = 9.97299
+margin_right = 1.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T2" type="ColorRect" parent="UI/P2/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 15.0
+margin_top = 9.97299
+margin_right = 16.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T3" type="ColorRect" parent="UI/P2/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 30.0
+margin_top = 9.97299
+margin_right = 31.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T4" type="ColorRect" parent="UI/P2/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 45.0
+margin_top = 9.97299
+margin_right = 46.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T5" type="ColorRect" parent="UI/P2/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 60.0
+margin_top = 9.97299
+margin_right = 61.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T6" type="ColorRect" parent="UI/P2/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 75.0
+margin_top = 9.97299
+margin_right = 76.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T7" type="ColorRect" parent="UI/P2/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 90.0
+margin_top = 9.97299
+margin_right = 91.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T8" type="ColorRect" parent="UI/P2/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 105.0
+margin_top = 9.97299
+margin_right = 106.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T9" type="ColorRect" parent="UI/P2/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 120.0
+margin_top = 9.97299
+margin_right = 121.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T10" type="ColorRect" parent="UI/P2/FontW/W"]
+visible = false
+light_mask = 0
+margin_left = 135.0
+margin_top = 9.97299
+margin_right = 136.0
+margin_bottom = 11.973
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="UI/P2/FontW/W"]
+light_mask = 0
+margin_top = -1.0
+margin_right = 136.0
+margin_bottom = 12.0
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "W Spell"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FontE" type="ColorRect" parent="UI/P2"]
+visible = false
+light_mask = 0
+margin_left = -756.0
+margin_top = -460.0
+margin_right = -619.0
+margin_bottom = -448.0
+color = Color( 0.0980392, 0.0392157, 0, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="E" type="ColorRect" parent="UI/P2/FontE"]
 light_mask = 524288
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 138.0
+margin_bottom = 14.0
+color = Color( 0.980392, 0.27451, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="T0" type="ColorRect" parent="UI/P2/FontE/E"]
+light_mask = 0
+margin_top = 11.0
+margin_right = 136.0
+margin_bottom = 12.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T1" type="ColorRect" parent="UI/P2/FontE/E"]
+light_mask = 0
 margin_left = -0.0427246
 margin_top = 8.86755
 margin_right = 0.957275
@@ -1054,8 +991,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T2" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T2" type="ColorRect" parent="UI/P2/FontE/E"]
+light_mask = 0
 margin_left = 14.9573
 margin_top = 8.86755
 margin_right = 15.9573
@@ -1065,8 +1002,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T3" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T3" type="ColorRect" parent="UI/P2/FontE/E"]
+light_mask = 0
 margin_left = 29.9573
 margin_top = 8.86755
 margin_right = 30.9573
@@ -1076,8 +1013,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T4" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T4" type="ColorRect" parent="UI/P2/FontE/E"]
+light_mask = 0
 margin_left = 44.9573
 margin_top = 8.86755
 margin_right = 45.9573
@@ -1087,8 +1024,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T5" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T5" type="ColorRect" parent="UI/P2/FontE/E"]
+light_mask = 0
 margin_left = 59.9573
 margin_top = 8.86755
 margin_right = 60.9573
@@ -1098,8 +1035,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T6" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T6" type="ColorRect" parent="UI/P2/FontE/E"]
+light_mask = 0
 margin_left = 74.9573
 margin_top = 8.86755
 margin_right = 75.9573
@@ -1109,8 +1046,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T7" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T7" type="ColorRect" parent="UI/P2/FontE/E"]
+light_mask = 0
 margin_left = 89.9573
 margin_top = 8.86755
 margin_right = 90.9573
@@ -1120,8 +1057,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T8" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T8" type="ColorRect" parent="UI/P2/FontE/E"]
+light_mask = 0
 margin_left = 104.957
 margin_top = 8.86755
 margin_right = 105.957
@@ -1131,8 +1068,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T9" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T9" type="ColorRect" parent="UI/P2/FontE/E"]
+light_mask = 0
 margin_left = 119.957
 margin_top = 8.86755
 margin_right = 120.957
@@ -1142,8 +1079,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T10" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
-light_mask = 524288
+[node name="T10" type="ColorRect" parent="UI/P2/FontE/E"]
+light_mask = 0
 margin_left = 134.957
 margin_top = 8.86755
 margin_right = 135.957
@@ -1153,27 +1090,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="T11" type="ColorRect" parent="UI/P2/FontSpell2/Spell2"]
-light_mask = 524288
-margin_left = 149.0
-margin_top = 8.868
-margin_right = 150.0
-margin_bottom = 10.868
-color = Color( 0, 0, 0, 0.784314 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Text" type="RichTextLabel" parent="UI/P2/FontSpell2/Spell2"]
-light_mask = 524288
-margin_left = -0.0427246
-margin_top = -0.860809
-margin_right = 134.957
-margin_bottom = 12.1392
+[node name="Text" type="RichTextLabel" parent="UI/P2/FontE/E"]
+light_mask = 0
+margin_top = -1.0
+margin_right = 136.0
+margin_bottom = 12.0
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "Spell 2"
+text = "E Spell"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Light2D" type="Light2D" parent="."]
+light_mask = 524288
+z_index = 4096
+texture = ExtResource( 2 )
+texture_scale = 10.0
+range_item_cull_mask = 524288
+shadow_item_cull_mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )

@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-onready var _Auto = preload("res://Scenes/Personnages/Archer/Arrow.tscn")
+onready var _QSpell = preload("res://Scenes/Personnages/Archer/Q.tscn")
+onready var _WSpell = preload("res://Scenes/Personnages/Archer/W.tscn")
 onready var Frame = $Frame
 
 var Hp = 1000
@@ -10,29 +11,41 @@ var Q = 0
 var QCD = 20
 var QCast = 5
 var QDamage = 50
-var ShootQRelease = 0
-var ShootQ = false
+var QShootRelease = 0
+var QShoot = false
+var QOnClick = false
 
 var W = 0
-var WCD = 100
-var WCast = 5
+var WCD = 600
+var WCD1 = 30
+var WCD2 = 60
+var WCDState = 120
+var WCast = 0
+var WState = 0
 var WDamage = 50
-var ShootWRelease = 0
-var ShootW = false
+var WShootRelease = 0
+var WDash = false
+var WShoot = false
+var WOnClick = false
 
 var E = 0
 var ECD = 100
 var ECast = 5
 var EDamage = 50
-var ShootERelease = 0
-var ShootE = false
+var EShootRelease = 0
+var EShoot = false
+var EOnClick = false
 
 var R = 0
 var RCD = 100
 var RCast = 5
 var RDamage = 50
-var ShootRRelease = 0
-var ShootR = false
+var RShootRelease = 0
+var RShoot = false
+var ROnClick = false
+
+var Stunn = 0
+var Scripted = 0
 
 var speed = 3
 var speedtick = speed
@@ -43,20 +56,21 @@ var Rotate = 0
 var rotationFactor = 0
 var collision_info = 0
 var velocity = Vector2()
+var Scriptedvelocity = Vector2()
 var MovementRight = false
 var MovementLeft = false
 var MovementDown = false
 var MovementUp = false
-var OnClick = false
-
+var ScriptedAction = ""
+var DashSpeed = 0
 """ ===0=== """
 
 func SelectAnim():
-	if ShootQ:
+	if QShoot:
 		Frame.animation = "Tir"
-	elif ShootQRelease:
+	elif QShootRelease:
 		Frame.animation = "Release"
-		ShootQRelease -=1
+		QShootRelease -=1
 	elif MovementDown and not MovementRight and not MovementLeft:
 		Frame.animation = "Walk Right"
 	elif MovementUp and not MovementRight and not MovementLeft:
@@ -126,29 +140,75 @@ func get_input(delta):
 		rotation_degrees -= rotationSensi * delta
 
 	if Input.is_action_pressed("Spell0 2"):
-		if not OnClick and Q <= 0:
+		if not QOnClick and Q <= 0:
 			if QCast:
 				QCast -= 1
-				ShootQ = true
+				QShoot = true
 				speedtick /= 3
 			else:
-				var QSpell = _Auto.instance()
+				var QSpell = _QSpell.instance()
 				get_parent().add_child(QSpell)
 				QSpell.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees, QDamage, 0b11010000000000000000)
-				OnClick = true
-				ShootQ = false
-				ShootQRelease = 5
+				QOnClick = true
+				QShoot = false
+				QShootRelease = 5
 				Q = QCD
 	else:
 		QCast = 7
-		ShootQ = false
-		OnClick = false
+		QShoot = false
+		QOnClick = false
+	if Input.is_action_pressed("Spell1 2"):
+		if not WOnClick and not W > 0:
+			if WState <= 0:
+				if WCast:
+					WCast -= 1
+					WShoot = true
+					speedtick /= 3
+				else:
+					var WSpell = _WSpell.instance()
+					get_parent().add_child(WSpell)
+					WSpell.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees, QDamage, 0b11010000000000000000)
+					WOnClick = true
+					WShoot = false
+					WShootRelease = 5
+					W = WCD
+					WState = WCDState
+			else:
+				Scriptedvelocity = Vector2()
+				ScriptedAction = "Dash"
+				Scripted = 10
+				DashSpeed = 10
+				if Input.is_action_pressed("Move Right"):
+					Scriptedvelocity.x = 1
+				if Input.is_action_pressed("Move Left"):
+					Scriptedvelocity.x -= 1
+				if Input.is_action_pressed("Move Down"):
+					Scriptedvelocity.y += 1
+				if Input.is_action_pressed("Move Up"):
+					Scriptedvelocity.y -= 1
+				WState = 0
+				W = WCD2
+	else:
+		WCast = 7
+		WShoot = false
+		WOnClick = false
 
 func Cooldown(delta):
 	if Q > 0:
 		Q -= (delta * 60)
-	if Hp < MaxHp:
-		Hp += (MaxHp / 100) * delta
+	if W > 0:
+		W -= (delta * 60)
+	if WState > 0:
+		WState -= (delta * 60)
+	if Stunn:
+		Stunn -= (delta * 60)
+	if Scripted:
+		Scripted -= (delta * 60)
+
+func ScriptAction(delta):
+	if ScriptedAction == "Dash":
+		velocity = move_and_collide(Scriptedvelocity.normalized() * (delta * 60) * DashSpeed)
+		velocity = Vector2()
 
 """ ===0=== """
 
@@ -158,8 +218,9 @@ func _ready():
 func _process(delta):
 	speedtick = speed
 	Cooldown(delta)
-	get_input(delta)
-	Movements(delta)
+	if Stunn > 0 or Scripted > 0:
+		ScriptAction(delta)
+	else:
+		get_input(delta)
+		Movements(delta)
 	SelectAnim()
-
-#	if (0 < position.x and 1280 > position.x and 0 < position.y and 720 > position.y):

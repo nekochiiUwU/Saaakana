@@ -1,12 +1,14 @@
 extends Camera2D
 
-onready var Player1 = get_node("../../../Entities/Player 1")
-onready var Player2 = get_node("../../../Entities/Player 2")
+onready var Player1 = get_node("../../../Entities/Player 1/Player")
+onready var Player2 = get_node("../../../Entities/Player 2/Player")
 onready var UI = $UI
 onready var P1Hp = $UI/P1/FontHp/Hp
-onready var P1Q = $UI/P1/FontAuto/Auto
+onready var P1Q = $UI/P1/FontQ/Q
+onready var P1W = $UI/P1/FontW/W
 onready var P2Hp = $UI/P2/FontHp/Hp
-onready var P2Q = $UI/P2/FontAuto/Auto
+onready var P2Q = $UI/P2/FontQ/Q
+onready var P2W = $UI/P2/FontW/W
 
 var Rotate = 0
 var sensi = 0.3
@@ -59,10 +61,12 @@ func _process(delta):
 	
 	position = (CameraPosition + lastPos * 10) / 11
 	UI.set_position((position - lastPos) * 5)
-	P1Hp.set_size(Vector2((Player1.Hp * 500) / Player1.MaxHp, 16))
-	P1Q.set_size(Vector2(((Player1.QCD - Player1.Q) + P1Q.get_size()[0]) / 2, 12))
-	P2Hp.set_size(Vector2((Player2.Hp * 500) / Player2.MaxHp, 16))
-	P2Q.set_size(Vector2(((Player2.QCD - Player2.Q) + P2Q.get_size()[0]) / 2, 12))
+	P1Hp.set_size(Vector2((Player1.Hp * 500) / Player1.MaxHp, 1))
+	P1Q.set_size(Vector2(((((Player1.QCD - Player1.Q) / Player1.QCD) + (P1Q.get_size()[0]) / 136) / 2) * 136, 1))
+	P1W.set_size(Vector2(((((Player1.WCD - Player1.W) / Player1.WCD) + (P1W.get_size()[0]) / 136) / 2) * 136, 1))
+	P2Hp.set_size(Vector2((Player2.Hp * 500) / Player2.MaxHp, 2))
+	P2Q.set_size(Vector2(((((Player2.QCD - Player2.Q) / Player2.QCD) + (P2Q.get_size()[0]) / 136) / 2) * 136, 2))
+	P2W.set_size(Vector2(((((Player2.WCD - Player2.W) / Player2.WCD) + (P2W.get_size()[0]) / 136) / 2) * 136, 2))
 	lastPos = position
 	lastZoom = zoom.x
 	rotation = Rotate

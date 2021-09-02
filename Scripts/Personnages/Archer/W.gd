@@ -22,36 +22,28 @@ func Launch(LauncherPosition: Vector2, LauncherDirection, _Damage, CollisionLaye
 	Hitbox.set_collision_layer_bit(20, false)
 	velocity = Vector2(1, 0).rotated(rotation)
 
-func _process(delta):
+func _process(_delta):
 	if End:
 		EndAnimWaiter()
 	else:
 		visible = true
 
 func _physics_process(delta):
-	# Mouvement
 	collision = velocity * speed * (delta * 60)
 	collision = move_and_collide(collision)
-
 	if collision:
-		# Compteur de rebond
-		if Bounce > 0:
-			Bounce -= 1
-		else:
-			queue_free()
-		# Rebond
-		var u = (velocity.dot(collision.normal) / collision.normal.dot(collision.normal)) * collision.normal
-		var w = velocity - u
-		velocity = w - u
-		rotation = atan2(velocity.y, velocity.x)
+		queue_free()
 
 # Joueur touché
-func _on_Area_body_entered(body):
+func _on_Area_body_entered(_body):
 	End = Hitbox.get_overlapping_bodies()
 
 # Application des dégats
 func EndAnimWaiter():
 	for item in End:
-		if item.get_parent().name  == "Entities":
+		if "Player " in item.get_parent().name:
 			item.Hp -= Damage
+			get_node("../Player").W = get_node("../Player").WCD1
+			get_node("../Player").WState = get_node("../Player").WCDState
+			
 	queue_free()
