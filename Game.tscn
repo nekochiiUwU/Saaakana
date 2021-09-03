@@ -15,19 +15,9 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "Dash",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "Release",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "Tir",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ) ],
@@ -39,6 +29,16 @@ animations = [ {
 "loop": true,
 "name": "Walk Right",
 "speed": 15.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "Dash",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Tir",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]

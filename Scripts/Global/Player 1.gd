@@ -30,7 +30,7 @@ var WOnClick = false
 
 var E = 0
 var ECD = 100
-var ECast = 5
+var ECast = 10
 var ELoad = 0
 var EArrow = 0
 var EMaxLoad = 45
@@ -69,11 +69,17 @@ var DashSpeed = 0
 """ ===0=== """
 
 func SelectAnim():
-	if QShoot or WShoot or EShoot:
+	if QShoot or WShoot:
 		Frame.animation = "Tir"
-	elif QShootRelease or WShootRelease:
+	elif 0 < EShootRelease:
+		Frame.animation = "Release"
+		EShootRelease -= 1
+	elif EShoot:
+		Frame.animation = "Tir"
+	elif 0 < QShootRelease or 0 < WShootRelease:
 		Frame.animation = "Release"
 		QShootRelease -= 1
+		WShootRelease -= 1
 	elif ScriptedAction == "Dash":
 		Frame.animation = "Dash"
 	elif MovementDown and not MovementRight and not MovementLeft:
@@ -197,29 +203,37 @@ func get_input(delta):
 		WShoot = false
 		WOnClick = false
 	if Input.is_action_pressed("Spell2"):
-		if not EOnClick and not W > 0:
+		if not EOnClick and not E > 0:
 			ELoad = 1
+			EArrow = 1
 			EShoot = true
 			EOnClick = true
 		else:
-			if ELoad:
-				ELoad += delta * 60
-				if ELoad > EMaxLoad:
-					EArrow += 1
+			EShoot = true
+			if not E > 0 and EArrow:
+				speedtick /= 3
+				if ELoad and not EArrow > 2:
+					ELoad += delta * 60
+					if ELoad > EMaxLoad:
+						EArrow += 1
+						ELoad = 1
+				else:
 					ELoad = 1
-				E = ECD
-				EShootRelease = 5
-				speedtick /= 4
+					EArrow = 3
 				
 	else:
 		if ELoad:
-			for item in range(EArrow):
+			if 0 > ECast:
 				var ESpell = _QSpell.instance()
 				get_parent().add_child(ESpell)
-				ESpell.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees + rand_range(-(EMaxLoad - ELoad) / 2, -(EMaxLoad - ELoad) / 2), EDamage, 0b11100000000000000000)
-		ELoad = 0
-		ECast = 0
-		EShoot = false
+				ESpell.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees + rand_range((EMaxLoad - ELoad) / 2, -(EMaxLoad - ELoad) / 2), EDamage, 0b11100000000000000000)
+				EArrow -= 1
+				E = ECD
+				ECast = 10
+				EShootRelease = 5
+				if not EArrow:
+					ELoad = 0
+					EShoot = false
 		EOnClick = false
 
 func Cooldown(delta):
@@ -227,6 +241,10 @@ func Cooldown(delta):
 		Q -= (delta * 60)
 	if W > 0:
 		W -= (delta * 60)
+	if E > 0:
+		E -= (delta * 60)
+	if ECast > 0:
+		ECast -= (delta * 60)
 	if WState > 0:
 		WState -= (delta * 60)
 	if Stunn:

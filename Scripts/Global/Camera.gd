@@ -6,6 +6,7 @@ onready var UI = $UI
 onready var P1Hp = $UI/P1/FontHp/Hp
 onready var P1Q = $UI/P1/FontQ/Q
 onready var P1W = $UI/P1/FontW/W
+onready var P1E = $UI/P1/FontE/E
 onready var P2Hp = $UI/P2/FontHp/Hp
 onready var P2Q = $UI/P2/FontQ/Q
 onready var P2W = $UI/P2/FontW/W
@@ -19,7 +20,8 @@ var PlayerDistance = 0
 var Zoom = [0.3, 0.3]
 var lastZoom = 1
 var UnZoom = 0
-
+var Notifications =  [  [],		[],		  []    ]
+#					  Global, Player 1, Player 2
 func get_imput(delta):
 	if Input.is_action_pressed("Zoom [+]"):
 		Zoom[0] -= delta + (Zoom[0] / 100)
@@ -64,9 +66,13 @@ func _process(delta):
 	P1Hp.set_size(Vector2((Player1.Hp * 500) / Player1.MaxHp, 1))
 	P1Q.set_size(Vector2(((((Player1.QCD - Player1.Q) / Player1.QCD) + (P1Q.get_size()[0]) / 136) / 2) * 136, 1))
 	P1W.set_size(Vector2(((((Player1.WCD - Player1.W) / Player1.WCD) + (P1W.get_size()[0]) / 136) / 2) * 136, 1))
+	P1E.set_size(Vector2(((((Player1.ECD - Player1.E) / Player1.ECD) + (P1E.get_size()[0]) / 136) / 2) * 136, 1))
 	P2Hp.set_size(Vector2((Player2.Hp * 500) / Player2.MaxHp, 2))
 	P2Q.set_size(Vector2(((((Player2.QCD - Player2.Q) / Player2.QCD) + (P2Q.get_size()[0]) / 136) / 2) * 136, 2))
 	P2W.set_size(Vector2(((((Player2.WCD - Player2.W) / Player2.WCD) + (P2W.get_size()[0]) / 136) / 2) * 136, 2))
 	lastPos = position
 	lastZoom = zoom.x
 	rotation = Rotate
+
+#func NewNotification(Type = "Bar", Value = 50, MaxValue = 100, Emplacement = 1, Time = 1, Description = ""):
+	
