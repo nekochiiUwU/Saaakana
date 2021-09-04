@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Scenes/Personnages/Global/Map.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Global/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(3).png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Camera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Global/Camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Global/Player 1.gd" type="Script" id=4]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Shoot/(0).png" type="Texture" id=5]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(4).png" type="Texture" id=6]
@@ -20,9 +20,9 @@ animations = [ {
 "name": "Release",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "Stand",
+"name": "Tir",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 10 ) ],
@@ -35,9 +35,9 @@ animations = [ {
 "name": "Dash",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "Tir",
+"name": "Stand",
 "speed": 5.0
 } ]
 

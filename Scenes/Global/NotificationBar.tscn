@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Global/NotificationBar.gd" type="Script" id=1]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Fonts/Retro Gaming.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+font_data = SubResource( 1 )
+
+[node name="NotificationBar" type="ColorRect"]
+margin_right = 102.0
+margin_bottom = 15.0
+color = Color( 0.235294, 0.470588, 0.392157, 0.392157 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="ColorRect" parent="."]
+light_mask = 131072
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 101.0
+margin_bottom = 2.0
+color = Color( 0, 0.941176, 0.784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="."]
+light_mask = 0
+margin_left = 0.396851
+margin_top = 1.0
+margin_right = 102.397
+margin_bottom = 73.0
+custom_fonts/normal_font = SubResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

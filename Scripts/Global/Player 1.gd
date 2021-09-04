@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+onready var Camera = get_node("../../../World/Cameras/Camera")
+
 onready var _QSpell = preload("res://Scenes/Personnages/Archer/Q.tscn")
 onready var _WSpell = preload("res://Scenes/Personnages/Archer/W.tscn")
 onready var Frame = $Frame
@@ -29,7 +31,7 @@ var WShoot = false
 var WOnClick = false
 
 var E = 0
-var ECD = 100
+var ECD = 480
 var ECast = 10
 var ELoad = 0
 var EArrow = 0
@@ -206,11 +208,11 @@ func get_input(delta):
 		if not EOnClick and not E > 0:
 			ELoad = 1
 			EArrow = 1
-			EShoot = true
 			EOnClick = true
-		else:
 			EShoot = true
+		else:
 			if not E > 0 and EArrow:
+				Camera.NewNotification("Bar", "E - Dispertion", EMaxLoad - ELoad, EMaxLoad, "Player 1", 2)
 				speedtick /= 3
 				if ELoad and not EArrow > 2:
 					ELoad += delta * 60

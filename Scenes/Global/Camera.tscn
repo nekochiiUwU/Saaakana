@@ -3,19 +3,19 @@
 [ext_resource path="res://Scripts/Global/Camera.gd" type="Script" id=1]
 [ext_resource path="res://Frames/Light.png" type="Texture" id=2]
 
-[sub_resource type="Environment" id=3]
+[sub_resource type="Environment" id=1]
 background_mode = 4
-tonemap_exposure = 0.9
 glow_enabled = true
 glow_intensity = 2.0
 glow_hdr_scale = 0.0
+glow_bicubic_upscale = true
 
-[sub_resource type="DynamicFontData" id=1]
+[sub_resource type="DynamicFontData" id=2]
 font_path = "res://Fonts/Retro Gaming.ttf"
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 10
-font_data = SubResource( 1 )
+font_data = SubResource( 2 )
 
 [node name="Camera" type="Camera2D"]
 light_mask = 524288
@@ -32,7 +32,7 @@ __meta__ = {
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="UI"]
-environment = SubResource( 3 )
+environment = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="UI"]
 light_mask = 524288
@@ -59,7 +59,7 @@ __meta__ = {
 light_mask = 0
 margin_left = -2.0
 margin_top = -19.0
-margin_right = 148.0
+margin_right = 502.0
 margin_bottom = 1.0
 color = Color( 0.235294, 0.470588, 0.235294, 0.392157 )
 __meta__ = {
@@ -85,7 +85,7 @@ margin_left = 1.0
 margin_top = 1.2182
 margin_right = 112.0
 margin_bottom = 14.2182
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Hp"
 scroll_active = false
@@ -97,7 +97,7 @@ __meta__ = {
 light_mask = 0
 margin_left = 160.0
 margin_top = 28.0
-margin_right = 210.0
+margin_right = 300.0
 margin_bottom = 45.0
 color = Color( 0.392157, 0.392157, 0.196078, 0.392157 )
 __meta__ = {
@@ -251,7 +251,7 @@ light_mask = 0
 margin_top = -1.0
 margin_right = 136.0
 margin_bottom = 12.0
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Q Spell"
 scroll_active = false
@@ -263,7 +263,7 @@ __meta__ = {
 light_mask = 0
 margin_left = 16.0
 margin_top = 7.0
-margin_right = 66.0
+margin_right = 156.0
 margin_bottom = 24.0
 color = Color( 0.470588, 0.352941, 0.235294, 0.392157 )
 __meta__ = {
@@ -417,7 +417,7 @@ light_mask = 0
 margin_top = -1.0
 margin_right = 136.0
 margin_bottom = 12.0
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "W Spell"
 scroll_active = false
@@ -429,8 +429,8 @@ __meta__ = {
 light_mask = 0
 margin_left = 160.0
 margin_top = 11.0
-margin_right = 210.0
-margin_bottom = 27.0
+margin_right = 300.0
+margin_bottom = 28.0
 color = Color( 0.470588, 0.117647, 0, 0.392157 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -584,7 +584,7 @@ light_mask = 0
 margin_top = -1.0
 margin_right = 136.0
 margin_bottom = 12.0
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "E Spell"
 scroll_active = false
@@ -629,7 +629,7 @@ margin_left = 1.0
 margin_top = 1.2182
 margin_right = 112.0
 margin_bottom = 14.2182
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Hp"
 scroll_active = false
@@ -795,7 +795,7 @@ light_mask = 0
 margin_top = -1.0
 margin_right = 136.0
 margin_bottom = 12.0
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Q Spell"
 scroll_active = false
@@ -961,7 +961,7 @@ light_mask = 0
 margin_top = -1.0
 margin_right = 136.0
 margin_bottom = 12.0
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "W Spell"
 scroll_active = false
@@ -1118,7 +1118,7 @@ light_mask = 0
 margin_top = -1.0
 margin_right = 136.0
 margin_bottom = 12.0
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "E Spell"
 scroll_active = false
