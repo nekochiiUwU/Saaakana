@@ -231,7 +231,7 @@ func get_input(delta):
 			if 0 > ECast:
 				var ESpell = _ESpell.instance()
 				get_parent().add_child(ESpell)
-				ESpell.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees + rand_range((EMaxLoad - ELoad) / 2, -(EMaxLoad - ELoad) / 2), EDamage, 0b11010000000000000000)
+				ESpell.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees + rand_range(ELoad / 2, -ELoad / 2), EDamage, 0b11010000000000000000)
 				EArrow -= 1
 				E = ECD
 				ECast = 10

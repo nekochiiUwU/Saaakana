@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Global/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(3).png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(5).png" type="Texture" id=10]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(2).png" type="Texture" id=11]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Shoot/Release/(0).png" type="Texture" id=12]
+[ext_resource path="res://Frames/Light.png" type="Texture" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -20,14 +21,14 @@ animations = [ {
 "name": "Dash",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "Stand",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "Tir",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "Stand",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 10 ) ],
@@ -60,6 +61,7 @@ __meta__ = {
 }
 
 [node name="Camera" parent="World/Cameras" instance=ExtResource( 3 )]
+position = Vector2( -0.5, -2 )
 editor_draw_limits = true
 
 [node name="Entities" type="Node2D" parent="."]
@@ -90,6 +92,11 @@ visible = false
 rotation = 3.14159
 z_index = 4096
 shape = SubResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="Entities/Player 1/Player"]
+texture = ExtResource( 13 )
+energy = 12.46
+range_item_cull_mask = 2
 
 [node name="Player 2" type="Node2D" parent="Entities"]
 
