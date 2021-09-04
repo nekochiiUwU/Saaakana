@@ -43,6 +43,7 @@ func EndAnimWaiter():
 	for item in End:
 		if "Player " in item.get_parent().name:
 			item.Hp -= Damage
+			item.TakeDamage()
 			get_node("../Player").W = get_node("../Player").WCD1
 			get_node("../Player").WState = get_node("../Player").WCDState
 			

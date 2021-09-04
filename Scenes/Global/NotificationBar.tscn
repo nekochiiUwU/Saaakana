@@ -19,10 +19,10 @@ __meta__ = {
 }
 
 [node name="Bar" type="ColorRect" parent="."]
-light_mask = 131072
+light_mask = 524288
 margin_left = 1.0
 margin_top = 1.0
-margin_right = 101.0
+margin_right = 1.0
 margin_bottom = 2.0
 color = Color( 0, 0.941176, 0.784314, 1 )
 __meta__ = {

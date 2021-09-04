@@ -9,8 +9,10 @@ font_data = SubResource( 1 )
 
 [node name="NotificationText" type="RichTextLabel"]
 light_mask = 0
-margin_right = 204.0
-margin_bottom = 72.0
+margin_left = 0.8909
+margin_top = -0.8909
+margin_right = 256.891
+margin_bottom = 63.1091
 custom_fonts/normal_font = SubResource( 2 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 scroll_active = false

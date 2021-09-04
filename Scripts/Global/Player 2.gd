@@ -1,7 +1,9 @@
 extends KinematicBody2D
 
+onready var Camera = get_node("../../../World/Cameras/Camera")
 onready var _QSpell = preload("res://Scenes/Personnages/Archer/Q.tscn")
 onready var _WSpell = preload("res://Scenes/Personnages/Archer/W.tscn")
+onready var _ESpell = preload("res://Scenes/Personnages/Archer/E.tscn")
 onready var Frame = $Frame
 
 var Hp = 1000
@@ -29,9 +31,12 @@ var WShoot = false
 var WOnClick = false
 
 var E = 0
-var ECD = 100
-var ECast = 5
-var EDamage = 50
+var ECD = 480
+var ECast = 10
+var ELoad = 0
+var EArrow = 0
+var EMaxLoad = 45
+var EDamage = 100
 var EShootRelease = 0
 var EShoot = false
 var EOnClick = false
@@ -50,6 +55,8 @@ var Scripted = 0
 var speed = 3
 var speedtick = speed
 
+var ModulateReset = -1
+
 var sensi = 2
 var rotationSensi = 128
 var Rotate = 0
@@ -66,11 +73,17 @@ var DashSpeed = 0
 """ ===0=== """
 
 func SelectAnim():
-	if QShoot:
+	if QShoot or WShoot:
 		Frame.animation = "Tir"
-	elif QShootRelease:
+	elif 0 < EShootRelease:
 		Frame.animation = "Release"
-		QShootRelease -=1
+		EShootRelease -= 1
+	elif EShoot:
+		Frame.animation = "Tir"
+	elif 0 < QShootRelease or 0 < WShootRelease:
+		Frame.animation = "Release"
+		QShootRelease -= 1
+		WShootRelease -= 1
 	elif MovementDown and not MovementRight and not MovementLeft:
 		Frame.animation = "Walk Right"
 	elif MovementUp and not MovementRight and not MovementLeft:
@@ -192,18 +205,66 @@ func get_input(delta):
 		WCast = 7
 		WShoot = false
 		WOnClick = false
+		
+	if Input.is_action_pressed("Spell2 2"):
+		if not EOnClick and not E > 0:
+			ELoad = 1
+			EArrow = 1
+			EOnClick = true
+			EShoot = true
+		else:
+			if not E > 0 and EArrow:
+				Camera.NewNotification("Bar", "E " + str(EArrow) + "- Dispertion", EMaxLoad - ELoad, EMaxLoad, "Player 2", 1)
+				speedtick /= 3
+				if ELoad and not EArrow > 3:
+					if ELoad >= EMaxLoad and not EArrow > 2:
+						EArrow += 1
+						ELoad = 1
+					else:
+						if not EArrow > 2 or not ELoad >= EMaxLoad:
+							ELoad += delta * 60
+						else:
+							ELoad = EMaxLoad
+							EArrow = 3
+	else:
+		if ELoad:
+			if 0 > ECast:
+				var ESpell = _ESpell.instance()
+				get_parent().add_child(ESpell)
+				ESpell.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees + rand_range((EMaxLoad - ELoad) / 2, -(EMaxLoad - ELoad) / 2), EDamage, 0b11010000000000000000)
+				EArrow -= 1
+				E = ECD
+				ECast = 10
+				EShootRelease = 5
+				if not EArrow:
+					ELoad = 0
+					EShoot = false
+		EOnClick = false
 
 func Cooldown(delta):
 	if Q > 0:
 		Q -= (delta * 60)
 	if W > 0:
 		W -= (delta * 60)
+	if E > 0:
+		E -= (delta * 60)
+	if ECast > 0:
+		ECast -= (delta * 60)
 	if WState > 0:
 		WState -= (delta * 60)
 	if Stunn:
 		Stunn -= (delta * 60)
 	if Scripted:
 		Scripted -= (delta * 60)
+	if ModulateReset > 0:
+		ModulateReset -= 1
+	elif ModulateReset == 0:
+		modulate = Color(1, 1, 1)
+		ModulateReset = -1
+
+func TakeDamage():
+	modulate = Color(1, 0.5, 0.5)
+	ModulateReset = 3
 
 func ScriptAction(delta):
 	if ScriptedAction == "Dash":

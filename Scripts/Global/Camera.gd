@@ -14,6 +14,7 @@ onready var P1E = $UI/P1/FontE/E
 onready var P2Hp = $UI/P2/FontHp/Hp
 onready var P2Q = $UI/P2/FontQ/Q
 onready var P2W = $UI/P2/FontW/W
+onready var P2E = $UI/P2/FontE/E
 
 var Rotate = 0
 var sensi = 0.3
@@ -78,6 +79,7 @@ func _process(delta):
 	P2Hp.set_size(Vector2((Player2.Hp * 500) / Player2.MaxHp, 1))
 	P2Q.set_size(Vector2(((((Player2.QCD - Player2.Q) / Player2.QCD) + (P2Q.get_size()[0]) / 136) / 2) * 136, 1))
 	P2W.set_size(Vector2(((((Player2.WCD - Player2.W) / Player2.WCD) + (P2W.get_size()[0]) / 136) / 2) * 136, 1))
+	P2E.set_size(Vector2(((((Player2.ECD - Player2.E) / Player2.ECD) + (P2E.get_size()[0]) / 136) / 2) * 136, 1))
 	lastPos = position
 	lastZoom = zoom.x
 	rotation = Rotate
@@ -87,9 +89,25 @@ func NewNotification(Type = "Bar", Name = "Name", Value = 50, MaxValue = 100, Em
 
 func DisplayNotifications():
 	for Notif in Notifications["Player 1"]:
-		if not Notif[5]:
+		if Notif[5]:
+			Notif[5].Replace(Vector2(0, 64 + 32 * Notifications["Player 1"].find(Notif)))
+			if Notif[5].Time <= 0:
+				Notif[5].Kill()
+				Notifications["Player 1"].erase(Notif)
+		else:
 			if Notif[0] == "Bar":
-				Notifications["Displayed"].append(_NotificationBar.instance())
-				P1Hp.add_child(Notifications["Displayed"][0])
-				Notifications["Displayed"][-1].Pop(Notif[1], Notif[2], Notif[3], Notif[4])
-				Notif[5] = true
+				Notif[5] = _NotificationBar.instance()
+				P1Hp.add_child(Notif[5])
+				Notif[5].Pop(Notif[1], Notif[2], Notif[3], Notif[4], Vector2(0, 64 + 32 * len(Notifications["Player 1"])))
+
+	for Notif in Notifications["Player 2"]:
+		if Notif[5]:
+			Notif[5].Replace(Vector2(0, 64 + 32 * Notifications["Player 2"].find(Notif)))
+			if Notif[5].Time <= 0:
+				Notif[5].Kill()
+				Notifications["Player 2"].erase(Notif)
+		else:
+			if Notif[0] == "Bar":
+				Notif[5] = _NotificationBar.instance()
+				P2Hp.add_child(Notif[5])
+				Notif[5].Pop(Notif[1], Notif[2], Notif[3], Notif[4], Vector2(0, 64 + 32 * len(Notifications["Player 2"])))

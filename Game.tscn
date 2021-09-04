@@ -15,9 +15,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 11 ) ],
 "loop": true,
-"name": "Release",
+"name": "Dash",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "Stand",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -30,14 +35,9 @@ animations = [ {
 "name": "Walk Right",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": true,
-"name": "Dash",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "Stand",
+"name": "Release",
 "speed": 5.0
 } ]
 

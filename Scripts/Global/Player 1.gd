@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
 onready var Camera = get_node("../../../World/Cameras/Camera")
-
 onready var _QSpell = preload("res://Scenes/Personnages/Archer/Q.tscn")
 onready var _WSpell = preload("res://Scenes/Personnages/Archer/W.tscn")
+onready var _ESpell = preload("res://Scenes/Personnages/Archer/E.tscn")
 onready var Frame = $Frame
 
 var Hp = 1000
@@ -54,6 +54,8 @@ var Scripted = 0
 
 var speed = 3
 var speedtick = speed
+
+var ModulateReset = -1
 
 var sensi = 2
 var rotationSensi = 128
@@ -212,21 +214,23 @@ func get_input(delta):
 			EShoot = true
 		else:
 			if not E > 0 and EArrow:
-				Camera.NewNotification("Bar", "E - Dispertion", EMaxLoad - ELoad, EMaxLoad, "Player 1", 2)
+				Camera.NewNotification("Bar", "E " + str(EArrow) + "- Dispertion", EMaxLoad - ELoad, EMaxLoad, "Player 1", 1)
 				speedtick /= 3
-				if ELoad and not EArrow > 2:
-					ELoad += delta * 60
-					if ELoad > EMaxLoad:
+				if ELoad and not EArrow > 3:
+					if ELoad >= EMaxLoad and not EArrow > 2:
 						EArrow += 1
 						ELoad = 1
-				else:
-					ELoad = 1
-					EArrow = 3
+					else:
+						if not EArrow > 2 or not ELoad >= EMaxLoad:
+							ELoad += delta * 60
+						else:
+							ELoad = EMaxLoad
+							EArrow = 3
 				
 	else:
 		if ELoad:
 			if 0 > ECast:
-				var ESpell = _QSpell.instance()
+				var ESpell = _ESpell.instance()
 				get_parent().add_child(ESpell)
 				ESpell.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees + rand_range((EMaxLoad - ELoad) / 2, -(EMaxLoad - ELoad) / 2), EDamage, 0b11100000000000000000)
 				EArrow -= 1
@@ -253,6 +257,15 @@ func Cooldown(delta):
 		Stunn -= (delta * 60)
 	if Scripted:
 		Scripted -= (delta * 60)
+	if ModulateReset > 0:
+		ModulateReset -= 1
+	elif ModulateReset == 0:
+		modulate = Color(1, 1, 1)
+		ModulateReset = -1
+
+func TakeDamage():
+	modulate = Color(1, 0.5, 0.5)
+	ModulateReset = 3
 
 func ScriptAction(delta):
 	if ScriptedAction == "Dash":
