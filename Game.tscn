@@ -16,9 +16,9 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": true,
-"name": "Dash",
+"name": "Release",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -26,9 +26,9 @@ animations = [ {
 "name": "Tir",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 11 ) ],
 "loop": true,
-"name": "Stand",
+"name": "Dash",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 10 ) ],
@@ -36,9 +36,9 @@ animations = [ {
 "name": "Walk Right",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "Release",
+"name": "Stand",
 "speed": 5.0
 } ]
 
@@ -87,7 +87,7 @@ frames = SubResource( 1 )
 animation = "Dash"
 playing = true
 
-[node name="Player2" type="CollisionShape2D" parent="Entities/Player 1/Player"]
+[node name="Player" type="CollisionShape2D" parent="Entities/Player 1/Player"]
 visible = false
 rotation = 3.14159
 z_index = 4096
@@ -117,7 +117,7 @@ frames = SubResource( 1 )
 animation = "Dash"
 playing = true
 
-[node name="Player2" type="CollisionShape2D" parent="Entities/Player 2/Player"]
+[node name="Player" type="CollisionShape2D" parent="Entities/Player 2/Player"]
 visible = false
 rotation = 3.14159
 z_index = 4096
