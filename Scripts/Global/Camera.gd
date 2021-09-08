@@ -16,6 +16,8 @@ onready var P2Q = $UI/P2/FontQ/Q
 onready var P2W = $UI/P2/FontW/W
 onready var P2E = $UI/P2/FontE/E
 
+onready var Effects = $UI/Effects
+
 var Rotate = 0
 var sensi = 0.3
 var SmoothCamera = 2
@@ -45,6 +47,8 @@ func get_imput(delta):
 			Input.set_mouse_mode(0)
 		else:
 			Input.set_mouse_mode(2)
+	if Input.is_action_just_pressed("Mouse Capture"):
+		Effects.environment.glow_enabled = not Effects.environment.glow_enabled
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

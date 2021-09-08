@@ -5,10 +5,12 @@
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
-glow_enabled = true
-glow_intensity = 2.0
-glow_hdr_scale = 0.0
-glow_bicubic_upscale = true
+glow_intensity = 8.0
+glow_strength = 0.66
+glow_blend_mode = 0
+glow_hdr_threshold = 0.0
+glow_hdr_luminance_cap = 0.5
+glow_hdr_scale = 4.0
 
 [sub_resource type="DynamicFontData" id=2]
 font_path = "res://Fonts/Retro Gaming.ttf"
@@ -31,7 +33,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="UI"]
+[node name="Effects" type="WorldEnvironment" parent="UI"]
 environment = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="UI"]
