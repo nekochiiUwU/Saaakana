@@ -72,18 +72,18 @@ var ScriptedAction = ""
 var DashSpeed = 0
 """ ===0=== """
 
-func SelectAnim():
+func SelectAnim(delta):
 	if QShoot or WShoot:
 		Frame.animation = "Tir"
 	elif 0 < EShootRelease:
 		Frame.animation = "Release"
-		EShootRelease -= 1
+		EShootRelease -= (delta * 60)
 	elif EShoot:
 		Frame.animation = "Tir"
 	elif 0 < QShootRelease or 0 < WShootRelease:
 		Frame.animation = "Release"
-		QShootRelease -= 1
-		WShootRelease -= 1
+		QShootRelease -= (delta * 60)
+		WShootRelease -= (delta * 60)
 	elif ScriptedAction == "Dash":
 		Frame.animation = "Dash"
 	elif MovementDown and not MovementRight and not MovementLeft:
@@ -118,7 +118,7 @@ func SelectAnim():
 """ ===0=== """
 
 func Movements(delta):
-	velocity = (velocity.normalized() * speedtick) * (delta * 60)
+	velocity = (velocity.normalized() * speedtick)
 	velocity = move_and_collide(velocity)
 	velocity = Vector2()
 
@@ -130,16 +130,16 @@ func get_input(delta):
 	MovementDown = false
 	MovementUp = false
 	if Input.is_action_pressed("Move Right"):
-		velocity.x += 1
+		velocity.x += (delta * 60)
 		MovementRight = true
 	if Input.is_action_pressed("Move Left"):
-		velocity.x -= 1
+		velocity.x -= (delta * 60)
 		MovementLeft = true
 	if Input.is_action_pressed("Move Down"):
-		velocity.y += 1
+		velocity.y += (delta * 60)
 		MovementDown = true
 	if Input.is_action_pressed("Move Up"):
-		velocity.y -= 1
+		velocity.y -= (delta * 60)
 		MovementUp = true
 	if MovementRight and MovementLeft:
 		MovementRight = false
@@ -149,14 +149,14 @@ func get_input(delta):
 		MovementUp = false
 		
 	if Input.is_action_pressed("Rotation +"):
-		rotation_degrees += rotationSensi * delta
+		rotation_degrees += rotationSensi * delta 
 	if Input.is_action_pressed("Rotation -"):
 		rotation_degrees -= rotationSensi * delta
 
 	if Input.is_action_pressed("Spell0"):
 		if not QOnClick and not Q > 0:
 			if QCast:
-				QCast -= 1
+				QCast -= (delta * 60)
 				QShoot = true
 				speedtick /= 3
 			else:
@@ -175,7 +175,7 @@ func get_input(delta):
 		if not WOnClick and not W > 0:
 			if WState <= 0:
 				if WCast:
-					WCast -= 1
+					WCast -= (delta * 60)
 					WShoot = true
 					speedtick /= 3
 				else:
@@ -193,13 +193,13 @@ func get_input(delta):
 				Scripted = 10
 				DashSpeed = 10
 				if Input.is_action_pressed("Move Right"):
-					Scriptedvelocity.x = 1
+					Scriptedvelocity.x = (delta * 60)
 				if Input.is_action_pressed("Move Left"):
-					Scriptedvelocity.x -= 1
+					Scriptedvelocity.x -= (delta * 60)
 				if Input.is_action_pressed("Move Down"):
-					Scriptedvelocity.y += 1
+					Scriptedvelocity.y += (delta * 60)
 				if Input.is_action_pressed("Move Up"):
-					Scriptedvelocity.y -= 1
+					Scriptedvelocity.y -= (delta * 60)
 				WState = 0
 				W = WCD2
 	else:
@@ -258,7 +258,7 @@ func Cooldown(delta):
 	if Scripted:
 		Scripted -= (delta * 60)
 	if ModulateReset > 0:
-		ModulateReset -= 1
+		ModulateReset -= (delta * 60)
 	elif ModulateReset == 0:
 		modulate = Color(1, 1, 1)
 		ModulateReset = -1
@@ -269,7 +269,7 @@ func TakeDamage():
 
 func ScriptAction(delta):
 	if ScriptedAction == "Dash":
-		velocity = move_and_collide(Scriptedvelocity.normalized() * (delta * 60) * DashSpeed)
+		velocity = move_and_collide(Scriptedvelocity.normalized()* DashSpeed)
 		velocity = Vector2()
 
 """ ===0=== """
@@ -286,4 +286,4 @@ func _process(delta):
 		ScriptedAction = ""
 		get_input(delta)
 		Movements(delta)
-	SelectAnim()
+	SelectAnim(delta)

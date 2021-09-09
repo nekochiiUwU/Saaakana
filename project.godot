@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Sakana"
-run/main_scene="res://Scenes/Global/Game.tscn"
+run/main_scene="res://Scenes/Global/App.tscn"
 config/icon="res://icon.png"
 
 [debug]

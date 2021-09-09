@@ -1,43 +1,57 @@
 extends Node2D
 
-onready var Game = preload("res://Scenes/Global/Game.tscn").instance()
+onready var Game = preload("../../Scenes/Global/Game.tscn").instance()
 var Launch = true
-var Scenes = {
-	"MainMenu": [false, 0],
-	"GamemodeSelect": [false, 0],
-	"ChampSelect": [false, 0],
-	"MapSelect": [false, 0],
-	"Game": [true, Game],
-	"Pause": [false, 0],
-	"Settings": [false, 0]}
 
-func _ready():
-	while Launch:
-		if Scenes["MainMenu"][0]:
-			while Scenes["MainMenu"][0]:
-				pass
-		if Scenes["GamemodeSelect"][0]:
-			while Scenes["GamemodeSelect"][0]:
-				pass
-		if Scenes["ChampSelect"][0]:
-			while Scenes["ChampSelect"][0]:
-				pass
-		if Scenes["MapSelect"][0]:
-			while Scenes["MapSelect"][0]:
-				pass
-		if Scenes["Game"][0]:
-			add_child(Scenes["Game"][1])
-			while Scenes["Game"][0]:
-				pass
-			remove_child(Scenes["Game"][1])
-		if Scenes["Pause"][0]:
-			while Scenes["Pause"][0]:
-				pass
-		if Scenes["Settings"][0]:
-			while Scenes["Settings"][0]:
-				pass
+var Scenes = [
+	["MainMenu", false, false],
+	["GamemodeSelect", false, false],
+	["ChampSelect", false, false],
+	["MapSelect", false, false],
+	["Game", true, false],
+	["Pause", false, false],
+	["Settings", false, false]]
 
-func SceneChangeTo(OldScene = "Game", Scene = "Game"):
+func _process(delta):
+	if Scenes[0][1]:
+		pass
+	if Scenes[0][2]:
+		pass
+
+	if Scenes[1][1]:
+		pass
+	if Scenes[1][2]:
+		pass
+
+	if Scenes[2][1]:
+		pass
+	if Scenes[2][2]:
+		pass
+
+	if Scenes[3][1]:
+		pass
+	if Scenes[3][2]:
+		pass
+
+	if Scenes[4][1]:
+		get_tree().get_root().add_child(Game)
+	if Scenes[4][2]:
+		get_tree().get_root().add_child(Game)
+
+	if Scenes[5][1]:
+		pass
+	if Scenes[5][2]:
+		pass
+
+	if Scenes[6][1]:
+		pass
+	if Scenes[6][2]:
+		pass
+
+func SceneChange(OldScene = "Game", Scene = "Game"):
 	if OldScene != Scene:
-		Scenes[Scene][0] = true
-		Scenes[OldScene][0] = false
+		for item in Scenes:
+			if Scene in Scenes:
+				Scenes[item][1] = true
+			elif OldScene in Scenes:
+				Scenes[OldScene][2] = true
