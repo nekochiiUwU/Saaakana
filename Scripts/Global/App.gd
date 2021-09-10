@@ -34,9 +34,11 @@ func _process(delta):
 		pass
 
 	if Scenes[4][1]:
-		get_tree().get_root().add_child(Game)
+		add_child(Game)
+		Scenes[4][1] = false
 	if Scenes[4][2]:
-		get_tree().get_root().add_child(Game)
+		add_child(Game)
+		Scenes[4][2] = false
 
 	if Scenes[5][1]:
 		pass

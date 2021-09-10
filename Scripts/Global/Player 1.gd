@@ -11,7 +11,7 @@ var MaxHp = 1000
 
 var Q = 0
 var QCD = 20
-var QCast = 5
+var QCast = 7
 var QDamage = 50
 var QShootRelease = 0
 var QShoot = false
@@ -118,7 +118,7 @@ func SelectAnim(delta):
 """ ===0=== """
 
 func Movements(delta):
-	velocity = (velocity.normalized() * speedtick)
+	velocity = velocity.normalized() * delta * 60 * speedtick
 	velocity = move_and_collide(velocity)
 	velocity = Vector2()
 
@@ -130,16 +130,16 @@ func get_input(delta):
 	MovementDown = false
 	MovementUp = false
 	if Input.is_action_pressed("Move Right"):
-		velocity.x += (delta * 60)
+		velocity.x += 1
 		MovementRight = true
 	if Input.is_action_pressed("Move Left"):
-		velocity.x -= (delta * 60)
+		velocity.x -= 1
 		MovementLeft = true
 	if Input.is_action_pressed("Move Down"):
-		velocity.y += (delta * 60)
+		velocity.y += 1
 		MovementDown = true
 	if Input.is_action_pressed("Move Up"):
-		velocity.y -= (delta * 60)
+		velocity.y -= 1
 		MovementUp = true
 	if MovementRight and MovementLeft:
 		MovementRight = false
@@ -156,7 +156,7 @@ func get_input(delta):
 	if Input.is_action_pressed("Spell0"):
 		if not QOnClick and not Q > 0:
 			if QCast:
-				QCast -= (delta * 60)
+				QCast -= 1
 				QShoot = true
 				speedtick /= 3
 			else:
@@ -175,7 +175,7 @@ func get_input(delta):
 		if not WOnClick and not W > 0:
 			if WState <= 0:
 				if WCast:
-					WCast -= (delta * 60)
+					WCast -= 1
 					WShoot = true
 					speedtick /= 3
 				else:
@@ -193,13 +193,13 @@ func get_input(delta):
 				Scripted = 10
 				DashSpeed = 10
 				if Input.is_action_pressed("Move Right"):
-					Scriptedvelocity.x = (delta * 60)
+					Scriptedvelocity.x = 1
 				if Input.is_action_pressed("Move Left"):
-					Scriptedvelocity.x -= (delta * 60)
+					Scriptedvelocity.x -= 1
 				if Input.is_action_pressed("Move Down"):
-					Scriptedvelocity.y += (delta * 60)
+					Scriptedvelocity.y += 1
 				if Input.is_action_pressed("Move Up"):
-					Scriptedvelocity.y -= (delta * 60)
+					Scriptedvelocity.y -= 1
 				WState = 0
 				W = WCD2
 	else:
@@ -258,7 +258,7 @@ func Cooldown(delta):
 	if Scripted:
 		Scripted -= (delta * 60)
 	if ModulateReset > 0:
-		ModulateReset -= (delta * 60)
+		ModulateReset -= 1
 	elif ModulateReset == 0:
 		modulate = Color(1, 1, 1)
 		ModulateReset = -1
@@ -269,7 +269,7 @@ func TakeDamage():
 
 func ScriptAction(delta):
 	if ScriptedAction == "Dash":
-		velocity = move_and_collide(Scriptedvelocity.normalized()* DashSpeed)
+		velocity = move_and_collide(Scriptedvelocity.normalized() * delta * 60 * DashSpeed)
 		velocity = Vector2()
 
 """ ===0=== """
