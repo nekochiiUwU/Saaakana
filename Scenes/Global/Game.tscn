@@ -4,14 +4,14 @@
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(3).png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Global/Camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Global/Player 1.gd" type="Script" id=4]
-[ext_resource path="res://Frames/Personnages/Archer/Animations/Shoot/(0).png" type="Texture" id=5]
+[ext_resource path="res://Frames/Personnages/Archer/Animations/Shoot/archer tir V2.png" type="Texture" id=5]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(4).png" type="Texture" id=6]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(1).png" type="Texture" id=7]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Stand.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/Global/Player 2.gd" type="Script" id=9]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(5).png" type="Texture" id=10]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(2).png" type="Texture" id=11]
-[ext_resource path="res://Frames/Personnages/Archer/Animations/Shoot/Release/(0).png" type="Texture" id=12]
+[ext_resource path="res://Frames/Personnages/Archer/Animations/Shoot/Release/archer Tirer fleche V2 2.png" type="Texture" id=12]
 [ext_resource path="res://Frames/Light.png" type="Texture" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -21,24 +21,24 @@ animations = [ {
 "name": "Release",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "Stand",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 7 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "Walk Right",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "Dash",
+"name": "Stand",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "Tir",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "Dash",
 "speed": 5.0
 } ]
 
@@ -88,7 +88,6 @@ animation = "Dash"
 playing = true
 
 [node name="Player" type="CollisionShape2D" parent="Entities/Player 1/Player"]
-visible = false
 rotation = 3.14159
 z_index = 4096
 shape = SubResource( 2 )

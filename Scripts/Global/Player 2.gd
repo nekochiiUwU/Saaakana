@@ -19,8 +19,8 @@ var QOnClick = false
 
 var W = 0
 var WCD = 600
-var WCD1 = 30
-var WCD2 = 60
+var WCD1 = 0
+var WCD2 = 0
 var WCDState = 120
 var WCast = 0
 var WState = 0
