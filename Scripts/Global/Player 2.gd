@@ -75,15 +75,22 @@ var DashSpeed = 0
 func SelectAnim(delta):
 	if QShoot or WShoot:
 		Frame.animation = "Tir"
+		
 	elif 0 < EShootRelease:
 		Frame.animation = "Release"
 		EShootRelease -= (delta * 60)
+		
 	elif EShoot:
 		Frame.animation = "Tir"
+		
 	elif 0 < QShootRelease or 0 < WShootRelease:
 		Frame.animation = "Release"
 		QShootRelease -= (delta * 60)
 		WShootRelease -= (delta * 60)
+		
+	elif ScriptedAction == "Dash":
+		Frame.animation = "Dash"
+		
 	elif MovementDown and not MovementRight and not MovementLeft:
 		Frame.animation = "Walk Right"
 	elif MovementUp and not MovementRight and not MovementLeft:
@@ -168,6 +175,7 @@ func get_input(delta):
 		QCast = 7
 		QShoot = false
 		QOnClick = false
+		
 	if Input.is_action_pressed("Spell1 2"):
 		if not WOnClick and not W > 0:
 			if WState <= 0:
@@ -280,6 +288,7 @@ func _process(delta):
 	if Stunn > 0 or Scripted > 0:
 		ScriptAction(delta)
 	else:
+		ScriptedAction = ""
 		get_input(delta)
 		Movements(delta)
 	SelectAnim(delta)

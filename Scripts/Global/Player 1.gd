@@ -75,17 +75,22 @@ var DashSpeed = 0
 func SelectAnim(delta):
 	if QShoot or WShoot:
 		Frame.animation = "Tir"
+		
 	elif 0 < EShootRelease:
 		Frame.animation = "Release"
 		EShootRelease -= (delta * 60)
+		
 	elif EShoot:
 		Frame.animation = "Tir"
+	
 	elif 0 < QShootRelease or 0 < WShootRelease:
 		Frame.animation = "Release"
 		QShootRelease -= (delta * 60)
 		WShootRelease -= (delta * 60)
+		
 	elif ScriptedAction == "Dash":
 		Frame.animation = "Dash"
+		
 	elif MovementDown and not MovementRight and not MovementLeft:
 		Frame.animation = "Walk Right"
 	elif MovementUp and not MovementRight and not MovementLeft:
