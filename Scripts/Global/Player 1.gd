@@ -1,6 +1,6 @@
 extends KinematicBody2D
-
 onready var Camera = get_node("../../../World/Cameras/Camera")
+onready var Player2 = get_node("../../Player 2/Player")
 onready var _QSpell = preload("res://Scenes/Personnages/Archer/Q.tscn")
 onready var _WSpell = preload("res://Scenes/Personnages/Archer/W.tscn")
 onready var _ESpell = preload("res://Scenes/Personnages/Archer/E.tscn")
@@ -21,8 +21,7 @@ var W = 0
 var WCD = 600
 var WCD1 = 0
 var WCD2 = 0
-var WCDState = 120
-var WCast = 2
+var WCast = 0
 var WState = 0
 var WDamage = 50
 var WShootRelease = 0
@@ -42,8 +41,9 @@ var EShoot = false
 var EOnClick = false
 
 var R = 0
-var RCD = 100
+var RCD = 1
 var RCast = 5
+var RPrecision = 0
 var RDamage = 50
 var RShootRelease = 0
 var RShoot = false
@@ -58,7 +58,7 @@ var speedtick = speed
 var ModulateReset = -1
 
 var sensi = 2
-var rotationSensi = 128
+var rotationSensi = 64
 var Rotate = 0
 var rotationFactor = 0
 var collision_info = 0
@@ -70,6 +70,7 @@ var MovementDown = false
 var MovementUp = false
 var ScriptedAction = ""
 var DashSpeed = 0
+
 """ ===0=== """
 
 func SelectAnim(delta):
@@ -83,10 +84,11 @@ func SelectAnim(delta):
 	elif EShoot:
 		Frame.animation = "Tir"
 	
-	elif 0 < QShootRelease or 0 < WShootRelease:
+	elif 0 < QShootRelease or 0 < WShootRelease or 0 < RShootRelease:
 		Frame.animation = "Release"
 		QShootRelease -= (delta * 60)
 		WShootRelease -= (delta * 60)
+		RShootRelease -= (delta * 60)
 		
 	elif ScriptedAction == "Dash":
 		Frame.animation = "Dash"
@@ -123,8 +125,7 @@ func SelectAnim(delta):
 """ ===0=== """
 
 func Movements(delta):
-	velocity = velocity.normalized() * delta * 60 * speedtick
-	velocity = move_and_collide(velocity)
+	velocity = move_and_collide(velocity.normalized() * delta * 60 * speedtick)
 	velocity = Vector2()
 
 """"" ===0=== """
@@ -157,6 +158,13 @@ func get_input(delta):
 		rotation_degrees += rotationSensi * delta 
 	if Input.is_action_pressed("Rotation -"):
 		rotation_degrees -= rotationSensi * delta
+	if Input.is_action_just_pressed("Lock"):
+		var Player2pos = Player2.get_position()
+		rotation = -atan2(Player2pos.x - position.x, Player2pos.y - position.y) + PI/2
+		RPrecision = 300
+		if WState == -1 or WState == 1:
+			W = WCD
+			WState = 0
 
 	if Input.is_action_pressed("Spell0"):
 		if not QOnClick and not Q > 0:
@@ -176,6 +184,7 @@ func get_input(delta):
 		QCast = 7
 		QShoot = false
 		QOnClick = false
+		
 	if Input.is_action_pressed("Spell1"):
 		if not WOnClick and not W > 0:
 			if WState <= 0:
@@ -191,7 +200,7 @@ func get_input(delta):
 					WShoot = false
 					WShootRelease = 5
 					W = WCD
-					WState = WCDState
+					WState = 1
 			else:
 				Scriptedvelocity = Vector2()
 				ScriptedAction = "Dash"
@@ -205,7 +214,7 @@ func get_input(delta):
 					Scriptedvelocity.y += 1
 				if Input.is_action_pressed("Move Up"):
 					Scriptedvelocity.y -= 1
-				WState = 0
+				WState = -1
 				W = WCD2
 	else:
 		WCast = 2
@@ -246,6 +255,25 @@ func get_input(delta):
 					ELoad = 0
 					EShoot = false
 		EOnClick = false
+	
+	if Input.is_action_pressed("Spell3"):
+		if not ROnClick and R <= 0:
+			if RCast:
+				RCast -= 1
+				RShoot = true
+				speedtick /= 3
+			else:
+				var RSpell = _QSpell.instance()
+				get_parent().add_child(RSpell)
+				RSpell.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees + rand_range(RPrecision / 2, -RPrecision / 2), RDamage, 0b11100000000000000000)
+				ROnClick = true
+				RShoot = false
+				RShootRelease = 5
+				R = RCD
+	else:
+		RCast = 2
+		RShoot = false
+		ROnClick = false
 
 func Cooldown(delta):
 	if Q > 0:
@@ -256,8 +284,10 @@ func Cooldown(delta):
 		E -= (delta * 60)
 	if ECast > 0:
 		ECast -= (delta * 60)
-	if WState > 0:
-		WState -= (delta * 60)
+	if R > 0:
+		R -= (delta * 60)
+	if RPrecision >= 0:
+		RPrecision -= (delta * 60)
 	if Stunn:
 		Stunn -= (delta * 60)
 	if Scripted:
