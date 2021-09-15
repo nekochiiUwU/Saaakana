@@ -11,10 +11,12 @@ onready var P1Hp = $UI/P1/FontHp/Hp
 onready var P1Q = $UI/P1/FontQ/Q
 onready var P1W = $UI/P1/FontW/W
 onready var P1E = $UI/P1/FontE/E
+onready var P1R = $UI/P1/FontR/R
 onready var P2Hp = $UI/P2/FontHp/Hp
 onready var P2Q = $UI/P2/FontQ/Q
 onready var P2W = $UI/P2/FontW/W
 onready var P2E = $UI/P2/FontE/E
+onready var P2R = $UI/P2/FontR/R
 
 onready var Effects = $UI/Effects
 
@@ -75,7 +77,7 @@ func _process(delta):
 	UI.set_scale(zoom)
 	
 	position = (CameraPosition + lastPos * 10) / 11
-	UI.set_position((position - lastPos) * 5)
+	UI.set_position((position - lastPos) * 2)
 	P1Hp.set_size(Vector2((Player1.Hp * 500) / Player1.MaxHp, 1))
 	
 	P1Q.set_size(Vector2(((((Player1.QCD - Player1.Q) / Player1.QCD) + (P1Q.get_size()[0]) / 136) / 2) * 136, 1))
@@ -96,6 +98,12 @@ func _process(delta):
 	else:
 		P1E.get_parent().self_modulate = Color(0.2, 0.2, 0.2, 0.2)
 	
+	P1R.set_size(Vector2(((((Player1.RCD - Player1.R) / Player1.RCD) + (P1R.get_size()[0]) / 136) / 2) * 136, 1))
+	if Player1.R <= 0:
+		P1R.get_parent().self_modulate = Color(0.8, 0.8, 0.8, 0.5)
+	else:
+		P1R.get_parent().self_modulate = Color(0.2, 0.2, 0.2, 0.2)
+	
 	P2Hp.set_size(Vector2((Player2.Hp * 500) / Player2.MaxHp, 1))
 	
 	P2Q.set_size(Vector2(((((Player2.QCD - Player2.Q) / Player2.QCD) + (P2Q.get_size()[0]) / 136) / 2) * 136, 1))
@@ -115,6 +123,12 @@ func _process(delta):
 		P2E.get_parent().self_modulate = Color(0.8, 0.8, 0.8, 0.5)
 	else:
 		P2E.get_parent().self_modulate = Color(0.2, 0.2, 0.2, 0.2)
+	
+	P2R.set_size(Vector2(((((Player2.RCD - Player2.R) / Player2.RCD) + (P2R.get_size()[0]) / 136) / 2) * 136, 1))
+	if Player2.R <= 0:
+		P2R.get_parent().self_modulate = Color(0.8, 0.8, 0.8, 0.5)
+	else:
+		P2R.get_parent().self_modulate = Color(0.2, 0.2, 0.2, 0.2)
 	
 	lastPos = position
 	lastZoom = zoom.x

@@ -5,7 +5,7 @@ onready var NodeAnimation = $Animations
 onready var Hitbox = $Area
 var launcher = []
 var velocity = Vector2(1, 0)
-var speed = 10
+var speed = 13
 var End = 0
 var Damage = 100
 var Bounce = 1
@@ -43,8 +43,9 @@ func EndAnimWaiter():
 	for item in End:
 		if "Player " in item.get_parent().name:
 			item.Hp -= Damage
-			item.TakeDamage()
+			item.Modulate(Color(1, 0.5, 0.5), 3)
 			get_node("../Player").W = get_node("../Player").WCD1
-			get_node("../Player").WState = get_node("../Player").WCDState
+			get_node("../Player").WState = 1
+			get_node("../Player").Modulate(Color(5, 5, 5), 3)
 			
 	queue_free()
