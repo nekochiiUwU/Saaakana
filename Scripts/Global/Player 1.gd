@@ -4,12 +4,10 @@ onready var Player2 = get_node("../../Player 2/Player")
 onready var _QSpell = preload("res://Scenes/Personnages/Archer/Q.tscn")
 onready var _WSpell = preload("res://Scenes/Personnages/Archer/W.tscn")
 onready var _ESpell = preload("res://Scenes/Personnages/Archer/E.tscn")
-onready var _RSpell = preload("res://Scenes/Personnages/Archer/R.tscn")
 onready var Frame = $Frame
 
 var Hp = 1000
 var MaxHp = 1000
-var Death = false
 
 var Q = 0
 var QCD = 20
@@ -36,17 +34,17 @@ var ECD = 480
 var ECast = 10
 var ELoad = 0
 var EArrow = 0
-var EMaxLoad = 30
-var EDamage = 75
+var EMaxLoad = 45
+var EDamage = 100
 var EShootRelease = 0
 var EShoot = false
 var EOnClick = false
 
 var R = 0
-var RCD = 360
+var RCD = 1
 var RCast = 5
-var RPrecision = 100
-var RDamage = 150
+var RPrecision = 0
+var RDamage = 50
 var RShootRelease = 0
 var RShoot = false
 var ROnClick = false
@@ -76,10 +74,7 @@ var DashSpeed = 0
 """ ===0=== """
 
 func SelectAnim(delta):
-	if Death:
-		Frame.animation = "Ded"
-		
-	elif QShoot or WShoot:
+	if QShoot or WShoot:
 		Frame.animation = "Tir"
 		
 	elif 0 < EShootRelease:
@@ -205,7 +200,7 @@ func get_input(delta):
 					WShoot = false
 					WShootRelease = 5
 					W = WCD
-					WState = -2
+					WState = 1
 			else:
 				Scriptedvelocity = Vector2()
 				ScriptedAction = "Dash"
@@ -268,7 +263,7 @@ func get_input(delta):
 				RShoot = true
 				speedtick /= 3
 			else:
-				var RSpell = _RSpell.instance()
+				var RSpell = _QSpell.instance()
 				get_parent().add_child(RSpell)
 				RSpell.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees + rand_range(RPrecision / 2, -RPrecision / 2), RDamage, 0b11100000000000000000)
 				ROnClick = true
@@ -293,8 +288,6 @@ func Cooldown(delta):
 		R -= (delta * 60)
 	if RPrecision >= 0:
 		RPrecision -= (delta * 60)
-	elif RPrecision < 0:
-		RPrecision = 0
 	if Stunn:
 		Stunn -= (delta * 60)
 	if Scripted:
@@ -305,15 +298,10 @@ func Cooldown(delta):
 		modulate = Color(1, 1, 1)
 		ModulateReset = -1
 
-func Modulate(Mod, Reset):
-	modulate = Color(Mod)
-	ModulateReset = Reset
+func TakeDamage():
+	modulate = Color(1, 0.5, 0.5)
+	ModulateReset = 3
 
-func Death():
-	Modulate(Color(0.5, 0.5, 0.5), -1)
-	ModulateReset = -1
-	Death = true
-	
 func ScriptAction(delta):
 	if ScriptedAction == "Dash":
 		velocity = move_and_collide(Scriptedvelocity.normalized() * delta * 60 * DashSpeed)
@@ -327,9 +315,7 @@ func _ready():
 func _process(delta):
 	speedtick = speed
 	Cooldown(delta)
-	if Hp <= 0:
-		Death()
-	elif Stunn > 0 or Scripted > 0:
+	if Stunn > 0 or Scripted > 0:
 		ScriptAction(delta)
 	else:
 		ScriptedAction = ""

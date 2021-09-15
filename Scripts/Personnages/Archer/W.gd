@@ -43,9 +43,8 @@ func EndAnimWaiter():
 	for item in End:
 		if "Player " in item.get_parent().name:
 			item.Hp -= Damage
-			item.Modulate(Color(1, 0.5, 0.5), 3)
+			item.TakeDamage()
 			get_node("../Player").W = get_node("../Player").WCD1
 			get_node("../Player").WState = 1
-			get_node("../Player").Modulate(Color(5, 5, 5), 3)
 			
 	queue_free()
