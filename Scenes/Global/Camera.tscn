@@ -5,7 +5,6 @@
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
-glow_enabled = true
 glow_intensity = 8.0
 glow_strength = 0.6
 glow_blend_mode = 0
@@ -100,11 +99,11 @@ __meta__ = {
 [node name="FontQ" type="ColorRect" parent="UI/P1"]
 self_modulate = Color( 1, 1, 1, 0.392157 )
 light_mask = 0
-margin_left = 160.0
+margin_left = 16.0
 margin_top = 28.0
-margin_right = 300.0
+margin_right = 156.0
 margin_bottom = 45.0
-color = Color( 1, 1, 0, 1 )
+color = Color( 0.705882, 0.862745, 0.705882, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -115,7 +114,7 @@ margin_left = 2.0
 margin_top = 2.0
 margin_right = 138.0
 margin_bottom = 3.0
-color = Color( 1, 1, 0, 1 )
+color = Color( 0, 0.392157, 1, 1 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -271,7 +270,7 @@ margin_left = 16.0
 margin_top = 7.0
 margin_right = 156.0
 margin_bottom = 24.0
-color = Color( 1, 0.501961, 0, 1 )
+color = Color( 0.470588, 0.862745, 0.470588, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -282,7 +281,7 @@ margin_left = 2.0
 margin_top = 2.0
 margin_right = 138.0
 margin_bottom = 3.0
-color = Color( 1, 0.501961, 0, 1 )
+color = Color( 0, 0.392157, 1, 1 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -435,10 +434,10 @@ __meta__ = {
 self_modulate = Color( 1, 1, 1, 0.392157 )
 light_mask = 0
 margin_left = 160.0
-margin_top = 11.0
+margin_top = 7.0
 margin_right = 300.0
-margin_bottom = 28.0
-color = Color( 1, 0.196078, 0, 1 )
+margin_bottom = 24.0
+color = Color( 0.705882, 0.862745, 0.470588, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -449,7 +448,7 @@ margin_left = 2.0
 margin_top = 2.0
 margin_right = 138.0
 margin_bottom = 3.0
-color = Color( 1, 0.196078, 0, 1 )
+color = Color( 0, 0.392157, 1, 1 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -599,6 +598,174 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="FontR" type="ColorRect" parent="UI/P1"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+light_mask = 0
+margin_left = 304.0
+margin_top = 7.0
+margin_right = 444.0
+margin_bottom = 24.0
+color = Color( 0.941176, 0.862745, 0.470588, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="R" type="ColorRect" parent="UI/P1/FontR"]
+light_mask = 524288
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 138.0
+margin_bottom = 3.0
+color = Color( 0, 0.392157, 1, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="T0" type="ColorRect" parent="UI/P1/FontR/R"]
+visible = false
+light_mask = 0
+margin_top = 11.0
+margin_right = 136.0
+margin_bottom = 12.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T1" type="ColorRect" parent="UI/P1/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = -0.0427246
+margin_top = 8.86755
+margin_right = 0.957275
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T2" type="ColorRect" parent="UI/P1/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 14.9573
+margin_top = 8.86755
+margin_right = 15.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T3" type="ColorRect" parent="UI/P1/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 29.9573
+margin_top = 8.86755
+margin_right = 30.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T4" type="ColorRect" parent="UI/P1/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 44.9573
+margin_top = 8.86755
+margin_right = 45.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T5" type="ColorRect" parent="UI/P1/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 59.9573
+margin_top = 8.86755
+margin_right = 60.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T6" type="ColorRect" parent="UI/P1/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 74.9573
+margin_top = 8.86755
+margin_right = 75.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T7" type="ColorRect" parent="UI/P1/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 89.9573
+margin_top = 8.86755
+margin_right = 90.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T8" type="ColorRect" parent="UI/P1/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 104.957
+margin_top = 8.86755
+margin_right = 105.957
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T9" type="ColorRect" parent="UI/P1/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 119.957
+margin_top = 8.86755
+margin_right = 120.957
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T10" type="ColorRect" parent="UI/P1/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 134.957
+margin_top = 8.86755
+margin_right = 135.957
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="UI/P1/FontR/R"]
+light_mask = 0
+margin_top = -1.0
+margin_right = 136.0
+margin_bottom = 12.0
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "R Spell"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="P2" type="ReferenceRect" parent="UI"]
 light_mask = 0
 margin_left = 1300.0
@@ -648,11 +815,11 @@ __meta__ = {
 [node name="FontQ" type="ColorRect" parent="UI/P2"]
 self_modulate = Color( 1, 1, 1, 0.392157 )
 light_mask = 0
-margin_left = -756.0
+margin_left = -611.0
 margin_top = -443.0
-margin_right = -616.0
+margin_right = -471.0
 margin_bottom = -426.0
-color = Color( 1, 1, 0, 1 )
+color = Color( 0.705882, 0.862745, 0.705882, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -663,7 +830,7 @@ margin_left = 2.0
 margin_top = 2.0
 margin_right = 138.0
 margin_bottom = 3.0
-color = Color( 1, 1, 0, 1 )
+color = Color( 0, 0.392157, 1, 1 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -819,7 +986,7 @@ margin_left = -900.0
 margin_top = -464.0
 margin_right = -760.0
 margin_bottom = -447.0
-color = Color( 1, 0.501961, 0, 1 )
+color = Color( 0.941176, 0.862745, 0.470588, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -830,7 +997,7 @@ margin_left = 2.0
 margin_top = 2.0
 margin_right = 138.0
 margin_bottom = 3.0
-color = Color( 1, 0.501961, 0, 1 )
+color = Color( 0, 0.392157, 1, 1 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -982,11 +1149,11 @@ __meta__ = {
 [node name="FontE" type="ColorRect" parent="UI/P2"]
 self_modulate = Color( 1, 1, 1, 0.392157 )
 light_mask = 0
-margin_left = -756.0
-margin_top = -460.0
-margin_right = -616.0
-margin_bottom = -443.0
-color = Color( 1, 0.196078, 0, 1 )
+margin_left = -755.851
+margin_top = -463.865
+margin_right = -615.851
+margin_bottom = -446.865
+color = Color( 0.705882, 0.862745, 0.470588, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -997,7 +1164,7 @@ margin_left = 2.0
 margin_top = 2.0
 margin_right = 138.0
 margin_bottom = 3.0
-color = Color( 1, 0.196078, 0, 1 )
+color = Color( 0, 0.392157, 1, 1 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -1142,6 +1309,174 @@ margin_bottom = 12.0
 custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "E Spell"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FontR" type="ColorRect" parent="UI/P2"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+light_mask = 0
+margin_left = -611.0
+margin_top = -464.0
+margin_right = -471.0
+margin_bottom = -447.0
+color = Color( 0.470588, 0.862745, 0.470588, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="R" type="ColorRect" parent="UI/P2/FontR"]
+light_mask = 524288
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 138.0
+margin_bottom = 3.0
+color = Color( 0, 0.392157, 1, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="T0" type="ColorRect" parent="UI/P2/FontR/R"]
+visible = false
+light_mask = 0
+margin_top = 11.0
+margin_right = 136.0
+margin_bottom = 12.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T1" type="ColorRect" parent="UI/P2/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = -0.0427246
+margin_top = 8.86755
+margin_right = 0.957275
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T2" type="ColorRect" parent="UI/P2/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 14.9573
+margin_top = 8.86755
+margin_right = 15.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T3" type="ColorRect" parent="UI/P2/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 29.9573
+margin_top = 8.86755
+margin_right = 30.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T4" type="ColorRect" parent="UI/P2/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 44.9573
+margin_top = 8.86755
+margin_right = 45.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T5" type="ColorRect" parent="UI/P2/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 59.9573
+margin_top = 8.86755
+margin_right = 60.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T6" type="ColorRect" parent="UI/P2/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 74.9573
+margin_top = 8.86755
+margin_right = 75.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T7" type="ColorRect" parent="UI/P2/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 89.9573
+margin_top = 8.86755
+margin_right = 90.9573
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T8" type="ColorRect" parent="UI/P2/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 104.957
+margin_top = 8.86755
+margin_right = 105.957
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T9" type="ColorRect" parent="UI/P2/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 119.957
+margin_top = 8.86755
+margin_right = 120.957
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="T10" type="ColorRect" parent="UI/P2/FontR/R"]
+visible = false
+light_mask = 0
+margin_left = 134.957
+margin_top = 8.86755
+margin_right = 135.957
+margin_bottom = 10.8676
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="UI/P2/FontR/R"]
+light_mask = 0
+margin_top = -1.0
+margin_right = 136.0
+margin_bottom = 12.0
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "R Spell"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false

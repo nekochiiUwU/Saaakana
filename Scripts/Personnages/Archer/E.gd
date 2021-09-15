@@ -39,5 +39,5 @@ func _on_Area_body_entered(body):
 
 func EndAnimWaiter():
 	End.Hp -= Damage
-	End.TakeDamage()
+	End.Modulate(Color(1, 0.5, 0.5), 3)
 	queue_free()
