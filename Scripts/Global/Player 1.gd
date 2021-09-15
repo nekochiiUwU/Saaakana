@@ -311,11 +311,11 @@ func Modulate(Mod, Reset):
 
 func Death():
 	Modulate(Color(0.5, 0.5, 0.5), -1)
-	ModulateReset = -1
 	Death = true
 	
 func ScriptAction(delta):
 	if ScriptedAction == "Dash":
+		Modulate(Color(1.5, 1, 1.5), 1)
 		velocity = move_and_collide(Scriptedvelocity.normalized() * delta * 60 * DashSpeed)
 		velocity = Vector2()
 

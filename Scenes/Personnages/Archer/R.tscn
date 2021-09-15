@@ -16,14 +16,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [  ],
-"loop": false,
-"name": "Explosion",
-"speed": 60.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 11 ) ],
 "loop": false,
 "name": "Base",
+"speed": 60.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "Explosion",
 "speed": 60.0
 } ]
 
@@ -41,7 +41,6 @@ collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="Animations" type="AnimatedSprite" parent="."]
-modulate = Color( 0.784314, 0.784314, 0.784314, 0.784314 )
 light_mask = 524289
 position = Vector2( 328, 0 )
 z_index = 101

@@ -315,6 +315,7 @@ func Death():
 
 func ScriptAction(delta):
 	if ScriptedAction == "Dash":
+		Modulate(Color(1.5, 1, 1.5), 1)
 		velocity = move_and_collide(Scriptedvelocity.normalized() * delta * 60 * DashSpeed)
 		velocity = Vector2()
 

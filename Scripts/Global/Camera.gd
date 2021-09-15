@@ -77,7 +77,7 @@ func _process(delta):
 	UI.set_scale(zoom)
 	
 	position = (CameraPosition + lastPos * 10) / 11
-	UI.set_position((position - lastPos) * 2)
+	UI.set_position(((position - lastPos) * scale)/10)
 	P1Hp.set_size(Vector2((Player1.Hp * 500) / Player1.MaxHp, 1))
 	
 	P1Q.set_size(Vector2(((((Player1.QCD - Player1.Q) / Player1.QCD) + (P1Q.get_size()[0]) / 136) / 2) * 136, 1))
