@@ -1,6 +1,13 @@
 extends Node2D
 
+onready var MainMenu = preload("../../Scenes/Global/MainMenu.tscn").instance()
+onready var GamemodeSelect = preload("../../Scenes/Global/GamemodeSelect.tscn").instance()
+onready var ChampSelect = preload("../../Scenes/Global/ChampSelect.tscn").instance()
+onready var MapSelect = preload("../../Scenes/Global/MapSelect.tscn").instance()
 onready var Game = preload("../../Scenes/Global/Game.tscn").instance()
+onready var Pause = preload("../../Scenes/Global/Pause.tscn").instance()
+onready var Settings = preload("../../Scenes/Global/Settings.tscn").instance()
+
 var Launch = true
 
 var Scenes = [
@@ -10,50 +17,62 @@ var Scenes = [
 	["MapSelect", false, false],
 	["Game", true, false],
 	["Pause", false, false],
-	["Settings", false, false]]
+	["Settings", false, false]
+	]
 
 func _process(delta):
 	if Scenes[0][1]:
-		pass
+		add_child(MainMenu)
+		Scenes[0][1] = false
 	if Scenes[0][2]:
-		pass
+		remove_child(MainMenu)
+		Scenes[0][2] = false
 
 	if Scenes[1][1]:
-		pass
+		add_child(GamemodeSelect)
+		Scenes[1][1] = false
 	if Scenes[1][2]:
-		pass
+		remove_child(GamemodeSelect)
+		Scenes[1][2] = false
 
 	if Scenes[2][1]:
-		pass
+		add_child(ChampSelect)
+		Scenes[2][1] = false
 	if Scenes[2][2]:
-		pass
+		remove_child(ChampSelect)
+		Scenes[2][2] = false
 
 	if Scenes[3][1]:
-		pass
+		add_child(MapSelect)
+		Scenes[3][1] = false
 	if Scenes[3][2]:
-		pass
+		remove_child(MapSelect)
+		Scenes[3][2] = false
 
 	if Scenes[4][1]:
 		add_child(Game)
 		Scenes[4][1] = false
 	if Scenes[4][2]:
-		add_child(Game)
+		remove_child(Game)
 		Scenes[4][2] = false
 
 	if Scenes[5][1]:
-		pass
+		add_child(Pause)
+		Scenes[5][1] = false
 	if Scenes[5][2]:
-		pass
+		remove_child(Pause)
+		Scenes[5][2] = false
 
 	if Scenes[6][1]:
-		pass
+		add_child(Settings)
+		Scenes[6][1] = false
 	if Scenes[6][2]:
-		pass
+		remove_child(Settings)
+		Scenes[6][2] = false
 
 func SceneChange(OldScene = "Game", Scene = "Game"):
 	if OldScene != Scene:
 		for item in Scenes:
-			if Scene in Scenes:
+			if Scene and OldScene in Scenes:
 				Scenes[item][1] = true
-			elif OldScene in Scenes:
 				Scenes[OldScene][2] = true
