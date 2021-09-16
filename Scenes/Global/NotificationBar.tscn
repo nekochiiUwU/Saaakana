@@ -10,9 +10,11 @@ size = 10
 font_data = SubResource( 1 )
 
 [node name="NotificationBar" type="ColorRect"]
+self_modulate = Color( 0.8, 0.8, 0.8, 0.701961 )
+light_mask = 0
 margin_right = 102.0
 margin_bottom = 15.0
-color = Color( 0.235294, 0.470588, 0.392157, 0.392157 )
+color = Color( 0, 0.784314, 0.784314, 0.501961 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -24,7 +26,7 @@ margin_left = 1.0
 margin_top = 1.0
 margin_right = 1.0
 margin_bottom = 2.0
-color = Color( 0, 0.941176, 0.784314, 1 )
+color = Color( 0, 1, 1, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

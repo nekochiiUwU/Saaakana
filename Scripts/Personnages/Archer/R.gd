@@ -24,7 +24,7 @@ func Launch(LauncherPosition: Vector2, LauncherDirection, _Damage, CollisionLaye
 	#velocity = Vector2(1, 0).rotated(rotation)
 
 func _process(_delta):
-	if NodeAnimation.frame >= 10:
+	if NodeAnimation.frame >= 8:
 		End()
 	else:
 		visible = true

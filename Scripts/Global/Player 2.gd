@@ -180,7 +180,7 @@ func get_input(delta):
 			else:
 				var QSpell = _QSpell.instance()
 				get_parent().add_child(QSpell)
-				QSpell.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees, QDamage, 0b11010000000000000000)
+				QSpell.Launch(Vector2(position.x + 8, position.y - 12), rotation_degrees, QDamage, 0b11010000000000000000)
 				QOnClick = true
 				QShoot = false
 				QShootRelease = 5
@@ -200,7 +200,7 @@ func get_input(delta):
 				else:
 					var WSpell = _WSpell.instance()
 					get_parent().add_child(WSpell)
-					WSpell.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees, QDamage, 0b11010000000000000000)
+					WSpell.Launch(Vector2(position.x + 8, position.y - 12), rotation_degrees, QDamage, 0b11010000000000000000)
 					WOnClick = true
 					WShoot = false
 					WShootRelease = 5
@@ -251,7 +251,7 @@ func get_input(delta):
 			if 0 > ECast:
 				var ESpell = _ESpell.instance()
 				get_parent().add_child(ESpell)
-				ESpell.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees + rand_range(ELoad / 2, -ELoad / 2), EDamage, 0b11010000000000000000)
+				ESpell.Launch(Vector2(position.x + 8, position.y - 12), rotation_degrees + rand_range(ELoad / 2, -ELoad / 2), EDamage, 0b11010000000000000000)
 				EArrow -= 1
 				E = ECD
 				ECast = 10
@@ -270,7 +270,7 @@ func get_input(delta):
 			else:
 				var RSpell = _RSpell.instance()
 				get_parent().add_child(RSpell)
-				RSpell.Launch(Vector2(position.x + 8, position.y - 8), rotation_degrees + rand_range(RPrecision / 2, -RPrecision / 2), RDamage, 0b11010000000000000000)
+				RSpell.Launch(Vector2(position.x + 8, position.y - 12), rotation_degrees + rand_range(RPrecision / 2, -RPrecision / 2), RDamage, 0b11010000000000000000)
 				ROnClick = true
 				RShoot = false
 				RShootRelease = 5
