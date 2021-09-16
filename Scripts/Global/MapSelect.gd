@@ -1,6 +1,6 @@
 extends Node2D
 
-func get_imput(delta):
+func get_imput():
 	if Input.is_action_pressed("Fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen
 	if Input.is_action_just_pressed("Mouse Capture"):
@@ -16,4 +16,4 @@ func _ready():
 	Input.set_mouse_mode(0)
 
 func _process(delta):
-	pass
+	get_imput()

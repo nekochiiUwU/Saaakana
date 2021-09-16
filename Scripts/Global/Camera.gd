@@ -42,18 +42,11 @@ func get_imput(delta):
 	if Input.is_action_pressed("Zoom [-]"):
 		Zoom[0] += delta + (Zoom[0] / 100)
 		Zoom[1] += delta + (Zoom[1] / 100)
-	if Input.is_action_pressed("Fullscreen"):
-		OS.window_fullscreen = !OS.window_fullscreen
-	if Input.is_action_just_pressed("Mouse Capture"):
-		if Input.get_mouse_mode():
-			Input.set_mouse_mode(0)
-		else:
-			Input.set_mouse_mode(2)
 	if Input.is_action_just_pressed("Mouse Capture"):
 		Effects.environment.glow_enabled = not Effects.environment.glow_enabled
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pass
 
 func _process(delta):
 	DisplayNotifications()

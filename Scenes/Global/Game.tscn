@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Global/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(3).png" type="Texture" id=2]
@@ -15,27 +15,23 @@
 [ext_resource path="res://Frames/Light.png" type="Texture" id=13]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/archer dash.png" type="Texture" id=14]
 [ext_resource path="res://Frames/Personnages/Archer/archer ded.png" type="Texture" id=15]
+[ext_resource path="res://Scripts/Global/Game.gd" type="Script" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "Release",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 7 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "Walk Right",
 "speed": 15.0
 }, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "Stand",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "Tir",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "Dash",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ) ],
@@ -43,9 +39,14 @@ animations = [ {
 "name": "Ded",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 14 ) ],
 "loop": true,
-"name": "Stand",
+"name": "Dash",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "Release",
 "speed": 5.0
 } ]
 
@@ -53,6 +54,7 @@ animations = [ {
 extents = Vector2( 8, 30 )
 
 [node name="Game" type="Node2D"]
+script = ExtResource( 16 )
 
 [node name="World" type="Node2D" parent="."]
 __meta__ = {
