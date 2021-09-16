@@ -1,16 +1,19 @@
 extends Node2D
 
+func get_imput(delta):
+	if Input.is_action_pressed("Fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
+	if Input.is_action_just_pressed("Mouse Capture"):
+		if Input.get_mouse_mode():
+			Input.set_mouse_mode(0)
+		else:
+			Input.set_mouse_mode(2)
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+func SceneChange(Scene):
+	get_parent().SceneChange("Settings", Scene)
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Input.set_mouse_mode(0)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	pass
