@@ -8,9 +8,11 @@ func get_imput():
 			Input.set_mouse_mode(0)
 		else:
 			Input.set_mouse_mode(2)
+	if Input.is_action_just_pressed("Quit"):
+		SceneChange("Pause")
 
 func SceneChange(Scene):
-	get_parent().SceneChange("GamemodeSelect", Scene)
+	get_parent().SceneChange("Game", Scene)
 
 func _ready():
 	Input.set_mouse_mode(0)

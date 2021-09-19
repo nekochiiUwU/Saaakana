@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/Global/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(3).png" type="Texture" id=2]
@@ -17,26 +17,50 @@
 [ext_resource path="res://Frames/Personnages/Archer/archer ded.png" type="Texture" id=15]
 [ext_resource path="res://Scripts/Global/Game.gd" type="Script" id=16]
 
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform float Range: hint_range(0.0, 30.0);
+uniform vec4 Color: hint_color;
+
+void fragment(){
+	float Size = Range * 1.0 / float(textureSize(TEXTURE, 0).x);
+	vec4 SpriteColor = texture(TEXTURE, UV);
+	float alpha = -8.0 * SpriteColor.a;
+	
+	alpha += texture(TEXTURE, UV + vec2(Size, 0.0)).a;
+	alpha += texture(TEXTURE, UV + vec2(-Size, 0.0)).a;
+	alpha += texture(TEXTURE, UV + vec2(0.0, Size)).a;
+	alpha += texture(TEXTURE, UV + vec2(0.0, -Size)).a;
+	alpha += texture(TEXTURE, UV + vec2(Size, Size)).a;
+	alpha += texture(TEXTURE, UV + vec2(-Size, Size)).a;
+	alpha += texture(TEXTURE, UV + vec2(Size, -Size)).a;
+	alpha += texture(TEXTURE, UV + vec2(-Size, -Size)).a;
+	
+	vec4 CalculatedColor = mix(SpriteColor, Color, clamp(alpha, 0.0, 1.0));
+	COLOR = vec4(CalculatedColor.rgb, clamp(abs(alpha) + SpriteColor.a, 0.0, 1.0));
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/Range = 0.2
+shader_param/Color = Color( 0, 0, 1, 1 )
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "Release",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 7 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "Walk Right",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "Dash",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "Stand",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "Tir",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ) ],
@@ -44,14 +68,48 @@ animations = [ {
 "name": "Ded",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "Release",
+"name": "Tir",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "Dash",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 30 )
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+uniform float Range: hint_range(0.0, 30.0);
+uniform vec4 Color: hint_color;
+
+void fragment(){
+	float Size = Range * 1.0 / float(textureSize(TEXTURE, 0).x);
+	vec4 SpriteColor = texture(TEXTURE, UV);
+	float alpha = -8.0 * SpriteColor.a;
+	
+	alpha += texture(TEXTURE, UV + vec2(Size, 0.0)).a;
+	alpha += texture(TEXTURE, UV + vec2(-Size, 0.0)).a;
+	alpha += texture(TEXTURE, UV + vec2(0.0, Size)).a;
+	alpha += texture(TEXTURE, UV + vec2(0.0, -Size)).a;
+	alpha += texture(TEXTURE, UV + vec2(Size, Size)).a;
+	alpha += texture(TEXTURE, UV + vec2(-Size, Size)).a;
+	alpha += texture(TEXTURE, UV + vec2(Size, -Size)).a;
+	alpha += texture(TEXTURE, UV + vec2(-Size, -Size)).a;
+	
+	vec4 CalculatedColor = mix(SpriteColor, Color, clamp(alpha, 0.0, 1.0));
+	COLOR = vec4(CalculatedColor.rgb, clamp(abs(alpha) + SpriteColor.a, 0.0, 1.0));
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+shader_param/Range = 0.2
+shader_param/Color = Color( 1, 0, 0, 1 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 16 )
@@ -90,6 +148,7 @@ __meta__ = {
 }
 
 [node name="Frame" type="AnimatedSprite" parent="Entities/Player 1/Player"]
+material = SubResource( 4 )
 z_index = 100
 frames = SubResource( 1 )
 animation = "Ded"
@@ -119,6 +178,7 @@ __meta__ = {
 }
 
 [node name="Frame" type="AnimatedSprite" parent="Entities/Player 2/Player"]
+material = SubResource( 6 )
 z_index = 100
 frames = SubResource( 1 )
 animation = "Ded"

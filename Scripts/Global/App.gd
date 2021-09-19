@@ -51,16 +51,20 @@ func _process(delta):
 
 	if Scenes[4][1]:
 		add_child(Game)
+		print("Add Game")
 		Scenes[4][1] = false
 	if Scenes[4][2]:
 		remove_child(Game)
+		print("Remove Game")
 		Scenes[4][2] = false
 
 	if Scenes[5][1]:
 		add_child(Pause)
+		print("Add Pause")
 		Scenes[5][1] = false
 	if Scenes[5][2]:
 		remove_child(Pause)
+		print("Remove Pause")
 		Scenes[5][2] = false
 
 	if Scenes[6][1]:
@@ -70,9 +74,11 @@ func _process(delta):
 		remove_child(Settings)
 		Scenes[6][2] = false
 
-func SceneChange(OldScene = "Game", Scene = "Game"):
+func SceneChange(OldScene = "Game", Scene = "Pause"):
 	if OldScene != Scene:
 		for item in Scenes:
-			if Scene and OldScene in Scenes:
-				Scenes[item][1] = true
-				Scenes[OldScene][2] = true
+			if OldScene == item[0]:
+				item[2] = true
+		for item in Scenes:
+			if Scene == item[0]:
+				item[1] = true
