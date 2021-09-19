@@ -24,6 +24,11 @@ animations = [ {
 "name": "Walk Right",
 "speed": 15.0
 }, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "Dash",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "Stand",
@@ -37,11 +42,6 @@ animations = [ {
 "frames": [ ExtResource( 15 ) ],
 "loop": true,
 "name": "Ded",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "Dash",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ) ],

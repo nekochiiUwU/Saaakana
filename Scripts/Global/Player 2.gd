@@ -181,6 +181,7 @@ func get_input(delta):
 				var QSpell = _QSpell.instance()
 				get_parent().add_child(QSpell)
 				QSpell.Launch(Vector2(position.x + 8, position.y - 12), rotation_degrees, QDamage, 0b11010000000000000000)
+				QSpell.NodeAnimation.self_modulate = Color(1.1, 0.9, 0.9)
 				QOnClick = true
 				QShoot = false
 				QShootRelease = 5
@@ -201,6 +202,7 @@ func get_input(delta):
 					var WSpell = _WSpell.instance()
 					get_parent().add_child(WSpell)
 					WSpell.Launch(Vector2(position.x + 8, position.y - 12), rotation_degrees, QDamage, 0b11010000000000000000)
+					WSpell.modulate = Color(1, 0.8, 0.8)
 					WOnClick = true
 					WShoot = false
 					WShootRelease = 5
@@ -252,6 +254,7 @@ func get_input(delta):
 				var ESpell = _ESpell.instance()
 				get_parent().add_child(ESpell)
 				ESpell.Launch(Vector2(position.x + 8, position.y - 12), rotation_degrees + rand_range(ELoad / 2, -ELoad / 2), EDamage, 0b11010000000000000000)
+				ESpell.modulate = Color(1, 0.8, 0.8)
 				EArrow -= 1
 				E = ECD
 				ECast = 10

@@ -5,7 +5,7 @@ onready var NodeAnimation = $Animations
 onready var Hitbox = $Area
 var launcher = []
 var velocity = Vector2(1, 0)
-var speed = 10
+var speed = 8
 var End = 0
 var Damage = 100
 var Bounce = 0
@@ -52,5 +52,6 @@ func _on_Area_body_entered(body):
 # Application des dégats
 func EndAnimWaiter():
 	End.Hp -= Damage
+	#End.velocity += Vector2(Damage / 10, 0).rotated(rotation)
 	End.Modulate(Color(1, 0.5, 0.5), 3)
 	queue_free()
