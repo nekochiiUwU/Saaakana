@@ -17,7 +17,7 @@
 [ext_resource path="res://Frames/Personnages/Archer/archer ded.png" type="Texture" id=15]
 [ext_resource path="res://Scripts/Global/Game.gd" type="Script" id=16]
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform float Range: hint_range(0.0, 30.0);
@@ -41,12 +41,12 @@ void fragment(){
 	COLOR = vec4(CalculatedColor.rgb, clamp(abs(alpha) + SpriteColor.a, 0.0, 1.0));
 }"
 
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/Range = 0.2
 shader_param/Color = Color( 0, 0, 1, 1 )
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
@@ -68,18 +68,18 @@ animations = [ {
 "name": "Ded",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "Tir",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "Dash",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Tir",
+"speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8, 30 )
 
 [sub_resource type="Shader" id=5]
@@ -148,16 +148,16 @@ __meta__ = {
 }
 
 [node name="Frame" type="AnimatedSprite" parent="Entities/Player 1/Player"]
-material = SubResource( 4 )
+material = SubResource( 2 )
 z_index = 100
-frames = SubResource( 1 )
+frames = SubResource( 3 )
 animation = "Ded"
 playing = true
 
 [node name="Player" type="CollisionShape2D" parent="Entities/Player 1/Player"]
 rotation = 3.14159
 z_index = 4096
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="Light2D" type="Light2D" parent="Entities/Player 1/Player"]
 texture = ExtResource( 13 )
@@ -180,7 +180,7 @@ __meta__ = {
 [node name="Frame" type="AnimatedSprite" parent="Entities/Player 2/Player"]
 material = SubResource( 6 )
 z_index = 100
-frames = SubResource( 1 )
+frames = SubResource( 3 )
 animation = "Ded"
 playing = true
 
@@ -188,4 +188,4 @@ playing = true
 visible = false
 rotation = 3.14159
 z_index = 4096
-shape = SubResource( 2 )
+shape = SubResource( 4 )

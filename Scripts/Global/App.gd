@@ -51,20 +51,16 @@ func _process(delta):
 
 	if Scenes[4][1]:
 		add_child(Game)
-		print("Add Game")
 		Scenes[4][1] = false
 	if Scenes[4][2]:
 		remove_child(Game)
-		print("Remove Game")
 		Scenes[4][2] = false
 
 	if Scenes[5][1]:
 		add_child(Pause)
-		print("Add Pause")
 		Scenes[5][1] = false
 	if Scenes[5][2]:
 		remove_child(Pause)
-		print("Remove Pause")
 		Scenes[5][2] = false
 
 	if Scenes[6][1]:

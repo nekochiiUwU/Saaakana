@@ -16,5 +16,10 @@ func SceneChange(Scene):
 
 func _ready():
 	Input.set_mouse_mode(0)
+
 func _process(delta):
 	get_imput()
+
+
+func _on_ContinueButton_pressed():
+	SceneChange("Game")
