@@ -15,5 +15,5 @@ func SceneChange(Scene):
 func _ready():
 	Input.set_mouse_mode(0)
 
-func _process(delta):
+func _process(_delta):
 	get_imput()

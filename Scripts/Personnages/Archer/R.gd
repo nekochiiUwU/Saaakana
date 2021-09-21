@@ -6,7 +6,6 @@ onready var Hitbox = $Area
 var launcher = []
 var velocity = Vector2(1, 0)
 var speed = 10
-var End = 0
 var Damage = 300
 var Bounce = 0
 var collision = false

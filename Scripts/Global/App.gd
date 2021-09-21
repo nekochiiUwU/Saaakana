@@ -20,7 +20,7 @@ var Scenes = [
 	["Settings", false, false]
 	]
 
-func _process(delta):
+func _process(_delta):
 	if Scenes[0][1]:
 		add_child(MainMenu)
 		Scenes[0][1] = false

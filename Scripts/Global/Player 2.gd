@@ -44,10 +44,10 @@ var EShoot = false
 var EOnClick = false
 
 var R = 0
-var RCD = 360
+var RCD = 420
 var RCast = 5
 var RPrecision = 100
-var RDamage = 150
+var RDamage = 125
 var RShootRelease = 0
 var RShoot = false
 var ROnClick = false
@@ -60,7 +60,7 @@ var speedtick = speed
 
 var ModulateReset = -1
 
-var sensi = 2
+var sensi = 3
 var rotationSensi = 64
 var Rotate = 0
 var rotationFactor = 0
@@ -312,7 +312,7 @@ func Modulate(Mod, Reset):
 	modulate = Color(Mod)
 	ModulateReset = Reset
 
-func Death():
+func Dead():
 	Modulate(Color(0.5, 0.5, 0.5), -1)
 	Death = true
 
@@ -325,13 +325,16 @@ func ScriptAction(delta):
 """ ===0=== """
 
 func _ready():
+	randomize()
+	set_position(Vector2(rand_range(100, 400), rand_range(-200, 200)))
 	""""""
+
 
 func _process(delta):
 	speedtick = speed
 	Cooldown(delta)
 	if Hp <= 0:
-		Death()
+		Dead()
 	elif Stunn > 0 or Scripted > 0:
 		ScriptAction(delta)
 	else:
