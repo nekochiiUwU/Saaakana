@@ -60,7 +60,7 @@ var speedtick = speed
 var ModulateReset = -1
 
 var sensi = 3
-var rotationSensi = 64
+var rotationSensi = 87
 var Rotate = 0
 var rotationFactor = 0
 var collision_info = 0

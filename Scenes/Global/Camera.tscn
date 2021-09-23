@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Global/Camera.gd" type="Script" id=1]
 [ext_resource path="res://Frames/Light.png" type="Texture" id=2]
 
-[sub_resource type="Environment" id=1]
+[sub_resource type="Environment" id=2]
 background_mode = 4
 auto_exposure_scale = 0.2
 glow_intensity = 8.0
@@ -13,12 +13,16 @@ glow_hdr_threshold = 0.0
 glow_hdr_luminance_cap = 69.28
 glow_hdr_scale = 4.0
 
-[sub_resource type="DynamicFontData" id=2]
+[sub_resource type="DynamicFontData" id=1]
 font_path = "res://Fonts/Retro Gaming.ttf"
 
 [sub_resource type="DynamicFont" id=3]
 size = 10
-font_data = SubResource( 2 )
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 10
+font_data = SubResource( 1 )
 
 [node name="Camera" type="Camera2D"]
 light_mask = 0
@@ -36,7 +40,7 @@ __meta__ = {
 }
 
 [node name="Effects" type="WorldEnvironment" parent="UI"]
-environment = SubResource( 1 )
+environment = SubResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="UI"]
 light_mask = 524288
@@ -87,9 +91,9 @@ __meta__ = {
 [node name="Text" type="RichTextLabel" parent="UI/P1/FontHp/Hp"]
 light_mask = 0
 margin_left = 1.0
-margin_top = 1.2182
-margin_right = 112.0
-margin_bottom = 14.2182
+margin_top = 1.0
+margin_right = 127.0
+margin_bottom = 16.0
 custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Hp"
@@ -127,7 +131,7 @@ light_mask = 0
 margin_top = -1.0
 margin_right = 136.0
 margin_bottom = 12.0
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Q Spell"
 scroll_active = false
@@ -164,7 +168,7 @@ light_mask = 0
 margin_top = -1.0
 margin_right = 136.0
 margin_bottom = 12.0
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "W Spell"
 scroll_active = false
@@ -201,7 +205,7 @@ light_mask = 0
 margin_top = -1.0
 margin_right = 136.0
 margin_bottom = 12.0
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "E Spell"
 scroll_active = false
@@ -238,7 +242,7 @@ light_mask = 0
 margin_top = -1.0
 margin_right = 136.0
 margin_bottom = 12.0
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "R Spell"
 scroll_active = false
@@ -284,7 +288,7 @@ margin_left = 1.0
 margin_top = 1.2182
 margin_right = 112.0
 margin_bottom = 14.2182
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Hp"
 scroll_active = false
@@ -321,7 +325,7 @@ light_mask = 0
 margin_top = -1.0
 margin_right = 136.0
 margin_bottom = 12.0
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Q Spell"
 scroll_active = false
@@ -358,7 +362,7 @@ light_mask = 0
 margin_top = -1.0
 margin_right = 136.0
 margin_bottom = 12.0
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "W Spell"
 scroll_active = false
@@ -395,7 +399,7 @@ light_mask = 0
 margin_top = -1.0
 margin_right = 136.0
 margin_bottom = 12.0
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "E Spell"
 scroll_active = false
@@ -432,7 +436,7 @@ light_mask = 0
 margin_top = -1.0
 margin_right = 136.0
 margin_bottom = 12.0
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "R Spell"
 scroll_active = false
