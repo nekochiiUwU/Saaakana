@@ -7,6 +7,8 @@ onready var _ESpell = preload("res://Scenes/Personnages/Archer/E.tscn")
 onready var _RSpell = preload("res://Scenes/Personnages/Archer/R.tscn")
 onready var Frame = $Frame
 
+var inputs = ["", "Spell0", "Spell1", "Spell2", "Spell3", "Rotation +", "Rotation -", "Lock"]
+
 var Hp = 1000
 var MaxHp = 1000
 var Death = false
@@ -134,6 +136,15 @@ func Movements(delta):
 	velocity = Vector2()
 
 """"" ===0=== """
+
+func press_input(input = []):
+	for i in input:
+		if inputs[i]:
+			Input.action_press(inputs[i])
+
+func release_input(input = []):
+	for i in Input.get_input():
+		Input.action_release(i)
 
 func get_input(delta):
 	MovementRight = false
@@ -282,6 +293,7 @@ func get_input(delta):
 		RCast = 2
 		RShoot = false
 		ROnClick = false
+	
 
 func Cooldown(delta):
 	if Q > 0:
@@ -328,7 +340,7 @@ func _ready():
 	randomize()
 	set_position(Vector2(rand_range(-400, -100),rand_range(-200, 200)))
 
-func _process(delta):
+func _process(delta):		
 	speedtick = speed
 	Cooldown(delta)
 	if Hp <= 0:

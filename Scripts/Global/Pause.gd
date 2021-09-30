@@ -19,11 +19,11 @@ func SceneChange(Scene):
 
 func _ready():
 	Input.set_mouse_mode(0)
+	ContinueButton.set_position(Vector2(960, 540) - ContinueButton.get_size()/2)
+	MainMenuButton.set_position(Vector2(960, 540+200) - MainMenuButton.get_size()/2)
 
 func _process(_delta):
 	get_imput()
-	ContinueButton.set_position(Vector2(960, 540) - ContinueButton.get_size()/2)
-	MainMenuButton.set_position(Vector2(960, 540+200) - MainMenuButton.get_size()/2)
 
 func _on_ContinueButton_pressed():
 	SceneChange("Game")

@@ -36,5 +36,7 @@ __meta__ = {
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource( 3 )
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
 [connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="MainMenuButton" to="." method="_on_MainMenuButtun_pressed"]

@@ -3,7 +3,6 @@ var array = []
 
 var frame = 0
 
-
 func init_array(size):
 	for y in range(size[0]):
 		array.append([])
@@ -51,14 +50,11 @@ func random_array(situations):
 
 func update():
 	var selected_y = random_array([])
-	print(str(selected_y))
-	#time.sleep(0.2+t)
+	# print(str(selected_y))
 
 
 func printer():
 	print("\n\n--------------------------------------------\n\nTableau:\n")
-	# for y in array:
-	#    print(y)
 	print(array)
 
 func _ready():
@@ -66,9 +62,8 @@ func _ready():
 
 func _process(_delta):
 	if not frame % 10:
-		
 		update()
 	frame += 1
 	if not frame % 100:
-		printer()
+		# printer()
 		pass

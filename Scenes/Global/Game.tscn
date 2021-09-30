@@ -58,14 +58,14 @@ animations = [ {
 "name": "Dash",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "Tir",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "Stand",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "Ded",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 10 ) ],
@@ -73,9 +73,9 @@ animations = [ {
 "name": "Walk Right",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 15 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "Ded",
+"name": "Tir",
 "speed": 5.0
 } ]
 
