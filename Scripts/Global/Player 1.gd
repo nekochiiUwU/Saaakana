@@ -7,7 +7,8 @@ onready var _ESpell = preload("res://Scenes/Personnages/Archer/E.tscn")
 onready var _RSpell = preload("res://Scenes/Personnages/Archer/R.tscn")
 onready var Frame = $Frame
 
-var inputs = ["", "Spell0", "Spell1", "Spell2", "Spell3", "Rotation +", "Rotation -", "Lock"]
+var ListInputs = ["", "Spell0", "Spell1", "Spell2", "Spell3", "Rotation +", "Rotation -", "Lock"]
+var PressedInput = []
 
 var Hp = 1000
 var MaxHp = 1000
@@ -137,14 +138,16 @@ func Movements(delta):
 
 """"" ===0=== """
 
-func press_input(input = []):
-	for i in input:
-		if inputs[i]:
-			Input.action_press(inputs[i])
+func press_input(inputS = []):
+	for input in ListInputs:
+		release_input(input)
+	for i in range(len(inputS)):
+		if ListInputs[inputS[i]]:
+			Input.action_press(ListInputs[inputS[i]])
+	PressedInput = inputS
 
-func release_input(input = []):
-	for i in Input.get_input():
-		Input.action_release(i)
+func release_input(input):
+	Input.action_release(input)
 
 func get_input(delta):
 	MovementRight = false
@@ -293,7 +296,7 @@ func get_input(delta):
 		RCast = 2
 		RShoot = false
 		ROnClick = false
-	
+
 
 func Cooldown(delta):
 	if Q > 0:

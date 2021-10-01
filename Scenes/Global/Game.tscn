@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/Global/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Frames/Personnages/Archer/Animations/Walk Right/(3).png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Frames/Personnages/Archer/Animations/archer dash.png" type="Texture" id=14]
 [ext_resource path="res://Frames/Personnages/Archer/archer ded.png" type="Texture" id=15]
 [ext_resource path="res://Scripts/Global/Game.gd" type="Script" id=16]
+[ext_resource path="res://Scripts/Global/IA.gd" type="Script" id=17]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -58,6 +59,11 @@ animations = [ {
 "name": "Dash",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 7 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "Walk Right",
+"speed": 15.0
+}, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "Stand",
@@ -67,11 +73,6 @@ animations = [ {
 "loop": true,
 "name": "Ded",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 11 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "Walk Right",
-"speed": 15.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
@@ -115,6 +116,7 @@ shader_param/Color = Color( 1, 0, 0, 1 )
 script = ExtResource( 16 )
 
 [node name="World" type="Node2D" parent="."]
+visible = false
 __meta__ = {
 "_edit_lock_": true
 }
@@ -164,7 +166,13 @@ texture = ExtResource( 13 )
 energy = 12.46
 range_item_cull_mask = 2
 
+[node name="IA" type="Node2D" parent="Entities/Player 1/Player"]
+position = Vector2( 200, 0 )
+rotation = 3.14159
+script = ExtResource( 17 )
+
 [node name="Player 2" type="Node2D" parent="Entities"]
+visible = false
 
 [node name="Player" type="KinematicBody2D" parent="Entities/Player 2"]
 position = Vector2( 100, 0 )
