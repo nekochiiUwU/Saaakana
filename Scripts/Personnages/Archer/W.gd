@@ -21,6 +21,10 @@ func Launch(LauncherPosition: Vector2, LauncherDirection, _Damage, CollisionLaye
 	Hitbox.collision_mask = CollisionLayer
 	Hitbox.set_collision_layer_bit(20, false)
 	velocity = Vector2(1, 0).rotated(rotation)
+	if -90 < rotation_degrees and rotation_degrees < 90:
+		move_and_collide(Vector2(8, -14).rotated(rotation))
+	else:
+		move_and_collide(Vector2(8, 14).rotated(rotation))
 
 func _process(_delta):
 	if End:
