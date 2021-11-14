@@ -8,6 +8,13 @@ var RSpell
 """ ===0=== """
 
 func Launch(s):
+	var frames = load("res://Scenes/Personnages/Archer/frames.tscn").instance()
+	s.add_child(frames)
+	s.Frame = frames
+	if s.EnemyLayer != 0b11100000000000000000:
+		s.Frame.material = s.Frame.material.duplicate()
+		s.Frame.material.set_shader_param('Color', Color(1.0, 0.0, 0.0, 1.0) )
+	
 	s._QSpell = load("res://Scenes/Personnages/Archer/Q.tscn")
 	s._WSpell = load("res://Scenes/Personnages/Archer/W.tscn")
 	s._ESpell = load("res://Scenes/Personnages/Archer/E.tscn")
@@ -17,16 +24,16 @@ func Launch(s):
 	s.MaxHp = 1000
 	s.Death = false
 
-	s.Q = 0
-	s.QCD = 20
+	s.Cd2 = 0
+	s.Cd2Base = 20
 	s.QCast = 7
 	s.QDamage = 50
 	s.QShootRelease = 0
 	s.QShoot = false
 	s.QOnClick = false
 
-	s.W = 0
-	s.WCD = 600
+	s.Cd4 = 0
+	s.Cd4Base = 600
 	s.WCD1 = 0
 	s.WCD2 = 0
 	s.WCast = 0
@@ -37,8 +44,8 @@ func Launch(s):
 	s.WShoot = false
 	s.WOnClick = false
 
-	s.E = 0
-	s.ECD = 480
+	s.Cd5 = 0
+	s.Cd5Base = 480
 	s.ECast = 10
 	s.ELoad = 0
 	s.EArrow = 0
@@ -48,8 +55,8 @@ func Launch(s):
 	s.EShoot = false
 	s.EOnClick = false
 
-	s.R = 0
-	s.RCD = 420
+	s.Cd6 = 0
+	s.Cd6Base = 420
 	s.RCast = 5
 	s.RPrecision = 100
 	s.RDamage = 125
@@ -139,7 +146,7 @@ func Movements(s):
 
 """"" ===0=== """
 
-func Mowes(s, condition):
+func Moves(s, condition):
 	s.MovementRight = false
 	s.MovementLeft = false
 	s.MovementDown = false
@@ -163,7 +170,7 @@ func Mowes(s, condition):
 		s.MovementDown = false
 		s.MovementUp = false
 		
-func Rwtate(s, condition):
+func Rotate(s, condition):
 	if condition[0]:
 		s.rotation_degrees += s.rotationSensi * s.delta 
 	if condition[1]:
@@ -173,12 +180,12 @@ func Rwtate(s, condition):
 		s.rotation = -atan2(s.Player2pos.x - s.position.x, s.Player2pos.y - s.position.y) + PI/2
 		s.RPrecision = 300
 		if s.WState == -1 or s.WState == 1:
-			s.W = s.WCD
+			s.Cd4 = s.Cd4Base
 			s.WState = 0
 
-func SpellQ(s, Condition):
+func Spell2(s, Condition):
 	if Condition:
-		if not s.QOnClick and not s.Q > 0:
+		if not s.QOnClick and not s.Cd2 > 0:
 			if s.QCast > 0:
 				s.QCast -= s.delta
 				s.QShoot = true
@@ -187,19 +194,19 @@ func SpellQ(s, Condition):
 				QSpell = s._QSpell.instance()
 				s.get_parent().add_child(QSpell)
 				QSpell.Launch(Vector2(s.position.x, s.position.y), s.rotation_degrees, s.QDamage, s.EnemyLayer)
-				QSpell.NodeAnimation.self_modulate =  Color(0.9, 0.9, 1.1)
+				QSpell.NodeAnimation.self_modulate = s.SpellColor
 				s.QOnClick = true
 				s.QShoot = false
 				s.QShootRelease = 5
-				s.Q = s.QCD
+				s.Cd2 = s.Cd2Base
 	else:
 		s.QCast = 7
 		s.QShoot = false
 		s.QOnClick = false
 
-func SpellW(s, Condition):
+func Spell4(s, Condition):
 	if Condition:
-		if not s.WOnClick and not s.W > 0:
+		if not s.WOnClick and not s.Cd4 > 0:
 			if s.WState <= 0:
 				if s.WCast > 0:
 					s.WCast -= s.delta
@@ -209,11 +216,11 @@ func SpellW(s, Condition):
 					WSpell = s._WSpell.instance()
 					s.get_parent().add_child(WSpell)
 					WSpell.Launch(Vector2(s.position.x, s.position.y), s.rotation_degrees, s.QDamage, s.EnemyLayer)
-					WSpell.modulate = Color(0.8, 0.8, 1)
+					WSpell.NodeAnimation.self_modulate = s.SpellColor
 					s.WOnClick = true
 					s.WShoot = false
 					s.WShootRelease = 5
-					s.W = s.WCD
+					s.Cd4 = s.Cd4Base
 					s.WState = -2
 			else:
 				s.Scriptedvelocity = Vector2()
@@ -228,22 +235,22 @@ func SpellW(s, Condition):
 				if s.movedition[3]:
 					s.Scriptedvelocity.y -= 10
 				s.WState = -1
-				s.W = s.WCD2
+				s.Cd4 = s.WCD2
 	else:
 		s.WCast = 2
 		s.WShoot = false
 		s.WOnClick = false
 
-func SpellE(s, Condition):
+func Spell5(s, Condition):
 	if Condition:
-		if not s.EOnClick and not s.E > 0:
+		if not s.EOnClick and not s.Cd5 > 0:
 			s.ELoad = 1
 			s.EArrow = 1
 			s.EOnClick = true
 			s.EShoot = true
 		else:
-			if not s.E > 0 and s.EArrow:
-				s.Camera.NewNotification("Bar", "E " + str(s.EArrow) + "- Dispertion", s.EMaxLoad - s.ELoad, s.EMaxLoad, "Player 1", 1)
+			if not s.Cd5 > 0 and s.EArrow:
+				s.Camera.NewNotification("Bar", "Cd5 " + str(s.EArrow) + "- Dispertion", s.EMaxLoad - s.ELoad, s.EMaxLoad, "Player 1", 1)
 				s.speedtick /= 3
 				if s.ELoad and not s.EArrow > 3:
 					if s.ELoad >= s.EMaxLoad and not s.EArrow > 2:
@@ -262,9 +269,9 @@ func SpellE(s, Condition):
 				ESpell = s._ESpell.instance()
 				s.get_parent().add_child(ESpell)
 				ESpell.Launch(Vector2(s.position.x, s.position.y), s.rotation_degrees + rand_range(s.ELoad / 2, -s.ELoad / 2), s.EDamage, s.EnemyLayer)
-				ESpell.modulate = Color(0.8, 0.8, 1)
+				ESpell.NodeAnimation.self_modulate = s.SpellColor
 				s.EArrow -= 1
-				s.E = s.ECD
+				s.Cd5 = s.Cd5Base
 				s.ECast = 10
 				s.EShootRelease = 5
 				if not s.EArrow:
@@ -272,9 +279,9 @@ func SpellE(s, Condition):
 					s.EShoot = false
 		s.EOnClick = false
 	
-func SpellR(s, Condition):
+func Spell6(s, Condition):
 	if Condition:
-		if not s.ROnClick and s.R <= 0:
+		if not s.ROnClick and s.Cd6 <= 0:
 			if s.RCast > 0:
 				s.RCast -= s.delta
 				s.RShoot = true
@@ -286,23 +293,23 @@ func SpellR(s, Condition):
 				s.ROnClick = true
 				s.RShoot = false
 				s.RShootRelease = 5
-				s.R = s.RCD
+				s.Cd6 = s.Cd6Base
 	else:
 		s.RCast = 2
 		s.RShoot = false
 		s.ROnClick = false
 
 func Cooldown(s):
-	if s.Q > 0:
-		s.Q -= s.delta
-	if s.W > 0:
-		s.W -= s.delta
-	if s.E > 0:
-		s.E -= s.delta
+	if s.Cd2 > 0:
+		s.Cd2 -= s.delta
+	if s.Cd4 > 0:
+		s.Cd4 -= s.delta
+	if s.Cd5 > 0:
+		s.Cd5 -= s.delta
 	if s.ECast > 0:
 		s.ECast -= s.delta
-	if s.R > 0:
-		s.R -= s.delta
+	if s.Cd6 > 0:
+		s.Cd6 -= s.delta
 	if s.RPrecision >= 0:
 		s.RPrecision -= s.delta
 	elif s.RPrecision < 0:

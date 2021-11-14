@@ -1,8 +1,9 @@
 extends KinematicBody2D
 onready var Camera = get_node("../../../World/Cameras/Camera")
 onready var Player2 = get_node("../../Player 2/Player")
-onready var P = preload("res://Scripts/Personnages/Archer/Script.gd").new()
-onready var Frame = $Frame
+#onready var P = preload("res://Scripts/Personnages/Archer/Script.gd").new()
+onready var P = preload("res://Scripts/Personnages/Aventurier/Script.gd").new()
+#onready var Frame = $Frame
 
 var bop
 var condition
@@ -12,15 +13,17 @@ var CC = []
 var animCC = ""
 var rotationSensi = (64)/60
 var EnemyLayer = 0b11100000000000000000
+var SpellColor = Color(1.1, 0.9, 0.9)
 var delta = 1
 
 """MALEDICTION"""
 
-"""commun et relatif archer"""
-var _QSpell = load("res://Scenes/Personnages/Archer/Q.tscn")
-var _WSpell = load("res://Scenes/Personnages/Archer/W.tscn")
-var _ESpell = load("res://Scenes/Personnages/Archer/E.tscn")
-var _RSpell = load("res://Scenes/Personnages/Archer/R.tscn")
+"""commun et |relatif archer|"""
+var Frame
+var _QSpell
+var _WSpell
+var _ESpell 
+var _RSpell 
 var Qspell
 var Wspell
 var Espell
@@ -30,16 +33,16 @@ var Hp = 1
 var MaxHp = 1
 var Death = 1
 
-var Q = 1
-var QCD = 1
+var Cd2 = 1
+var Cd2Base = 1
 var QCast = 1
 var QDamage 
 var QShootRelease 
 var QShoot
 var QOnClick 
 
-var W = 1
-var WCD = 1
+var Cd4 = 1
+var Cd4Base = 1
 var WCD1= 1
 var WCD2= 1
 var WCast 
@@ -50,8 +53,8 @@ var WDash
 var WShoot 
 var WOnClick
 
-var E = 1
-var ECD = 1
+var Cd5 = 1
+var Cd5Base = 1
 var ECast 
 var ELoad 
 var EArrow 
@@ -61,8 +64,8 @@ var EShootRelease
 var EShoot
 var EOnClick
 
-var R = 1
-var RCD = 1
+var Cd6 = 1
+var Cd6Base = 1
 var RCast 
 var RPrecision 
 var RDamage 
@@ -90,6 +93,18 @@ var ScriptedAction
 var DashSpeed
 
 """relatif aventurier"""
+
+var _Spell2
+var _Spell4
+var _Spell5
+var _Spell6
+var TwoOnClick
+var Anim2
+
+var FourOnClick
+
+var FiveOnClick
+
 """ ===0=== """
 
 func Movements():
@@ -100,22 +115,22 @@ func Movements():
 
 func get_input():
 	movedition = [Input.is_action_pressed("Move Right"), Input.is_action_pressed("Move Left"), Input.is_action_pressed("Move Down"), Input.is_action_pressed("Move Up")]
-	P.Mowes(self, movedition)
+	P.Moves(self, movedition)
 	
 	condition = [Input.is_action_pressed("Rotation +"), Input.is_action_pressed("Rotation -"), Input.is_action_just_pressed("Lock")]
-	P.Rwtate(self, condition)
+	P.Rotate(self, condition)
 
 	condition = Input.is_action_pressed("Spell0")
-	P.SpellQ(self, condition)
+	P.Spell2(self, condition)
 		
 	condition = Input.is_action_pressed("Spell1")
-	P.SpellW(self, condition)
+	P.Spell4(self, condition)
 		
 	condition = Input.is_action_pressed("Spell2")
-	P.SpellE(self, condition)
+	P.Spell5(self, condition)
 	
 	condition = Input.is_action_pressed("Spell3")
-	P.SpellR(self, condition)
+	P.Spell6(self, condition)
 
 func Modulate(Mod, Reset):
 	modulate = Color(Mod)
@@ -131,6 +146,8 @@ func CrowdControl(AWAJANIMAL):
 		Modulate(Color(1.5, 1, 1.5), 1)
 		velocity = move_and_collide(Scriptedvelocity.normalized() * delta * DashSpeed)
 		velocity = Vector2()
+	elif AWAJANIMAL[0] == "SelfStun":
+		animCC = "SelfStun"
 
 """ ===0=== """
 

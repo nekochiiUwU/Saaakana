@@ -49,7 +49,7 @@ func EndAnimWaiter():
 			item.Hp -= Damage
 			#item.velocity += Vector2(Damage / 10, 0).rotated(rotation)
 			item.Modulate(Color(1, 0.5, 0.5), 3)
-			get_node("../Player").W = get_node("../Player").WCD1
+			get_node("../Player").Cd4 = get_node("../Player").WCD1
 			get_node("../Player").WState = 1
 			get_node("../Player").Modulate(Color(5, 5, 5), 3)
 			

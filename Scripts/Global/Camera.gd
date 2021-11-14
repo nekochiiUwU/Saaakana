@@ -74,26 +74,26 @@ func _process(delta):
 	P1Hp.set_size(Vector2((Player1.Hp * 500) / Player1.MaxHp, 1))
 	P1Hp.get_child(0).text = "Hp: " + str(Player1.Hp) + "/" + str(Player1.MaxHp)
 	
-	P1Q.set_size(Vector2(((((Player1.QCD - Player1.Q) / Player1.QCD) + (P1Q.get_size()[0]) / 136) / 2) * 136, 1))
-	if Player1.Q <= 0:
+	P1Q.set_size(Vector2(((((Player1.Cd2Base - Player1.Cd2) / Player1.Cd2Base) + (P1Q.get_size()[0]) / 136) / 2) * 136, 1))
+	if Player1.Cd2 <= 0:
 		P1Q.get_parent().self_modulate = Color(0.8, 0.8, 0.8, 0.7)
 	else:
 		P1Q.get_parent().self_modulate = Color(0.2, 0.2, 0.2, 0.2)
 	
-	P1W.set_size(Vector2(((((Player1.WCD - Player1.W) / Player1.WCD) + (P1W.get_size()[0]) / 136) / 2) * 136, 1))
-	if Player1.W <= 0:
+	P1W.set_size(Vector2(((((Player1.Cd4Base - Player1.Cd4) / Player1.Cd4Base) + (P1W.get_size()[0]) / 136) / 2) * 136, 1))
+	if Player1.Cd4 <= 0:
 		P1W.get_parent().self_modulate = Color(0.8, 0.8, 0.8, 0.7)
 	else:
 		P1W.get_parent().self_modulate = Color(0.2, 0.2, 0.2, 0.2)
 	
-	P1E.set_size(Vector2(((((Player1.ECD - Player1.E) / Player1.ECD) + (P1E.get_size()[0]) / 136) / 2) * 136, 1))
-	if Player1.E <= 0:
+	P1E.set_size(Vector2(((((Player1.Cd5Base - Player1.Cd5) / Player1.Cd5Base) + (P1E.get_size()[0]) / 136) / 2) * 136, 1))
+	if Player1.Cd5 <= 0:
 		P1E.get_parent().self_modulate = Color(0.8, 0.8, 0.8, 0.7)
 	else:
 		P1E.get_parent().self_modulate = Color(0.2, 0.2, 0.2, 0.2)
 	
-	P1R.set_size(Vector2(((((Player1.RCD - Player1.R) / Player1.RCD) + (P1R.get_size()[0]) / 136) / 2) * 136, 1))
-	if Player1.R <= 0:
+	P1R.set_size(Vector2(((((Player1.Cd6Base - Player1.Cd6) / Player1.Cd6Base) + (P1R.get_size()[0]) / 136) / 2) * 136, 1))
+	if Player1.Cd6 <= 0:
 		P1R.get_parent().self_modulate = Color(0.8, 0.8, 0.8, 0.7)
 	else:
 		P1R.get_parent().self_modulate = Color(0.2, 0.2, 0.2, 0.2)
@@ -101,26 +101,26 @@ func _process(delta):
 	P2Hp.set_size(Vector2((Player2.Hp * 500) / Player2.MaxHp, 1))
 	P2Hp.get_child(0).text = "Hp: " + str(Player2.Hp) + "/" + str(Player2.MaxHp)
 	
-	P2Q.set_size(Vector2(((((Player2.QCD - Player2.Q) / Player2.QCD) + (P2Q.get_size()[0]) / 136) / 2) * 136, 1))
-	if Player2.Q <= 0:
+	P2Q.set_size(Vector2(((((Player2.Cd2Base - Player2.Cd2) / Player2.Cd2Base) + (P2Q.get_size()[0]) / 136) / 2) * 136, 1))
+	if Player2.Cd2 <= 0:
 		P2Q.get_parent().self_modulate = Color(0.8, 0.8, 0.8, 0.7)
 	else:
 		P2Q.get_parent().self_modulate = Color(0.2, 0.2, 0.2, 0.2)
 	
-	P2W.set_size(Vector2(((((Player2.WCD - Player2.W) / Player2.WCD) + (P2W.get_size()[0]) / 136) / 2) * 136, 1))
-	if Player2.W <= 0:
+	P2W.set_size(Vector2(((((Player2.Cd4Base - Player2.Cd4) / Player2.Cd4Base) + (P2W.get_size()[0]) / 136) / 2) * 136, 1))
+	if Player2.Cd4 <= 0:
 		P2W.get_parent().self_modulate = Color(0.8, 0.8, 0.8, 0.7)
 	else:
 		P2W.get_parent().self_modulate = Color(0.2, 0.2, 0.2, 0.2)
 	
-	P2E.set_size(Vector2(((((Player2.ECD - Player2.E) / Player2.ECD) + (P2E.get_size()[0]) / 136) / 2) * 136, 1))
-	if Player2.E <= 0:
+	P2E.set_size(Vector2(((((Player2.Cd5Base - Player2.Cd5) / Player2.Cd5Base) + (P2E.get_size()[0]) / 136) / 2) * 136, 1))
+	if Player2.Cd5 <= 0:
 		P2E.get_parent().self_modulate = Color(0.8, 0.8, 0.8, 0.7)
 	else:
 		P2E.get_parent().self_modulate = Color(0.2, 0.2, 0.2, 0.2)
 	
-	P2R.set_size(Vector2(((((Player2.RCD - Player2.R) / Player2.RCD) + (P2R.get_size()[0]) / 136) / 2) * 136, 1))
-	if Player2.R <= 0:
+	P2R.set_size(Vector2(((((Player2.Cd6Base - Player2.Cd6) / Player2.Cd6Base) + (P2R.get_size()[0]) / 136) / 2) * 136, 1))
+	if Player2.Cd6 <= 0:
 		P2R.get_parent().self_modulate = Color(0.8, 0.8, 0.8, 0.7)
 	else:
 		P2R.get_parent().self_modulate = Color(0.2, 0.2, 0.2, 0.2)

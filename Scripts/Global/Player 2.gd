@@ -2,7 +2,8 @@ extends KinematicBody2D
 onready var Camera = get_node("../../../World/Cameras/Camera")
 onready var Player2 = get_node("../../Player 1/Player")
 onready var P = preload("res://Scripts/Personnages/Archer/Script.gd").new()
-onready var Frame = $Frame
+#onready var P = preload("res://Scripts/Personnages/Aventurier/Script.gd").new()
+#onready var Frame = $Frame
 
 var bop
 var condition
@@ -12,14 +13,17 @@ var CC = []
 var animCC = ""
 var rotationSensi = (64)/60
 var EnemyLayer = 0b11010000000000000000
+var SpellColor = Color(0.9, 0.9, 1.1)
 var delta = 1
 
 """MALEDICTION"""
 
-var _QSpell = load("res://Scenes/Personnages/Archer/Q.tscn")
-var _WSpell = load("res://Scenes/Personnages/Archer/W.tscn")
-var _ESpell = load("res://Scenes/Personnages/Archer/E.tscn")
-var _RSpell = load("res://Scenes/Personnages/Archer/R.tscn")
+"""commun et relatif archer"""
+var Frame
+var _QSpell
+var _WSpell
+var _ESpell
+var _RSpell
 var Qspell
 var Wspell
 var Espell
@@ -29,16 +33,16 @@ var Hp = 1
 var MaxHp = 1
 var Death = 1
 
-var Q = 1
-var QCD = 1
+var Cd2 = 1
+var Cd2Base = 1
 var QCast = 1
 var QDamage 
 var QShootRelease 
 var QShoot
 var QOnClick 
 
-var W = 1
-var WCD = 1
+var Cd4 = 1
+var Cd4Base = 1
 var WCD1= 1
 var WCD2= 1
 var WCast 
@@ -49,8 +53,8 @@ var WDash
 var WShoot 
 var WOnClick
 
-var E = 1
-var ECD = 1
+var Cd5 = 1
+var Cd5Base = 1
 var ECast 
 var ELoad 
 var EArrow 
@@ -60,8 +64,8 @@ var EShootRelease
 var EShoot
 var EOnClick
 
-var R = 1
-var RCD = 1
+var Cd6 = 1
+var Cd6Base = 1
 var RCast 
 var RPrecision 
 var RDamage 
@@ -88,6 +92,10 @@ var MovementUp
 var ScriptedAction
 var DashSpeed
 
+"""relatif aventurier"""
+
+
+
 """ ===0=== """
 
 func Movements():
@@ -98,22 +106,22 @@ func Movements():
 
 func get_input():
 	movedition = [Input.is_action_pressed("Move Right 2"), Input.is_action_pressed("Move Left 2"), Input.is_action_pressed("Move Down 2"), Input.is_action_pressed("Move Up 2")]
-	P.Mowes(self, movedition)
+	P.Moves(self, movedition)
 	
 	condition = [Input.is_action_pressed("Rotation + 2"), Input.is_action_pressed("Rotation - 2"), Input.is_action_just_pressed("Lock 2")]
-	P.Rwtate(self, condition)
+	P.Rotate(self, condition)
 
 	condition = Input.is_action_pressed("Spell0 2")
-	P.SpellQ(self, condition)
+	P.Spell2(self, condition)
 		
 	condition = Input.is_action_pressed("Spell1 2")
-	P.SpellW(self, condition)
+	P.Spell4(self, condition)
 		
 	condition = Input.is_action_pressed("Spell2 2")
-	P.SpellE(self, condition)
+	P.Spell5(self, condition)
 	
 	condition = Input.is_action_pressed("Spell3 2")
-	P.SpellR(self, condition)
+	P.Spell6(self, condition)
 
 func Modulate(Mod, Reset):
 	modulate = Color(Mod)
