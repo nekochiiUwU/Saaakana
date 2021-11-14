@@ -9,6 +9,7 @@ var speed = 10
 var Damage = 300
 var Bounce = 0
 var collision = false
+var is_projectile = true
 """"""
 
 # Fonction d'Init

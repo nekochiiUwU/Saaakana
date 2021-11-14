@@ -1,8 +1,8 @@
 extends KinematicBody2D
 onready var Camera = get_node("../../../World/Cameras/Camera")
 onready var Player2 = get_node("../../Player 2/Player")
-#onready var P = preload("res://Scripts/Personnages/Archer/Script.gd").new()
-onready var P = preload("res://Scripts/Personnages/Aventurier/Script.gd").new()
+onready var P = preload("res://Scripts/Personnages/Archer/Script.gd").new()
+#onready var P = preload("res://Scripts/Personnages/Aventurier/Script.gd").new()
 #onready var Frame = $Frame
 
 var bop
@@ -13,6 +13,7 @@ var CC = []
 var animCC = ""
 var rotationSensi = (64)/60
 var EnemyLayer = 0b11100000000000000000
+var is_projectile = false
 var SpellColor = Color(1.1, 0.9, 0.9)
 var delta = 1
 
@@ -105,6 +106,8 @@ var FourOnClick
 
 var FiveOnClick
 
+var SixOnClick
+var Anim6
 """ ===0=== """
 
 func Movements():

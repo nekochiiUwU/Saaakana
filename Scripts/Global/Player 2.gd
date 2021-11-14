@@ -1,8 +1,8 @@
 extends KinematicBody2D
 onready var Camera = get_node("../../../World/Cameras/Camera")
 onready var Player2 = get_node("../../Player 1/Player")
-onready var P = preload("res://Scripts/Personnages/Archer/Script.gd").new()
-#onready var P = preload("res://Scripts/Personnages/Aventurier/Script.gd").new()
+#onready var P = preload("res://Scripts/Personnages/Archer/Script.gd").new()
+onready var P = preload("res://Scripts/Personnages/Aventurier/Script.gd").new()
 #onready var Frame = $Frame
 
 var bop
@@ -13,6 +13,7 @@ var CC = []
 var animCC = ""
 var rotationSensi = (64)/60
 var EnemyLayer = 0b11010000000000000000
+var is_projectile = false
 var SpellColor = Color(0.9, 0.9, 1.1)
 var delta = 1
 
@@ -93,7 +94,19 @@ var ScriptedAction
 var DashSpeed
 
 """relatif aventurier"""
+var _Spell2
+var _Spell4
+var _Spell5
+var _Spell6
+var TwoOnClick
+var Anim2
 
+var FourOnClick
+
+var FiveOnClick
+
+var SixOnClick
+var Anim6
 
 
 """ ===0=== """
@@ -137,6 +150,8 @@ func CrowdControl(AWAJANIMAL):
 		Modulate(Color(1.5, 1, 1.5), 1)
 		velocity = move_and_collide(Scriptedvelocity.normalized() * delta * DashSpeed)
 		velocity = Vector2()
+	elif AWAJANIMAL[0] == "SelfStun":
+		animCC = "SelfStun"
 
 """ ===0=== """
 

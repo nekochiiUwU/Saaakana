@@ -15,19 +15,21 @@ func Launch(s):
 		s.Frame.material = s.Frame.material.duplicate()
 		s.Frame.material.set_shader_param('Color', Color(1.0, 0.0, 0.0, 1.0) )
 		
-	s._Spell2 = load("res://Scenes/Personnages/Aventurier/Q.tscn")
-	s._Spell4 = load("res://Scenes/Personnages/Archer/W.tscn")
-	s._Spell5 = load("res://Scenes/Personnages/Archer/E.tscn")
-	s._Spell6 = load("res://Scenes/Personnages/Archer/R.tscn")
+	s._Spell2 = load("res://Scenes/Personnages/Aventurier/2.tscn")
+	s._Spell4 = load("res://Scenes/Personnages/Aventurier/4.tscn")
+	s._Spell5 = load("res://Scenes/Personnages/Aventurier/5.tscn")
+	s._Spell6 = load("res://Scenes/Personnages/Aventurier/6.tscn")
 
 	s.Hp = 1000
 	s.MaxHp = 1000
 	s.Death = false
+	s.speed = 3.5
+	s.speedtick = s.speed
 
 	s.Cd2 = 0
 	s.Cd2Base = 12
 	s.QCast = 7
-	s.QDamage = 30
+	s.QDamage = 35
 	s.QShootRelease = 0
 	s.Anim2 = false
 	s.TwoOnClick = false
@@ -44,7 +46,7 @@ func Launch(s):
 	s.WOnClick = false
 
 	s.Cd5 = 0
-	s.Cd5Base = 50
+	s.Cd5Base = 360
 	s.FiveOnClick = false
 	s.ECast = 10
 	s.ELoad = 0
@@ -56,16 +58,13 @@ func Launch(s):
 	s.EOnClick = false
 
 	s.Cd6 = 0
-	s.Cd6Base = 420
+	s.Cd6Base = 240
 	s.RCast = 5
 	s.RPrecision = 100
-	s.RDamage = 125
+	s.RDamage = 70
 	s.RShootRelease = 0
 	s.RShoot = false
 	s.ROnClick = false
-
-	s.speed = 3
-	s.speedtick = s.speed
 
 	s.ModulateReset = -1
 
@@ -90,17 +89,17 @@ func SelectAnim(s):
 	if s.Death:
 		s.Frame.animation = "Ded"
 		
+	elif s.animCC == "SelfStun":
+		s.Frame.animation = "Five"
+		
 	elif s.Anim2:
 		s.Frame.animation = "Two"
 		
-	#elif s.Six:
-	#	s.Frame.animation = "Six"
+	elif s.Anim6:
+		s.Frame.animation = "Six"
 		
 	elif s.animCC == "dash":
 		s.Frame.animation = "Four"
-	
-	elif s.animCC == "SelfStun":
-		s.Frame.animation = "Five"
 		
 	elif s.MovementDown and not s.MovementRight and not s.MovementLeft:
 		s.Frame.animation = "Walk Right"
@@ -215,24 +214,29 @@ func Spell5(s, Condition):
 	if Condition:
 		if not s.FiveOnClick and not s.Cd5 > 0: 
 			s.CC.append(["SelfStun",18.0])
+			Spell5 = s._Spell5.instance()
+			s.add_child(Spell5)
+			Spell5.Launch(s.rotation_degrees, s.QDamage, s.EnemyLayer, s.collision_layer)
 			s.Cd5 = s.Cd5Base
 	else:
 		s.FiveOnClick = false
 	
 func Spell6(s, Condition):
+	if s.Cd6 < s.Cd6Base-10:
+		s.Anim6 = false
+	else:
+		s.speedtick /= 2
 	if Condition:
 		if not s.SixOnClick and not s.Cd6 > 0:
-			s.Anim2 = true
-			Spell2 = s._Spell2.instance()
-			s.add_child(Spell2)
-			Spell2.Launch(s.rotation_degrees, s.QDamage, s.EnemyLayer)
-			Spell2.self_modulate = s.SpellColor
+			s.Anim6 = true
+			Spell6 = s._Spell6.instance()
+			s.get_parent().add_child(Spell6)
+			Spell6.Launch(Vector2(s.position.x, s.position.y), s.rotation_degrees, s.QDamage, s.EnemyLayer)
+			Spell6.self_modulate = s.SpellColor
 			s.TwoOnClick = true
-			s.Cd2 = s.Cd2Base
+			s.Cd6 = s.Cd6Base
 	else:
 		s.SixOnClick = false
-		if s.Cd6 < 0:
-			s.Anim2 = false
 
 func Cooldown(s):
 	if s.Cd2 > 0:

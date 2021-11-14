@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Personnages/Aventurier/5.gd" type="Script" id=1]
+[ext_resource path="res://Frames/Mouse.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 11.1116
+height = 3.28095
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="Animations" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 0.302069, -1.12208e-06 )
+scale = Vector2( 1.88929, 2.35318 )
+frames = SubResource( 2 )
+offset = Vector2( -0.467518, -0.474519 )
+
+[connection signal="area_entered" from="Area" to="." method="_on_Node2D_area_entered"]
