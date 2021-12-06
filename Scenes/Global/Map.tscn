@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Frames/Background/Background.png" type="Texture" id=1]
+[ext_resource path="res://Frames/Background/Background/sol.png" type="Texture" id=1]
+[ext_resource path="res://Frames/Background/Background/eau.png" type="Texture" id=2]
+[ext_resource path="res://Frames/Background/Background/barrieres derriere.png" type="Texture" id=3]
+[ext_resource path="res://Frames/Background/Background/barrieres devant.png" type="Texture" id=4]
 
 [sub_resource type="AudioStreamRandomPitch" id=1]
 
@@ -10,29 +13,24 @@ extents = Vector2( 344.5, 33.5 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 624.5, 33.5 )
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 600, 33.5 )
-
 [node name="Map" type="Node2D"]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="Background" type="Sprite" parent="StaticBody2D"]
-position = Vector2( 8, 0 )
-texture = ExtResource( 1 )
+collision_layer = 33
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 575.432, 19.284 )
+position = Vector2( 567.498, 18.2862 )
 rotation = -1.5708
 shape = SubResource( 2 )
 one_way_collision = true
 one_way_collision_margin = 15.5
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -560, -15.5 )
+position = Vector2( -567.499, -16.4443 )
 rotation = 1.5708
 shape = SubResource( 2 )
 one_way_collision = true
@@ -46,38 +44,36 @@ one_way_collision = true
 one_way_collision_margin = 15.5
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( -16.5, 233.5 )
+position = Vector2( -16.2315, 265.501 )
 shape = SubResource( 3 )
 one_way_collision = true
 one_way_collision_margin = 15.5
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-collision_layer = 32
-collision_mask = 0
+[node name="sol" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+z_index = -10
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2( 575.5, 19 )
-rotation = -1.5708
-shape = SubResource( 2 )
-one_way_collision = true
-one_way_collision_margin = 15.5
+[node name="eau" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+z_index = -11
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2( -560, -15.5 )
-rotation = 1.5708
-shape = SubResource( 2 )
-one_way_collision = true
-one_way_collision_margin = 15.5
+[node name="barrieres devant" type="Sprite" parent="."]
+z_index = 10
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2( 17.724, -305.236 )
-rotation = 3.14159
-shape = SubResource( 3 )
-one_way_collision = true
-one_way_collision_margin = 15.5
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2( -16.5, 233.5 )
-shape = SubResource( 4 )
-one_way_collision = true
-one_way_collision_margin = 128.0
+[node name="barrieres derriere" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}

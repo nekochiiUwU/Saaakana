@@ -1,9 +1,8 @@
 extends KinematicBody2D
 onready var Camera = get_node("../../../World/Cameras/Camera")
 onready var Player2 = get_node("../../Player 2/Player")
-onready var P = preload("res://Scripts/Personnages/Archer/Script.gd").new()
-#onready var P = preload("res://Scripts/Personnages/Aventurier/Script.gd").new()
-#onready var Frame = $Frame
+onready var hitbox = $AreaCheck
+var P
 
 var bop
 var condition
@@ -92,22 +91,27 @@ var MovementDown
 var MovementUp
 var ScriptedAction
 var DashSpeed
+var oldColl
 
 """relatif aventurier"""
-
 var _Spell2
 var _Spell4
 var _Spell5
 var _Spell6
+
 var TwoOnClick
 var Anim2
 
 var FourOnClick
+var Anim4
 
 var FiveOnClick
+var damage5
+var Anim5
 
 var SixOnClick
 var Anim6
+
 """ ===0=== """
 
 func Movements():
@@ -156,8 +160,14 @@ func CrowdControl(AWAJANIMAL):
 
 func _ready():
 	print()
-	#if load("res://Scripts/Global/ChampSelect.gd").player1 == Archer
-	#P = load("res://Scripts/Personnages/Archer/Script.gd")
+	if get_viewport().get_child(0).Champs[0] == "Archer":
+		P = load("res://Scripts/Personnages/Archer/Script.gd").new()
+	elif get_viewport().get_child(0).Champs[0] == "Aventurier":
+		P = load("res://Scripts/Personnages/Aventurier/Script.gd").new()
+	elif get_viewport().get_child(0).Champs[0] == "Nya":
+		P = load("res://Scripts/Personnages/Nya/Script.gd").new()
+	else:
+		P = load("res://Scripts/Personnages/Nya/Script.gd").new()
 	randomize()
 	set_position(Vector2(rand_range(-400, -100),rand_range(-200, 180)))
 	P.Launch(self)

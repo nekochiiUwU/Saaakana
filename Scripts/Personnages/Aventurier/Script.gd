@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-var Spell2
-var Spell4
-var Spell5
-var Spell6
+var Spell2_
+var Spell4_
+var Spell5_
+var Spell6_
 
 """ ===0=== """
 
@@ -16,20 +16,20 @@ func Launch(s):
 		s.Frame.material.set_shader_param('Color', Color(1.0, 0.0, 0.0, 1.0) )
 		
 	s._Spell2 = load("res://Scenes/Personnages/Aventurier/2.tscn")
-	s._Spell4 = load("res://Scenes/Personnages/Aventurier/4.tscn")
+	#s._Spell4 = load("res://Scenes/Personnages/Aventurier/4.tscn")
 	s._Spell5 = load("res://Scenes/Personnages/Aventurier/5.tscn")
 	s._Spell6 = load("res://Scenes/Personnages/Aventurier/6.tscn")
 
 	s.Hp = 1000
 	s.MaxHp = 1000
 	s.Death = false
-	s.speed = 3.5
+	s.speed = 3.75
 	s.speedtick = s.speed
 
 	s.Cd2 = 0
 	s.Cd2Base = 12
 	s.QCast = 7
-	s.QDamage = 35
+	s.QDamage = 40
 	s.QShootRelease = 0
 	s.Anim2 = false
 	s.TwoOnClick = false
@@ -46,7 +46,7 @@ func Launch(s):
 	s.WOnClick = false
 
 	s.Cd5 = 0
-	s.Cd5Base = 360
+	s.Cd5Base = 300
 	s.FiveOnClick = false
 	s.ECast = 10
 	s.ELoad = 0
@@ -61,7 +61,7 @@ func Launch(s):
 	s.Cd6Base = 240
 	s.RCast = 5
 	s.RPrecision = 100
-	s.RDamage = 70
+	s.RDamage = 100
 	s.RShootRelease = 0
 	s.RShoot = false
 	s.ROnClick = false
@@ -181,10 +181,10 @@ func Spell2(s, Condition):
 	if Condition:
 		if not s.TwoOnClick and not s.Cd2 > 0:
 			s.Anim2 = true
-			Spell2 = s._Spell2.instance()
-			s.add_child(Spell2)
-			Spell2.Launch(s.rotation_degrees, s.QDamage, s.EnemyLayer)
-			Spell2.self_modulate = s.SpellColor
+			Spell2_ = s._Spell2.instance()
+			s.add_child(Spell2_)
+			Spell2_.Launch(s.rotation_degrees, s.QDamage, s.EnemyLayer)
+			Spell2_.self_modulate = s.SpellColor
 			s.TwoOnClick = true
 			s.Cd2 = s.Cd2Base
 	else:
@@ -214,9 +214,9 @@ func Spell5(s, Condition):
 	if Condition:
 		if not s.FiveOnClick and not s.Cd5 > 0: 
 			s.CC.append(["SelfStun",18.0])
-			Spell5 = s._Spell5.instance()
-			s.add_child(Spell5)
-			Spell5.Launch(s.rotation_degrees, s.QDamage, s.EnemyLayer, s.collision_layer)
+			Spell5_ = s._Spell5.instance()
+			s.add_child(Spell5_)
+			Spell5_.Launch(s.rotation_degrees, s.QDamage, s.EnemyLayer, s.collision_layer)
 			s.Cd5 = s.Cd5Base
 	else:
 		s.FiveOnClick = false
@@ -229,10 +229,10 @@ func Spell6(s, Condition):
 	if Condition:
 		if not s.SixOnClick and not s.Cd6 > 0:
 			s.Anim6 = true
-			Spell6 = s._Spell6.instance()
-			s.get_parent().add_child(Spell6)
-			Spell6.Launch(Vector2(s.position.x, s.position.y), s.rotation_degrees, s.QDamage, s.EnemyLayer)
-			Spell6.self_modulate = s.SpellColor
+			Spell6_ = s._Spell6.instance()
+			s.get_parent().add_child(Spell6_)
+			Spell6_.Launch(Vector2(s.position.x, s.position.y), s.rotation_degrees, s.QDamage, s.EnemyLayer)
+			Spell6_.self_modulate = s.SpellColor
 			s.TwoOnClick = true
 			s.Cd6 = s.Cd6Base
 	else:

@@ -9,6 +9,7 @@ onready var Pause = preload("../../Scenes/Global/Pause.tscn").instance()
 onready var Settings = preload("../../Scenes/Global/Settings.tscn").instance()
 
 var Launch = true
+var Champs = ["",""]
 
 var Scenes = [
 	["MainMenu", false, false],

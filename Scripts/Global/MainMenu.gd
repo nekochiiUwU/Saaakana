@@ -17,3 +17,7 @@ func _ready():
 
 func _process(_delta):
 	get_imput()
+
+
+func _on_Button_pressed():
+	SceneChange('ChampSelect')

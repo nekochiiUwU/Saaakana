@@ -18,7 +18,7 @@
 [ext_resource path="res://Frames/Personnages/Aventurier/R/Aventurier R2.png" type="Texture" id=16]
 [ext_resource path="res://Frames/Personnages/Aventurier/R/Aventurier R10.png" type="Texture" id=17]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
 
 uniform float Range: hint_range(0.0, 30.0);
@@ -42,28 +42,13 @@ void fragment(){
 	COLOR = vec4(CalculatedColor.rgb, clamp(abs(alpha) + SpriteColor.a, 0.0, 1.0));
 }"
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
 shader_param/Range = 0.2
 shader_param/Color = Color( 0, 0, 1, 1 )
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "Two",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "Four",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "Ded",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 10 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 12 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "Five",
@@ -74,20 +59,35 @@ animations = [ {
 "name": "Six",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Stand",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Ded",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Walk Right",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "Stand",
+"name": "Two",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "Four",
 "speed": 5.0
 } ]
 
 [node name="Frame" type="AnimatedSprite"]
-material = SubResource( 2 )
+material = SubResource( 3 )
 z_index = 100
-frames = SubResource( 3 )
+frames = SubResource( 4 )
 animation = "Six"
 playing = true

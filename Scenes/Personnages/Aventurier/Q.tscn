@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Frames/Personnages/Aventurier/bras Q/bras Q6.png" type="Texture" id=2]
+[ext_resource path="res://Frames/Personnages/Aventurier/bras Q/bras Q1.png" type="Texture" id=3]
+[ext_resource path="res://Frames/Personnages/Aventurier/bras Q/bras Q2.png" type="Texture" id=4]
+[ext_resource path="res://Frames/Personnages/Aventurier/bras Q/bras Q5.png" type="Texture" id=5]
+[ext_resource path="res://Frames/Personnages/Aventurier/bras Q/bras Q3.png" type="Texture" id=6]
+[ext_resource path="res://Frames/Personnages/Aventurier/bras Q/bras Q8.png" type="Texture" id=7]
+[ext_resource path="res://Frames/Personnages/Aventurier/bras Q/bras Q7.png" type="Texture" id=8]
+[ext_resource path="res://Frames/Personnages/Aventurier/bras Q/bras Q4.png" type="Texture" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Q",
+"speed": 30.0
+} ]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node2D
+
+\"\"\"\"\"\"
+onready var NodeAnimation = $Animations
+onready var Hitbox = $Area
+var launcher = []
+var velocity = Vector2(1, 0)
+var speed = 8
+var Damage = 100
+var collision = false
+var OverlappedBodies = []
+var orirot 
+var rot
+\"\"\"\"\"\"
+
+# Fonction d'Init
+func Launch(LauncherDirection, _Damage, CollisionLayer):
+	visible = false
+	rotation_degrees = LauncherDirection
+	Damage = _Damage
+	Hitbox.collision_mask = CollisionLayer
+	Hitbox.set_collision_layer_bit(20, false)
+	velocity = Vector2(1, 0).rotated(rotation)
+	if -90 < rotation_degrees and rotation_degrees < 90:
+		rot = 10
+		position += Vector2(7, -11)#.rotated(rotation))
+		rotation_degrees = LauncherDirection-90
+		orirot = LauncherDirection-90
+	else:
+		rot = -10
+		position += Vector2(7, 11)#.rotated(rotation)
+		rotation_degrees = LauncherDirection+90
+		orirot = LauncherDirection+90
+	visible = true
+
+func _process(_delta):
+	rotation_degrees += rot
+	if rotation_degrees >  orirot + 120:
+		queue_free()
+		
+# Joueur touché
+func _on_Area_body_entered(body):
+	if not body in OverlappedBodies:
+		OverlappedBodies.append(body) 
+		body.Hp -= Damage
+	
+"
+
+[node name="Node2D" type="AnimatedSprite"]
+frames = SubResource( 1 )
+animation = "Q"
+frame = 1
+playing = true
+offset = Vector2( 12.75, -3.375 )
+script = SubResource( 2 )
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area"]
+position = Vector2( 12.8772, -3.48819 )
+polygon = PoolVector2Array( -2.0036, 10.8869, -2.11509, 10.0321, -2.8955, 9.99496, -2.96983, 5.98139, -1.00021, 6.01855, 0.00318718, 6.94762, 13.0101, -6.02217, 14.9426, -6.05933, 16.0203, -5.05594, 16.0946, -2.08292, 15.0169, 0.0353546, 4.01676, 10.9984, 4.98299, 11.9646, 5.09448, 14.0085, 1.04375, 14.0085, 0.00318718, 12.9308 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

@@ -38,13 +38,22 @@ __meta__ = {
 
 [node name="Player" type="KinematicBody2D" parent="Entities/Player 1"]
 position = Vector2( -100, 0 )
-z_index = 100
+z_index = 1
 collision_layer = 66560
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
+
+[node name="AreaCheck" type="Area2D" parent="Entities/Player 1/Player"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Player" type="CollisionShape2D" parent="Entities/Player 1/Player/AreaCheck"]
+rotation = 3.14159
+z_index = 4096
+shape = SubResource( 1 )
 
 [node name="Player" type="CollisionShape2D" parent="Entities/Player 1/Player"]
 rotation = 3.14159
@@ -61,13 +70,22 @@ range_item_cull_mask = 2
 [node name="Player" type="KinematicBody2D" parent="Entities/Player 2"]
 position = Vector2( 100, 0 )
 rotation = 3.14159
-z_index = 100
+z_index = 1
 collision_layer = 133120
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
+
+[node name="AreaCheck" type="Area2D" parent="Entities/Player 2/Player"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Player" type="CollisionShape2D" parent="Entities/Player 2/Player/AreaCheck"]
+rotation = 3.14159
+z_index = 4096
+shape = SubResource( 1 )
 
 [node name="Player" type="CollisionShape2D" parent="Entities/Player 2/Player"]
 visible = false

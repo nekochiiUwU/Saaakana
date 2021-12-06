@@ -4,8 +4,8 @@
 [ext_resource path="res://Frames/Mouse.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 11.1116
-height = 3.28095
+radius = 13.5
+height = 20.0268
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -27,8 +27,8 @@ shape = SubResource( 1 )
 
 [node name="Animations" type="AnimatedSprite" parent="."]
 visible = false
-position = Vector2( 0.302069, -1.12208e-06 )
-scale = Vector2( 1.88929, 2.35318 )
+position = Vector2( 0.0677046, -0.0585599 )
+scale = Vector2( 2.45747, 4.20545 )
 frames = SubResource( 2 )
 offset = Vector2( -0.467518, -0.474519 )
 

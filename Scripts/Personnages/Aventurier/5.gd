@@ -14,17 +14,16 @@ var is_projectile = false
 """"""
 
 # Fonction d'Init
-func Launch(LauncherDirection, _Damage, CollisionLayer, selfcollision):
+func Launch(_LauncherDirection, _Damage, CollisionLayer, selfcollision):
 	visible = false
-	rotation_degrees = LauncherDirection
 	Damage = _Damage
 	Hitbox.collision_layer = selfcollision
 	Hitbox.collision_mask = CollisionLayer
 	#self.set_collision_layer_bit(20, false)
-	if -90 < rotation_degrees and rotation_degrees < 90:
-		position += Vector2(20, -11)#.rotated(rotation)
+	if -90 < get_parent().rotation_degrees and get_parent().rotation_degrees < 90:
+		position += Vector2(20, -11)
 	else:
-		position += Vector2(20, -11)#.rotated(rotation)
+		position += Vector2(20, 11)
 	visible = true
 
 func _process(_delta):
@@ -33,6 +32,6 @@ func _process(_delta):
 		queue_free()
 		
 func _on_Node2D_area_entered(area):
-	if not area in OverlappedBodies and not area.get_parent().is_projectile:
+	if not area in OverlappedBodies and area.get_parent().is_projectile:
 		OverlappedBodies.append(area) 
-		area.get_parent().Launch(self.get_parent().position, rotation_degrees, area.get_parent().Damage, Hitbox.collision_mask)
+		area.get_parent().Launch(self.get_parent().position, get_parent().rotation_degrees, area.get_parent().Damage, Hitbox.collision_mask)

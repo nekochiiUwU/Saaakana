@@ -6,7 +6,7 @@
 [ext_resource path="res://Frames/Personnages/Aventurier/W/W2.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/Personnages/Aventurier/6.gd" type="Script" id=5]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 5.94033
 height = 13.9942
 
@@ -34,7 +34,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
 rotation = 1.56954
 scale = Vector2( 1.5, 1.5 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="Animation" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.5, 1.5 )

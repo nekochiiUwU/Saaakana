@@ -22,7 +22,7 @@ animations = [ {
 position = Vector2( 0.00874138, -0.000549316 )
 frames = SubResource( 1 )
 animation = "Q"
-frame = 5
+frame = 2
 playing = true
 offset = Vector2( 13.5816, 0.162592 )
 script = ExtResource( 1 )
@@ -33,7 +33,6 @@ collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area"]
 position = Vector2( 12.8772, -3.48819 )
-scale = Vector2( 1, 1e-05 )
 polygon = PoolVector2Array( -2.0036, 10.8869, -2.11509, 10.0321, -2.8955, 9.99496, -2.96983, 5.98139, -1.00021, 6.01855, 0.00318718, 6.94762, 13.0101, -6.02217, 14.9426, -6.05933, 16.0203, -5.05594, 16.0946, -2.08292, 15.0169, 0.0353546, 4.01676, 10.9984, 4.98299, 11.9646, 5.09448, 14.0085, 1.04375, 14.0085, 0.00318718, 12.9308 )
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

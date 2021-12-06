@@ -1,28 +1,273 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Scripts/Global/ChampSelect.gd" type="Script" id=1]
-[ext_resource path="res://Frames/Wall.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/divers/ChqmpSelect/Curseur 1.gd" type="Script" id=3]
+[ext_resource path="res://Frames/Light.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/divers/ChqmpSelect/Cursor_2.gd" type="Script" id=3]
+[ext_resource path="res://Frames/Champ select/curseur/curseur10.png" type="Texture" id=4]
+[ext_resource path="res://Frames/Champ select/curseur/curseur14.png" type="Texture" id=5]
+[ext_resource path="res://Frames/Champ select/curseur/curseur16.png" type="Texture" id=6]
+[ext_resource path="res://Frames/Champ select/curseur/curseur13.png" type="Texture" id=7]
+[ext_resource path="res://Frames/Champ select/curseur/curseur3.png" type="Texture" id=8]
+[ext_resource path="res://Frames/Champ select/curseur/curseur6.png" type="Texture" id=9]
+[ext_resource path="res://Frames/Champ select/curseur/curseur1.png" type="Texture" id=10]
+[ext_resource path="res://Frames/Champ select/curseur/curseur4.png" type="Texture" id=11]
+[ext_resource path="res://Frames/Champ select/curseur/curseur8.png" type="Texture" id=12]
+[ext_resource path="res://Frames/Background/Bg champ select.png" type="Texture" id=13]
+[ext_resource path="res://Frames/Champ select/curseur/curseur12.png" type="Texture" id=14]
+[ext_resource path="res://Frames/Champ select/curseur/curseur9.png" type="Texture" id=15]
+[ext_resource path="res://Frames/Champ select/curseur/curseur15.png" type="Texture" id=16]
+[ext_resource path="res://Frames/Champ select/curseur/curseur2.png" type="Texture" id=17]
+[ext_resource path="res://Frames/Champ select/curseur/curseur11.png" type="Texture" id=18]
+[ext_resource path="res://Frames/Champ select/curseur/curseur5.png" type="Texture" id=19]
+[ext_resource path="res://Frames/Champ select/curseur/curseur7.png" type="Texture" id=20]
+[ext_resource path="res://Frames/Champ select/curseur/curseur18.png" type="Texture" id=21]
+[ext_resource path="res://Frames/Champ select/curseur/curseur19.png" type="Texture" id=22]
+[ext_resource path="res://Frames/Champ select/curseur/curseur20.png" type="Texture" id=23]
+[ext_resource path="res://Frames/Champ select/curseur/curseur17.png" type="Texture" id=24]
+[ext_resource path="res://Frames/Champ select/Icone Archer.png" type="Texture" id=25]
+[ext_resource path="res://Frames/Champ select/Icone Aventurier.png" type="Texture" id=26]
+[ext_resource path="res://Frames/Champ select/curseur lock.png" type="Texture" id=27]
+[ext_resource path="res://Frames/Personnages/Aventurier/Aventurier .png" type="Texture" id=28]
+[ext_resource path="res://Frames/Personnages/Archer/Animations/Stand.png" type="Texture" id=29]
+[ext_resource path="res://Scripts/divers/ChqmpSelect/Cursor_1.gd" type="Script" id=30]
+[ext_resource path="res://Fonts/Retro Gaming.ttf" type="DynamicFontData" id=31]
+[ext_resource path="res://Frames/Champ select/Icone Nya.png" type="Texture" id=32]
+[ext_resource path="res://Frames/Personnages/nya/nya.png" type="Texture" id=33]
+
+[sub_resource type="DynamicFont" id=1]
+size = 140
+font_data = ExtResource( 31 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 70
+font_data = ExtResource( 31 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "none",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": true,
+"name": "Aventurier",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 29 ) ],
+"loop": true,
+"name": "Archer",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 33 ) ],
+"loop": true,
+"name": "Nya",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 16 ), ExtResource( 6 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 19 ), ExtResource( 9 ), ExtResource( 20 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 4 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "free",
+"speed": 32.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": true,
+"name": "lock",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 25 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 26 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 32 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Environment" id=8]
+background_mode = 4
+auto_exposure_scale = 0.2
+glow_enabled = true
+glow_intensity = 4.0
+glow_bicubic_upscale = true
 
 [node name="Champ Select" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Neutral" type="Node2D" parent="."]
+[node name="Background" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
-[node name="Camera2D" type="Camera2D" parent="Neutral"]
+[node name="ColorRect" type="ColorRect" parent="Background"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0, 0.478431, 0.623529, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Sprite" type="Sprite" parent="Neutral"]
+[node name="Bg Champ select" type="Sprite" parent="Background"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 13 )
+centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background"]
+margin_left = -5.0
+margin_top = -11.0
+margin_right = 2923.0
+margin_bottom = 304.0
+grow_horizontal = 2
+custom_fonts/mono_font = SubResource( 1 )
+custom_fonts/bold_italics_font = SubResource( 1 )
+custom_fonts/italics_font = SubResource( 1 )
+custom_fonts/bold_font = SubResource( 1 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "PICK YOUR CHARACTER"
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Background"]
+margin_left = 880.0
+margin_top = 144.0
+margin_right = 1704.0
+margin_bottom = 256.0
+custom_fonts/normal_font = SubResource( 2 )
+text = "UwU"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="J1" type="Node2D" parent="UI"]
+
+[node name="selected" type="AnimatedSprite" parent="UI/J1"]
+position = Vector2( 232, 696 )
+scale = Vector2( 12, 12 )
+z_index = 5
+frames = SubResource( 3 )
+animation = "Nya"
+playing = true
+
+[node name="Cursor J1" type="AnimatedSprite" parent="UI/J1"]
+modulate = Color( 1, 0.784314, 0.784314, 1 )
+self_modulate = Color( 1, 0.490196, 0.490196, 1 )
+light_mask = 524288
+position = Vector2( 848, 352 )
+scale = Vector2( 4, 4 )
+z_index = 5
+frames = SubResource( 4 )
+animation = "free"
+frame = 19
+playing = true
+script = ExtResource( 30 )
+
+[node name="Light2D" type="Light2D" parent="UI/J1/Cursor J1"]
+light_mask = 0
 texture = ExtResource( 2 )
+color = Color( 1, 0, 0, 1 )
+energy = 0.8
+range_item_cull_mask = 524288
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Entities" type="Node2D" parent="."]
+[node name="Icones" type="Node2D" parent="UI/J1"]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
-[node name="Perso selects" type="Node2D" parent="Entities"]
+[node name="ArcherIcone" type="AnimatedSprite" parent="UI/J1/Icones"]
+position = Vector2( 848, 352 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 5 )
 
-[node name="Cursors" type="Node2D" parent="Entities"]
+[node name="AventurierIcone" type="AnimatedSprite" parent="UI/J1/Icones"]
+position = Vector2( 848, 444 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 6 )
 
-[node name="Curseur 1" type="KinematicBody2D" parent="Entities/Cursors"]
+[node name="NyaIcone" type="AnimatedSprite" parent="UI/J1/Icones"]
+position = Vector2( 848, 536 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 7 )
+
+[node name="J2" type="Node2D" parent="UI"]
+
+[node name="selected" type="AnimatedSprite" parent="UI/J2"]
+position = Vector2( 1688, 696 )
+scale = Vector2( 12, 12 )
+frames = SubResource( 3 )
+animation = "Nya"
+flip_h = true
+
+[node name="Cursor J2" type="AnimatedSprite" parent="UI/J2"]
+modulate = Color( 0.784314, 0.784314, 1, 1 )
+self_modulate = Color( 0.490196, 0.490196, 1, 1 )
+light_mask = 262144
+position = Vector2( 1072, 352 )
+scale = Vector2( 4, 4 )
+z_index = 5
+frames = SubResource( 4 )
+animation = "free"
+frame = 18
+playing = true
 script = ExtResource( 3 )
 
-[node name="Sprite" type="AnimatedSprite" parent="Entities/Cursors/Curseur 1"]
+[node name="Light2D" type="Light2D" parent="UI/J2/Cursor J2"]
+light_mask = 0
+texture = ExtResource( 2 )
+color = Color( 0, 0, 1, 1 )
+energy = 0.8
+range_item_cull_mask = 262144
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Cursors/Curseur 1"]
+[node name="Icones" type="Node2D" parent="UI/J2"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ArcherIcone" type="AnimatedSprite" parent="UI/J2/Icones"]
+position = Vector2( 1072, 352 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 5 )
+
+[node name="AventurierIcone" type="AnimatedSprite" parent="UI/J2/Icones"]
+position = Vector2( 1072, 444 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 6 )
+
+[node name="NyaIcone" type="AnimatedSprite" parent="UI/J2/Icones"]
+position = Vector2( 1072, 536 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 7 )
+
+[node name="Effects" type="WorldEnvironment" parent="."]
+environment = SubResource( 8 )

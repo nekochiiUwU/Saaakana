@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Personnages/Nya/Particules.gd" type="Script" id=1]
+
+[node name="Particules" type="CPUParticles2D"]
+emitting = false
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2( 50, 0 )
+spread = 180.0
+gravity = Vector2( 0, 100 )
+initial_velocity = 90.0
+initial_velocity_random = 0.2
+linear_accel = -50.0
+scale_amount = 2.0
+color = Color( 0.0823529, 0.0784314, 0.709804, 0.941176 )
+script = ExtResource( 1 )
