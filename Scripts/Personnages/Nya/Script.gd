@@ -16,8 +16,8 @@ func Launch(s):
 		s.Frame.material.set_shader_param('Color', Color(1.0, 0.0, 0.0, 1.0) )
 		
 	s._Spell2 = load("res://Scenes/Personnages/Nya/2.tscn")
-	#s._Spell4 = load("res://Scenes/Personnages/Aventurier/4.tscn")
-	s._Spell5 = load("res://Scenes/Personnages/Nya/preview 5.tscn")
+	s._Spell4 = load("res://Scenes/Personnages/Nya/preview 5.tscn")
+	#s._Spell5 = load("res://Scenes/Personnages/Aventurier/4.tscn")
 	s._Spell6 = load("res://Scenes/Personnages/Nya/preview 6.tscn")
 
 	s.Hp = 1000
@@ -27,24 +27,26 @@ func Launch(s):
 	s.speedtick = s.speed
 
 	s.Cd2 = 0
-	s.Cd2Base = 12
-	s.QDamage = 40
+	s.Cd2Base = 80
+	s.damage2 = 110
 	s.Anim2 = false
 	s.TwoOnClick = false
 
 	s.Cd4 = 0
-	s.Cd4Base = 180
+	s.Cd4Base = 170
+	s.Anim4 = false
+	s.damage4 = 40
 	s.FourOnClick = false
 
 	s.Cd5 = 0
-	s.Cd5Base = 60
+	s.Cd5Base = 90
 	s.Anim5 = false
-	s.damage5 = 70
 	s.FiveOnClick = false
 
 	s.Cd6 = 0
-	s.Cd6Base = 240
+	s.Cd6Base = 480
 	s.Anim6 = false
+	s.damage6 = 125
 	s.SixOnClick = false
 
 	s.ModulateReset = -1
@@ -64,12 +66,13 @@ func Launch(s):
 	s.ScriptedAction = ""
 	s.DashSpeed = 0
 	s.hitbox.collision_mask = 0b00000000000000000010
+	s.taille = Vector2(7,25)
 
 """ ===0=== """
 
 func SelectAnim(s):
 	if s.Death:
-		s.Frame.animation = "Ded"
+		s.Frame.animation = "ded"
 		
 	elif s.animCC == "SelfStun":
 		s.Frame.animation = "Five"
@@ -80,8 +83,8 @@ func SelectAnim(s):
 		else:
 			s.Frame.animation = "2 tir"
 			
-	elif s.Anim5:
-		if s.FiveOnClick == true:
+	elif s.Anim4:
+		if s.FourOnClick == true:
 			s.Frame.animation = "5 charge"
 		else:
 			s.Frame.animation = "5 tir"
@@ -92,7 +95,7 @@ func SelectAnim(s):
 		else:
 			s.Frame.animation = "6 tir"
 	
-	elif s.Anim4:
+	elif s.Anim5:
 		s.Frame.animation = "4"
 		
 		
@@ -172,7 +175,7 @@ func Rotate(s, condition):
 
 func Spell2(s, Condition):
 	if not s.Cd2 > 0:
-		if Condition:
+		if Condition:# and s.FourOnClick == false:
 			s.speedtick /= 2
 			s.Anim2 = true
 			s.TwoOnClick = true
@@ -181,7 +184,7 @@ func Spell2(s, Condition):
 			if s.TwoOnClick == true:
 				Spell2_ = s._Spell2.instance()
 				s.get_parent().add_child(Spell2_)
-				Spell2_.Launch(Vector2(s.position.x, s.position.y), s.rotation_degrees, s.QDamage, s.EnemyLayer)
+				Spell2_.Launch(Vector2(s.position.x, s.position.y), s.rotation_degrees, s.damage2, s.EnemyLayer)
 				Spell2_.self_modulate = s.SpellColor
 				s.TwoOnClick = false
 				s.Cd2 = s.Cd2Base
@@ -191,49 +194,50 @@ func Spell2(s, Condition):
 			s.Anim2 = false
 
 func Spell4(s, Condition):
-	if Condition:
-		if s.hitbox.get_overlapping_areas():
-			s.speedtick *= 2
-			s.FourOnClick = true
-			s.Anim4 = true
+	if not s.Cd4 > 0:
+		if Condition:# and s.FourOnClick == false:
+			if s.FourOnClick == false:
+				s.speedtick /= 2
+				s.Anim4 = true
+				s.FourOnClick = true
+				Spell4_ = s._Spell4.instance()
+				s.add_child(Spell4_)
+				Spell4_.Launch(s.rotation_degrees, s.damage4, s.EnemyLayer)
+				Spell4_.self_modulate = s.SpellColor
+			
 		else:
-			s.Anim4 = false
+			if s.FourOnClick == true:
+				s.FourOnClick = false
+				s.Cd4 = s.Cd4Base
 			
 	else:
-		s.Anim4 = false
-		s.FourOnClick = false
+		if s.Cd4 < s.Cd4Base-10:
+			s.Anim4 = false
 
 func Spell5(s, Condition):
-	if not s.Cd5 > 0:
-		if Condition:
-			if s.FiveOnClick == false:
-				s.speedtick /= 2
-				s.Anim5 = true
-				s.FiveOnClick = true
-				Spell5_ = s._Spell5.instance()
-				s.add_child(Spell5_)
-				Spell5_.Launch(s.rotation_degrees, s.QDamage, s.EnemyLayer)
-				Spell5_.self_modulate = s.SpellColor
-			
+	if Condition and not s.Cd5 > 0:# and s.TwoOnClick == false and s.FiveOnClick == false and s.SixOnClick == false:
+		if s.hitbox.get_overlapping_areas():
+			s.speedtick *= 1.8
+			s.FiveOnClick = true
+			s.Anim5 = true
 		else:
-			if s.FiveOnClick == true:
-				s.FiveOnClick = false
-				s.Cd5 = s.Cd5Base
+			s.Anim5 = false
+			s.Cd5 = s.Cd5Base
 			
 	else:
-		if s.Cd5 < s.Cd5Base-10:
-			s.Anim5 = false
+		s.Anim5 = false
+		s.FiveOnClick = false
 	
 func Spell6(s, Condition):
 	if not s.Cd6 > 0:
-		if Condition:
+		if Condition:# and s.FourOnClick == false:
 			if s.SixOnClick == false:
 				s.speedtick /= 2
 				s.Anim6 = true
 				s.SixOnClick = true
 				Spell6_ = s._Spell6.instance()
 				s.add_child(Spell6_)
-				Spell6_.Launch(s.rotation_degrees, s.QDamage, s.EnemyLayer)
+				Spell6_.Launch(s.rotation_degrees, s.damage6, s.EnemyLayer)
 				Spell6_.self_modulate = s.SpellColor
 			
 		else:

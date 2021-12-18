@@ -7,7 +7,7 @@ onready var particules = preload("res://Scenes/Personnages/Nya/Particules.tscn")
 var particule
 var launcher = []
 var velocity = Vector2(1, 0)
-var speed = 6
+var speed = 8
 var End = 0
 var Rebond = 0
 var Damage = 100
@@ -38,7 +38,7 @@ func _process(delta):
 		EndAnimWaiter()
 	else:
 		Rebond += delta * 60
-		scale_ = 1.5+0.5*sin(Rebond*PI/30)
+		scale_ = 2+1*sin(Rebond*PI/30)
 		scale = Vector2(scale_, scale_)
 		if Rebond >= 30:
 			for body in $FlaqueCheck.get_overlapping_areas():

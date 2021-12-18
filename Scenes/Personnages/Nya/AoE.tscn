@@ -1,0 +1,48 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Scripts/Personnages/Nya/AoE.gd" type="Script" id=1]
+[ext_resource path="res://Frames/Personnages/nya/nya 6 AoE/6 AoE9.png" type="Texture" id=2]
+[ext_resource path="res://Frames/Personnages/nya/nya 6 AoE/6 AoE4.png" type="Texture" id=3]
+[ext_resource path="res://Frames/Personnages/nya/nya 6 AoE/6 AoE1.png" type="Texture" id=4]
+[ext_resource path="res://Frames/Personnages/nya/nya 6 AoE/6 AoE11.png" type="Texture" id=5]
+[ext_resource path="res://Frames/Personnages/nya/nya 6 AoE/6 AoE7.png" type="Texture" id=6]
+[ext_resource path="res://Frames/Personnages/nya/nya 6 AoE/6 AoE3.png" type="Texture" id=7]
+[ext_resource path="res://Frames/Personnages/nya/nya 6 AoE/6 AoE8.png" type="Texture" id=8]
+[ext_resource path="res://Frames/Personnages/nya/nya 6 AoE/6 AoE10.png" type="Texture" id=9]
+[ext_resource path="res://Frames/Personnages/nya/nya 6 AoE/6 AoE2.png" type="Texture" id=10]
+[ext_resource path="res://Frames/Personnages/nya/nya 6 AoE/6 AoE5.png" type="Texture" id=11]
+[ext_resource path="res://Frames/Personnages/nya/nya 6 AoE/6 AoE6.png" type="Texture" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 26.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 6.32856
+height = 45.4881
+
+[node name="AnimatedSprite" type="AnimatedSprite"]
+show_behind_parent = true
+scale = Vector2( 1.5, 1.5 )
+z_index = 3
+frames = SubResource( 1 )
+frame = 10
+playing = true
+script = ExtResource( 1 )
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2( -0.0992126, 3.27402 )
+rotation = 1.5708
+scale = Vector2( 0.8, 1 )
+shape = SubResource( 2 )
+
+[connection signal="item_rect_changed" from="." to="." method="_on_AnimatedSprite_item_rect_changed"]
+[connection signal="body_entered" from="Area" to="." method="_on_Hitbox_body_entered"]

@@ -52,14 +52,14 @@ animations = [ {
 "name": "Tir",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "Dash",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "Ded",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "Dash",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 6 ) ],
@@ -75,7 +75,6 @@ animations = [ {
 
 [node name="Frame" type="AnimatedSprite"]
 material = SubResource( 2 )
-z_index = 100
 frames = SubResource( 3 )
 animation = "Stand"
 playing = true

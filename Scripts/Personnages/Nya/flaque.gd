@@ -23,7 +23,7 @@ func Launch(LauncherPosition: Vector2, _Damage, CollisionLayer):
 	visible = true
 
 func _process(_delta):
-	if scale[1] < 4:
+	if scale[1] < 6:
 		scale += Vector2(0.25,0.25)
 	else:
 		Hitbox.monitoring = false
@@ -39,9 +39,6 @@ func _on_Hitbox_body_entered(body):
 # Application des dégats
 func EndAnimWaiter():
 	End.Hp -= Damage
-	End.speedtick/2
+	End.speedtick /= 2
 	#End.velocity += Vector2(Damage / 10, 0).rotated(rotation)
 	End.Modulate(Color(1, 0.5, 0.5), 3)
-
-
-

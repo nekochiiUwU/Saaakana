@@ -1,4 +1,4 @@
-extends KinematicBody2D
+ extends KinematicBody2D
 onready var Camera = get_node("../../../World/Cameras/Camera")
 onready var Player2 = get_node("../../Player 1/Player")
 onready var hitbox = $AreaCheck
@@ -15,6 +15,7 @@ var EnemyLayer = 0b11010000000000000000
 var is_projectile = false
 var SpellColor = Color(0.9, 0.9, 1.1)
 var delta = 1
+var taille
 
 """MALEDICTION"""
 
@@ -100,9 +101,11 @@ var _Spell5
 var _Spell6
 
 var TwoOnClick
+var damage2
 var Anim2
 
 var FourOnClick
+var damage4
 var Anim4
 
 var FiveOnClick
@@ -110,6 +113,7 @@ var damage5
 var Anim5
 
 var SixOnClick
+var damage6
 var Anim6
 
 """ ===0=== """
@@ -151,7 +155,7 @@ func CrowdControl(AWAJANIMAL):
 	if AWAJANIMAL[0] == "Dash":
 		animCC = "dash"
 		Modulate(Color(1.5, 1, 1.5), 1)
-		velocity = move_and_collide(Scriptedvelocity.normalized() * delta * DashSpeed)
+		velocity = move_and_collide(AWAJANIMAL[3].normalized() * delta * AWAJANIMAL[2])
 		velocity = Vector2()
 	elif AWAJANIMAL[0] == "SelfStun":
 		animCC = "SelfStun"
@@ -171,6 +175,8 @@ func _ready():
 	randomize()
 	set_position(Vector2(rand_range(400, -100),rand_range(-200, 180)))
 	P.Launch(self)
+	$Player.shape.extents = taille
+	hitbox.get_child(0).shape.extents = taille
 
 func _process(delta_):
 	delta = delta_ * 60 

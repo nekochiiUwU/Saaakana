@@ -83,6 +83,7 @@ func Launch(s):
 	s.MovementUp = false
 	s.ScriptedAction = ""
 	s.DashSpeed = 0
+	s.taille = Vector2(9,32)
 
 """ ===0=== """
 
@@ -200,7 +201,7 @@ func Spell2(s, Condition):
 				s.QShootRelease = 5
 				s.Cd2 = s.Cd2Base
 	else:
-		s.QCast = 7
+		s.QCast = 12
 		s.QShoot = false
 		s.QOnClick = false
 
@@ -223,17 +224,17 @@ func Spell4(s, Condition):
 					s.Cd4 = s.Cd4Base
 					s.WState = -2
 			else:
-				s.Scriptedvelocity = Vector2()
-				s.CC.append(["Dash",10.0])
+				var Scriptedvelocity = Vector2()
 				s.DashSpeed = 10
 				if s.movedition[0]:
-					s.Scriptedvelocity.x = 10
+					Scriptedvelocity.x = 10
 				if s.movedition[1]:
-					s.Scriptedvelocity.x -= 10
+					Scriptedvelocity.x -= 10
 				if s.movedition[2]:
-					s.Scriptedvelocity.y += 10
+					Scriptedvelocity.y += 10
 				if s.movedition[3]:
-					s.Scriptedvelocity.y -= 10
+					Scriptedvelocity.y -= 10
+				s.CC.append(["Dash",10.0, 10, Scriptedvelocity])
 				s.WState = -1
 				s.Cd4 = s.WCD2
 	else:

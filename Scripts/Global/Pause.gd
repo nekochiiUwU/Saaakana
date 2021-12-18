@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var ContinueButton = $ContinueButton
+onready var SettingsButton = $SettingsButton
 onready var MainMenuButton = $MainMenuButton
 
 func get_imput():
@@ -22,14 +23,18 @@ func _ready():
 
 func _process(_delta):
 	get_imput()
-	ContinueButton.set_position(Vector2(960, 540) - ContinueButton.get_size()/2)
+	ContinueButton.set_position(Vector2(960, 540-200) - ContinueButton.get_size()/2)
+	SettingsButton.set_position(Vector2(960, 540+0) - SettingsButton.get_size()/2)
 	MainMenuButton.set_position(Vector2(960, 540+200) - MainMenuButton.get_size()/2)
+	
 
 func _on_ContinueButton_pressed():
 	SceneChange("Game")
 
 
-func _on_MainMenuButtun_pressed():
+func _on_SettingsButton_pressed():
+	SceneChange("Settings")
+
+
+func _on_MainMenuButton_pressed():
 	SceneChange("MainMenu")
-	
-	pass # Replace with function body.

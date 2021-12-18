@@ -82,6 +82,7 @@ func Launch(s):
 	s.MovementUp = false
 	s.ScriptedAction = ""
 	s.DashSpeed = 0
+	s.taille = Vector2(10,30)
 
 """ ===0=== """
 
@@ -195,17 +196,17 @@ func Spell2(s, Condition):
 func Spell4(s, Condition):
 	if Condition:
 		if not s.FourOnClick and not s.Cd4 > 0: 
-			s.Scriptedvelocity = Vector2()
-			s.CC.append(["Dash",8.0])
+			var Scriptedvelocity = Vector2()
 			s.DashSpeed = 7
 			if s.movedition[0]:
-				s.Scriptedvelocity.x = 10
+				Scriptedvelocity.x = 10
 			if s.movedition[1]:
-				s.Scriptedvelocity.x -= 10
+				Scriptedvelocity.x -= 10
 			if s.movedition[2]:
-				s.Scriptedvelocity.y += 10
+				Scriptedvelocity.y += 10
 			if s.movedition[3]:
-				s.Scriptedvelocity.y -= 10
+				Scriptedvelocity.y -= 10
+			s.CC.append(["Dash", 8.0, 7, Scriptedvelocity])
 			s.Cd4 = s.Cd4Base
 	else:
 		s.FourOnClick = false
@@ -231,7 +232,7 @@ func Spell6(s, Condition):
 			s.Anim6 = true
 			Spell6_ = s._Spell6.instance()
 			s.get_parent().add_child(Spell6_)
-			Spell6_.Launch(Vector2(s.position.x, s.position.y), s.rotation_degrees, s.QDamage, s.EnemyLayer)
+			Spell6_.Launch(Vector2(s.position.x, s.position.y), s.rotation_degrees, s.RDamage, s.EnemyLayer)
 			Spell6_.self_modulate = s.SpellColor
 			s.TwoOnClick = true
 			s.Cd6 = s.Cd6Base

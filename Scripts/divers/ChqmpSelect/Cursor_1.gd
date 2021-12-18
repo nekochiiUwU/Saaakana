@@ -77,6 +77,8 @@ func _process(delta):
 			get_viewport().get_child(0).get_child(0).get_child(0).get_child(3).text = str(abs(round(lock/1.8)))
 		else:
 			get_viewport().get_child(0).Champs = [selected, cursor2.selected] 
+			selected = ""
+			cursor2.selected = ""
 			get_viewport().get_child(0).SceneChange("ChampSelect", "Game")
 	else:
 		lock = 180

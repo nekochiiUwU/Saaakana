@@ -19,10 +19,11 @@ animations = [ {
 } ]
 
 [node name="Node2D" type="AnimatedSprite"]
+show_behind_parent = true
 position = Vector2( 0.00874138, -0.000549316 )
 frames = SubResource( 1 )
 animation = "Q"
-frame = 2
+frame = 3
 playing = true
 offset = Vector2( 13.5816, 0.162592 )
 script = ExtResource( 1 )

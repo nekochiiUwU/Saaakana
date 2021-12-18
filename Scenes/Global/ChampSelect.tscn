@@ -27,12 +27,12 @@
 [ext_resource path="res://Frames/Champ select/Icone Archer.png" type="Texture" id=25]
 [ext_resource path="res://Frames/Champ select/Icone Aventurier.png" type="Texture" id=26]
 [ext_resource path="res://Frames/Champ select/curseur lock.png" type="Texture" id=27]
-[ext_resource path="res://Frames/Personnages/Aventurier/Aventurier .png" type="Texture" id=28]
-[ext_resource path="res://Frames/Personnages/Archer/Animations/Stand.png" type="Texture" id=29]
+[ext_resource path="res://Frames/Champ select/champs/nya.png" type="Texture" id=28]
+[ext_resource path="res://Frames/Champ select/champs/Archer.png" type="Texture" id=29]
 [ext_resource path="res://Scripts/divers/ChqmpSelect/Cursor_1.gd" type="Script" id=30]
 [ext_resource path="res://Fonts/Retro Gaming.ttf" type="DynamicFontData" id=31]
 [ext_resource path="res://Frames/Champ select/Icone Nya.png" type="Texture" id=32]
-[ext_resource path="res://Frames/Personnages/nya/nya.png" type="Texture" id=33]
+[ext_resource path="res://Frames/Champ select/champs/Aventurier.png" type="Texture" id=33]
 
 [sub_resource type="DynamicFont" id=1]
 size = 140
@@ -44,22 +44,22 @@ font_data = ExtResource( 31 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "none",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 28 ) ],
-"loop": true,
-"name": "Aventurier",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 29 ) ],
 "loop": true,
 "name": "Archer",
 "speed": 5.0
 }, {
+"frames": [  ],
+"loop": true,
+"name": "none",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 33 ) ],
+"loop": true,
+"name": "Aventurier",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ) ],
 "loop": true,
 "name": "Nya",
 "speed": 5.0
@@ -166,12 +166,16 @@ __meta__ = {
 [node name="J1" type="Node2D" parent="UI"]
 
 [node name="selected" type="AnimatedSprite" parent="UI/J1"]
-position = Vector2( 232, 696 )
+position = Vector2( 848, 1080 )
+rotation = 3.14159
 scale = Vector2( 12, 12 )
 z_index = 5
 frames = SubResource( 3 )
 animation = "Nya"
 playing = true
+centered = false
+flip_h = true
+flip_v = true
 
 [node name="Cursor J1" type="AnimatedSprite" parent="UI/J1"]
 modulate = Color( 1, 0.784314, 0.784314, 1 )
@@ -182,7 +186,7 @@ scale = Vector2( 4, 4 )
 z_index = 5
 frames = SubResource( 4 )
 animation = "free"
-frame = 19
+frame = 7
 playing = true
 script = ExtResource( 30 )
 
@@ -220,7 +224,7 @@ frames = SubResource( 7 )
 [node name="J2" type="Node2D" parent="UI"]
 
 [node name="selected" type="AnimatedSprite" parent="UI/J2"]
-position = Vector2( 1688, 696 )
+position = Vector2( 1672, 480 )
 scale = Vector2( 12, 12 )
 frames = SubResource( 3 )
 animation = "Nya"
@@ -235,7 +239,7 @@ scale = Vector2( 4, 4 )
 z_index = 5
 frames = SubResource( 4 )
 animation = "free"
-frame = 18
+frame = 6
 playing = true
 script = ExtResource( 3 )
 

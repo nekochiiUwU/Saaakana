@@ -14,9 +14,9 @@ var Champs = ["",""]
 var Scenes = [
 	["MainMenu", false, false],
 	["GamemodeSelect", false, false],
-	["ChampSelect", false, false],
+	["ChampSelect", true, false],
 	["MapSelect", false, false],
-	["Game", true, false],
+	["Game", false, false],
 	["Pause", false, false],
 	["Settings", false, false]
 	]
@@ -79,3 +79,7 @@ func SceneChange(OldScene = "Game", Scene = "Pause"):
 		for item in Scenes:
 			if Scene == item[0]:
 				item[1] = true
+	if OldScene == "ChampSelect" and Scene == "Game":
+		Game.queue_free()
+		Game = load("res://Scenes/Global/Game.tscn").instance()
+		#$Game.set_script(load("res://Scripts/Global/Game.gd"))

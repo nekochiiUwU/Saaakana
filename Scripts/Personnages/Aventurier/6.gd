@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 """"""
-onready var NodeAnimation = $Animations
+onready var NodeAnimation = $Animation
 onready var Hitbox = $Area
 var launcher = []
 var velocity = Vector2(1, 0)

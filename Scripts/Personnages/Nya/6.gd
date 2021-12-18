@@ -1,10 +1,10 @@
 extends Node2D
 
 """"""
-onready var proc = preload("res://Scenes/Personnages/Nya/flaque.tscn")
+onready var proc = preload("res://Scenes/Personnages/Nya/AoE.tscn")
 var launcher = []
 var velocity = Vector2(1, 0)
-var speed = 3
+var speed = 7
 var End = 0
 var collision = false
 var is_projectile = false
@@ -49,6 +49,6 @@ func _process(delta):
 func EndAnimWaiter():
 	if $Area2D.get_overlapping_areas():
 		proc_ = proc.instance()
-		get_parent().add_child(proc_)
+		get_parent().get_parent().add_child(proc_)
 		proc_.Launch(ExpectedPos, damage, collisionLayer)
 	queue_free()

@@ -27,7 +27,7 @@ func Launch(_LauncherDirection, _Damage, CollisionLayer):
 	"""
 
 func _process(delta):
-	if get_parent().FiveOnClick == false:
+	if get_parent().FourOnClick == false:
 		EndAnimWaiter()
 	else:
 		position += velocity * speed * (delta * 60)
@@ -36,7 +36,7 @@ func _process(delta):
 # Application des dégats
 func EndAnimWaiter():
 	Spell5_ = _Spell5.instance()
-	get_parent().get_parent().add_child(Spell5_)
+	get_parent().get_parent().get_parent().add_child(Spell5_)
 	Spell5_.Launch(get_parent().position, get_parent().rotation_degrees, damage, collisionLayer, get_global_position())
 	Spell5_.self_modulate = get_parent().SpellColor
 	queue_free()

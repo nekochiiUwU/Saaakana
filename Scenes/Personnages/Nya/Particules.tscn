@@ -4,6 +4,7 @@
 
 [node name="Particules" type="CPUParticles2D"]
 emitting = false
+amount = 10
 lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
@@ -17,5 +18,5 @@ initial_velocity = 90.0
 initial_velocity_random = 0.2
 linear_accel = -50.0
 scale_amount = 2.0
-color = Color( 0.0823529, 0.0784314, 0.709804, 0.941176 )
+color = Color( 0.0823529, 0.0784314, 0.709804, 0.635294 )
 script = ExtResource( 1 )

@@ -1,6 +1,112 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Global/Settings.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Retro Gaming.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="StyleBoxLine" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 2 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="bg" type="ColorRect" parent="UI"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0.0980392, 0.176471, 0.145098, 0.784314 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TopPanel" type="Node2D" parent="UI"]
+
+[node name="ColorRect" type="ColorRect" parent="UI/TopPanel"]
+margin_right = 1920.0
+margin_bottom = 80.0
+color = Color( 0, 0, 0, 0.196078 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="General" type="Button" parent="UI/TopPanel"]
+margin_left = 736.0
+margin_top = 8.0
+margin_right = 960.0
+margin_bottom = 72.0
+rect_pivot_offset = Vector2( -264, -248 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "général"
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controles" type="Button" parent="UI/TopPanel"]
+margin_left = 480.0
+margin_top = 8.0
+margin_right = 704.0
+margin_bottom = 72.0
+rect_pivot_offset = Vector2( -264, -248 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "contrôles"
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Graphismes" type="Button" parent="UI/TopPanel"]
+margin_left = 1016.0
+margin_top = 8.0
+margin_right = 1256.0
+margin_bottom = 72.0
+rect_pivot_offset = Vector2( -264, -248 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "graphismes"
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sons" type="Button" parent="UI/TopPanel"]
+margin_left = 1280.0
+margin_top = 8.0
+margin_right = 1504.0
+margin_bottom = 72.0
+rect_pivot_offset = Vector2( -264, -248 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+text = "sons"
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controles" type="Node2D" parent="UI"]
+visible = false
+
+[node name="General" type="Node2D" parent="UI"]
+visible = false
+
+[node name="Graphismes" type="Node2D" parent="UI"]
+visible = false
+
+[node name="Sons" type="Node2D" parent="UI"]
+visible = false
+
+[connection signal="pressed" from="UI/TopPanel/General" to="." method="_on_General_pressed"]
+[connection signal="pressed" from="UI/TopPanel/Controles" to="." method="_on_Controles_pressed"]
+[connection signal="pressed" from="UI/TopPanel/Graphismes" to="." method="_on_Graphismes_pressed"]
+[connection signal="pressed" from="UI/TopPanel/Sons" to="." method="_on_Sons_pressed"]
