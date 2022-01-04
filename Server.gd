@@ -30,25 +30,29 @@ func _process(delta):
 	if is_online:
 		if socket.get_available_packet_count() > 0:
 			var data = socket.get_packet().get_string_from_ascii()
-			
-			
-			var script = GDScript.new()
-			script.set_source_code("func eval(data):\n\tdata = " + data + "\n\tfor i in data:\n\t\ti = int(i)\n\treturn data")
-			script.reload()
-
-			var obj = Reference.new()
-			obj.set_script(script)
-
-			data = obj.eval(data) # Supposing input is "23 + 2", returns 25
-			
+			var dataarray = []
+			data = data.split("|")
+			dataarray = Array()
 			for i in data:
-				i = int(i)
-			print(data)
-			if data == "Disconnect":
+				dataarray.append(i)
+
+			for i in dataarray:
+				dataarray = i.split(";")
+				data = Array()
+				for iwi in dataarray:
+					data.append(iwi)
+			for i in data:
+				for iwi in i:
+					iwi = iwi.split(":")
+					dataarray = Array()
+					for iwiowo in data:
+						dataarray.append(iwiowo)
+			print(dataarray)
+			if typeof(dataarray) == typeof(""):
 				disconnect_peer()
 			else:
-				print(data[2])
-				if data[2] == "0":
+				print(dataarray[2])
+				if dataarray[2] == "0":
 					image.position.x += 1
 	elif is_searching_peer:
 		listen_port()
