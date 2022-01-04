@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Global/Map.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scripts/Global/HTTPRequest.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Global/HTTPRequestIN.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Global/Camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Global/Player 1.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Global/HTTPRequestOUT.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/Global/Player 2.gd" type="Script" id=9]
 [ext_resource path="res://Frames/Light.png" type="Texture" id=13]
 [ext_resource path="res://Scripts/Global/Game.gd" type="Script" id=16]
@@ -21,6 +22,7 @@ extents = Vector2( 8, 30 )
 extents = Vector2( 8, 30 )
 
 [node name="Game" type="Node2D"]
+process_priority = -9
 script = ExtResource( 16 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
@@ -28,7 +30,8 @@ __meta__ = {
 
 [node name="World" type="Node2D" parent="."]
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="Map" parent="World" instance=ExtResource( 1 )]
@@ -95,5 +98,16 @@ rotation = 3.14159
 z_index = 4096
 shape = SubResource( 4 )
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
+[node name="In" type="HTTPRequest" parent="."]
+process_priority = -11
+download_chunk_size = 256
+body_size_limit = 256
+max_redirects = 1
 script = ExtResource( 2 )
+
+[node name="Out" type="HTTPRequest" parent="."]
+process_priority = -10
+download_chunk_size = 256
+body_size_limit = 256
+max_redirects = 1
+script = ExtResource( 5 )
