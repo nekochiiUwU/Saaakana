@@ -37,7 +37,7 @@ func Launch(LauncherPosition: Vector2, LauncherDirection, _Damage, CollisionLaye
 	visible = true
 
 func _process(delta):
-	if get_global_position().distance_to(ExpectedPos) < (speed * (delta * 60)):
+	if get_global_position().distance_to(ExpectedPos) < (speed * (delta * 60))*2:
 		EndAnimWaiter()
 	else:
 		position += (velocity * speed * (delta * 60))

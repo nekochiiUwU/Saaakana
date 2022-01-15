@@ -84,6 +84,7 @@ func Launch(s):
 	s.ScriptedAction = ""
 	s.DashSpeed = 0
 	s.taille = Vector2(9,32)
+	
 
 """ ===0=== """
 
@@ -251,7 +252,7 @@ func Spell5(s, Condition):
 			s.EShoot = true
 		else:
 			if not s.Cd5 > 0 and s.EArrow:
-				s.Camera.NewNotification("Bar", "Cd5 " + str(s.EArrow) + "- Dispertion", s.EMaxLoad - s.ELoad, s.EMaxLoad, "Player 1", 1)
+				s.Camera.NewNotification("Bar", "Cd5 " + str(s.EArrow) + "- Dispertion", s.EMaxLoad - s.ELoad, s.EMaxLoad, s.get_parent().name, 1)
 				s.speedtick /= 3
 				if s.ELoad and not s.EArrow > 3:
 					if s.ELoad >= s.EMaxLoad and not s.EArrow > 2:

@@ -1,0 +1,57 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Frames/Personnages/Sniper/balle/balle 5.png" type="Texture" id=1]
+[ext_resource path="res://Frames/Personnages/Sniper/balle/balle 6.png" type="Texture" id=2]
+[ext_resource path="res://Frames/Personnages/Sniper/balle/balle 11.png" type="Texture" id=3]
+[ext_resource path="res://Frames/Personnages/Sniper/balle/balle 10.png" type="Texture" id=4]
+[ext_resource path="res://Frames/Personnages/Sniper/balle/balle 12.png" type="Texture" id=5]
+[ext_resource path="res://Frames/Personnages/Sniper/balle/balle 13.png" type="Texture" id=6]
+[ext_resource path="res://Frames/Personnages/Sniper/balle/balle 9.png" type="Texture" id=7]
+[ext_resource path="res://Frames/Personnages/Sniper/balle/balle 7.png" type="Texture" id=8]
+[ext_resource path="res://Frames/Personnages/Sniper/balle/balle 8.png" type="Texture" id=9]
+[ext_resource path="res://Frames/Personnages/Sniper/balle/balle 14.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/Personnages/Sniper/5.gd" type="Script" id=11]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 2.0
+height = 1.0
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 2.0
+height = 1.0
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource( 11 )
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+shape = SubResource( 1 )
+
+[node name="Animation" type="AnimatedSprite" parent="."]
+position = Vector2( 0.25, -0.25 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 2 )
+frame = 7
+playing = true
+offset = Vector2( -0.0120888, -0.00309245 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

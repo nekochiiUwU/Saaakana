@@ -41,5 +41,5 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlaqueCheck"]
 shape = SubResource( 1 )
 
-[connection signal="body_entered" from="Area" to="Animations" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_entered" from="Area" to="Animations" method="_on_Area_body_entered"]

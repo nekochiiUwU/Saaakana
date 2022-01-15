@@ -1,4 +1,4 @@
- extends KinematicBody2D
+extends KinematicBody2D
 onready var Camera = get_node("../../../World/Cameras/Camera")
 onready var Player2 = get_node("../../Player 1/Player")
 onready var hitbox = $AreaCheck
@@ -11,6 +11,7 @@ var movedition
 var CC = []
 var animCC = ""
 var rotationSensi = (64)/60
+var player = 2
 var EnemyLayer = 0b11010000000000000000
 var is_projectile = false
 var SpellColor = Color(0.9, 0.9, 1.1)
@@ -116,6 +117,12 @@ var SixOnClick
 var damage6
 var Anim6
 
+"""relatif sniper"""
+var state2
+var state4
+var state5
+var state6
+
 """ ===0=== """
 
 func Movements():
@@ -159,6 +166,10 @@ func CrowdControl(AWAJANIMAL):
 		velocity = Vector2()
 	elif AWAJANIMAL[0] == "SelfStun":
 		animCC = "SelfStun"
+	elif AWAJANIMAL[0] == "Slide":
+		animCC = "slide"
+		velocity = move_and_collide(AWAJANIMAL[3].normalized() * delta * AWAJANIMAL[2] * AWAJANIMAL[1])
+		velocity = Vector2()
 
 """ ===0=== """
 
@@ -170,8 +181,10 @@ func _ready():
 		P = load("res://Scripts/Personnages/Aventurier/Script.gd").new()
 	elif get_viewport().get_child(0).Champs[1] == "Nya":
 		P = load("res://Scripts/Personnages/Nya/Script.gd").new()
+	elif get_viewport().get_child(0).Champs[0] == "Sniper":
+		P = load("res://Scripts/Personnages/Sniper/Script.gd").new()
 	else:
-		P = load("res://Scripts/Personnages/Archer/Script.gd").new()
+		P = load("res://Scripts/Personnages/Sniper/Script.gd").new()
 	randomize()
 	set_position(Vector2(rand_range(400, -100),rand_range(-200, 180)))
 	P.Launch(self)

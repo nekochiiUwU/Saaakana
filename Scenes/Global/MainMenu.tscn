@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Global/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Frames/Background/Base.png" type="Texture" id=2]
@@ -12,12 +12,16 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 114
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 160
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 100
 font_data = ExtResource( 3 )
 
 [node name="Node2D" type="Node2D"]
@@ -35,8 +39,8 @@ margin_left = 56.0
 margin_top = 56.0
 margin_right = 1864.0
 margin_bottom = 256.0
-custom_fonts/bold_font = SubResource( 3 )
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/bold_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 2 )
 text = "WELCOME TO SAKANA \\('v')"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -44,15 +48,27 @@ __meta__ = {
 
 [node name="Buttons" type="Node2D" parent="."]
 
-[node name="Button" type="Button" parent="Buttons"]
-margin_left = 136.0
-margin_top = 296.0
-margin_right = 824.0
-margin_bottom = 512.0
-custom_fonts/font = SubResource( 2 )
+[node name="Jouer" type="Button" parent="Buttons"]
+margin_left = 144.0
+margin_top = 256.0
+margin_right = 832.0
+margin_bottom = 472.0
+custom_fonts/font = SubResource( 3 )
 text = "Jouer"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="Buttons/Button" to="." method="_on_Button_pressed"]
+[node name="Quitter" type="Button" parent="Buttons"]
+margin_left = 128.0
+margin_top = 816.0
+margin_right = 628.0
+margin_bottom = 956.0
+custom_fonts/font = SubResource( 4 )
+text = "Quitter"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Buttons/Jouer" to="." method="_on_Jouer_pressed"]
+[connection signal="pressed" from="Buttons/Quitter" to="." method="_on_Quitter_pressed"]

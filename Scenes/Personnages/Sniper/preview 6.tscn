@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Personnages/Sniper/preview 6.gd" type="Script" id=1]
+[ext_resource path="res://Frames/Personnages/Sniper/grenade.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float Range: hint_range(0.0, 30.0);
+uniform vec4 Color: hint_color;
+
+void fragment(){
+	float Size = Range * 1.0 / float(textureSize(TEXTURE, 0).x);
+	vec4 SpriteColor = texture(TEXTURE, UV);
+	float alpha = -8.0 * SpriteColor.a;
+	
+	alpha += texture(TEXTURE, UV + vec2(Size, 0.0)).a;
+	alpha += texture(TEXTURE, UV + vec2(-Size, 0.0)).a;
+	alpha += texture(TEXTURE, UV + vec2(0.0, Size)).a;
+	alpha += texture(TEXTURE, UV + vec2(0.0, -Size)).a;
+	alpha += texture(TEXTURE, UV + vec2(Size, Size)).a;
+	alpha += texture(TEXTURE, UV + vec2(-Size, Size)).a;
+	alpha += texture(TEXTURE, UV + vec2(Size, -Size)).a;
+	alpha += texture(TEXTURE, UV + vec2(-Size, -Size)).a;
+	
+	vec4 CalculatedColor = mix(SpriteColor, Color, clamp(alpha, 0.0, 1.0));
+	COLOR = vec4(CalculatedColor.rgb, clamp(abs(alpha) + SpriteColor.a, 0.0, 1.0));
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/Range = 0.2
+shader_param/Color = Color( 0, 0, 1, 1 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="AnimatedSprite" type="AnimatedSprite"]
+modulate = Color( 1, 1, 1, 0.392157 )
+material = SubResource( 2 )
+position = Vector2( 1, -1 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 3 )
+offset = Vector2( -0.5, -0.5 )
+script = ExtResource( 1 )

@@ -47,19 +47,9 @@ animations = [ {
 "name": "Release",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "Tir",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "Ded",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "Dash",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 6 ) ],
@@ -67,9 +57,19 @@ animations = [ {
 "name": "Walk Right",
 "speed": 15.0
 }, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "Dash",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "Stand",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Tir",
 "speed": 5.0
 } ]
 

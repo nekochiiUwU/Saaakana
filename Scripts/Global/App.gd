@@ -12,11 +12,11 @@ var Launch = true
 var Champs = ["",""]
 
 var Scenes = [
-	["MainMenu", false, false],
+	["MainMenu", true, false],
 	["GamemodeSelect", false, false],
-	["ChampSelect", false, false],
+	["ChampSelect",false , false],
 	["MapSelect", false, false],
-	["Game", true, false],
+	["Game", false, false],
 	["Pause", false, false],
 	["Settings", false, false]
 	]

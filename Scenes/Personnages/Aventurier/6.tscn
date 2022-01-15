@@ -40,6 +40,7 @@ shape = SubResource( 1 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 2 )
 animation = "Q"
+frame = 2
 playing = true
 offset = Vector2( -0.0120888, -0.00309245 )
 

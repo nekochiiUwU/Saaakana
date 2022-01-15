@@ -26,7 +26,7 @@ func Launch(LauncherPosition: Vector2, _Damage, CollisionLayer):
 		
 func _process(_delta):
 	if frame < 10:
-		scale += Vector2(0.25,0.25)
+		scale += Vector2(0.25,0.25)*_delta*60
 	else:
 		queue_free()
 		

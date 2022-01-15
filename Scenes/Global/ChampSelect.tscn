@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Scripts/Global/ChampSelect.gd" type="Script" id=1]
 [ext_resource path="res://Frames/Light.png" type="Texture" id=2]
@@ -33,6 +33,8 @@
 [ext_resource path="res://Fonts/Retro Gaming.ttf" type="DynamicFontData" id=31]
 [ext_resource path="res://Frames/Champ select/Icone Nya.png" type="Texture" id=32]
 [ext_resource path="res://Frames/Champ select/champs/Aventurier.png" type="Texture" id=33]
+[ext_resource path="res://Frames/Champ select/champs/Sniper.png" type="Texture" id=34]
+[ext_resource path="res://Frames/Champ select/Icone Sniper.png" type="Texture" id=35]
 
 [sub_resource type="DynamicFont" id=1]
 size = 140
@@ -49,19 +51,24 @@ animations = [ {
 "name": "Archer",
 "speed": 5.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "none",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 33 ) ],
 "loop": true,
 "name": "Aventurier",
 "speed": 5.0
 }, {
+"frames": [  ],
+"loop": true,
+"name": "none",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 28 ) ],
 "loop": true,
 "name": "Nya",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 34 ) ],
+"loop": true,
+"name": "Sniper",
 "speed": 5.0
 } ]
 
@@ -102,7 +109,23 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Environment" id=8]
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 35 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 35 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Environment" id=10]
 background_mode = 4
 auto_exposure_scale = 0.2
 glow_enabled = true
@@ -171,7 +194,7 @@ rotation = 3.14159
 scale = Vector2( 12, 12 )
 z_index = 5
 frames = SubResource( 3 )
-animation = "Nya"
+animation = "Sniper"
 playing = true
 centered = false
 flip_h = true
@@ -186,7 +209,7 @@ scale = Vector2( 4, 4 )
 z_index = 5
 frames = SubResource( 4 )
 animation = "free"
-frame = 7
+frame = 12
 playing = true
 script = ExtResource( 30 )
 
@@ -221,13 +244,18 @@ position = Vector2( 848, 536 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 7 )
 
+[node name="SniperIcone" type="AnimatedSprite" parent="UI/J1/Icones"]
+position = Vector2( 848, 628 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 8 )
+
 [node name="J2" type="Node2D" parent="UI"]
 
 [node name="selected" type="AnimatedSprite" parent="UI/J2"]
 position = Vector2( 1672, 480 )
 scale = Vector2( 12, 12 )
 frames = SubResource( 3 )
-animation = "Nya"
+animation = "Sniper"
 flip_h = true
 
 [node name="Cursor J2" type="AnimatedSprite" parent="UI/J2"]
@@ -239,7 +267,7 @@ scale = Vector2( 4, 4 )
 z_index = 5
 frames = SubResource( 4 )
 animation = "free"
-frame = 6
+frame = 11
 playing = true
 script = ExtResource( 3 )
 
@@ -273,5 +301,10 @@ position = Vector2( 1072, 536 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 7 )
 
+[node name="SniperIcone" type="AnimatedSprite" parent="UI/J2/Icones"]
+position = Vector2( 1072, 628 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 9 )
+
 [node name="Effects" type="WorldEnvironment" parent="."]
-environment = SubResource( 8 )
+environment = SubResource( 10 )

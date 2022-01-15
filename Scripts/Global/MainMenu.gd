@@ -18,6 +18,11 @@ func _ready():
 func _process(_delta):
 	get_imput()
 
-
-func _on_Button_pressed():
+func _on_Jouer_pressed():
 	SceneChange('ChampSelect')
+
+func _on_Quitter_pressed():
+	get_tree().quit()
+
+
+
