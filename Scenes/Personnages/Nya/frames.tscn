@@ -50,24 +50,9 @@ animations = [ {
 "name": "marche",
 "speed": 9.0
 }, {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": true,
-"name": "2 charge",
-"speed": 60.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "5 charge",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "4",
-"speed": 18.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "6 tir",
+"name": "2 tir",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ) ],
@@ -75,24 +60,39 @@ animations = [ {
 "name": "stand",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "5 tir",
-"speed": 5.0
+"name": "6 charge",
+"speed": 60.0
 }, {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "ded",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "2 tir",
+"name": "5 tir",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 11 ) ],
 "loop": true,
-"name": "6 charge",
+"name": "4",
+"speed": 18.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "5 charge",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "6 tir",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "2 charge",
 "speed": 60.0
 } ]
 

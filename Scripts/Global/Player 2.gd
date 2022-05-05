@@ -123,6 +123,9 @@ var state4
 var state5
 var state6
 
+"""relatif mystique"""
+var last6
+
 """ ===0=== """
 
 func Movements():
@@ -181,10 +184,12 @@ func _ready():
 		P = load("res://Scripts/Personnages/Aventurier/Script.gd").new()
 	elif get_viewport().get_child(0).Champs[1] == "Nya":
 		P = load("res://Scripts/Personnages/Nya/Script.gd").new()
-	elif get_viewport().get_child(0).Champs[0] == "Sniper":
+	elif get_viewport().get_child(0).Champs[1] == "Sniper":
 		P = load("res://Scripts/Personnages/Sniper/Script.gd").new()
+	elif get_viewport().get_child(0).Champs[1] == "Mystique":
+		P = load("res://Scripts/Personnages/Mystique/Script.gd").new()
 	else:
-		P = load("res://Scripts/Personnages/Sniper/Script.gd").new()
+		P = load("res://Scripts/Personnages/Mystique/Script.gd").new()
 	randomize()
 	set_position(Vector2(rand_range(400, -100),rand_range(-200, 180)))
 	P.Launch(self)

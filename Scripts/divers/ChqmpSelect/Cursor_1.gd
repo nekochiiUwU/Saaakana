@@ -61,6 +61,10 @@ func checkChamp():
 		select.animation = "Sniper"
 		return "Sniper"
 		
+	elif position == Vector2(848,720):
+		select.animation = "Mystique"
+		return "Mystique"
+		
 	else:
 		select.animation = "none"
 	

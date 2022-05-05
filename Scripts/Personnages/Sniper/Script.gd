@@ -298,14 +298,15 @@ func Modulate(s, Mod, Reset):
 func Dead(s):
 	Modulate(s, Color(0.5, 0.5, 0.5), -1)
 	s.Death = true
+
+func tree_entered(s):
+	pass
 	
 """ ===0===""""""""""""""""""
 """"""
-
 func _ready():
 	randomize()
 	set_position(Vector2(rand_range(-400, -100),rand_range(-200, 200)))
-
 func _process(delta):
 	speedtick = speed
 	Cooldown(delta)

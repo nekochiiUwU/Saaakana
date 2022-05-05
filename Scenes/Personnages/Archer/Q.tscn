@@ -39,12 +39,12 @@ position = Vector2( 11.0318, 0.578745 )
 shape = SubResource( 2 )
 
 [node name="Area" type="Area2D" parent="."]
+collision_layer = 262144
+collision_mask = 0
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
 linear_damp = 0.0
 angular_damp = 0.0
-collision_layer = 262144
-collision_mask = 0
 
 [node name="Collision" type="CollisionShape2D" parent="Area"]
 position = Vector2( 11, 0.5 )

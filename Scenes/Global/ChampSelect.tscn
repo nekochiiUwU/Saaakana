@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Scripts/Global/ChampSelect.gd" type="Script" id=1]
 [ext_resource path="res://Frames/Light.png" type="Texture" id=2]
@@ -35,6 +35,8 @@
 [ext_resource path="res://Frames/Champ select/champs/Aventurier.png" type="Texture" id=33]
 [ext_resource path="res://Frames/Champ select/champs/Sniper.png" type="Texture" id=34]
 [ext_resource path="res://Frames/Champ select/Icone Sniper.png" type="Texture" id=35]
+[ext_resource path="res://Frames/Champ select/champs/mystique.png" type="Texture" id=36]
+[ext_resource path="res://Frames/Champ select/Icone Mystique.png" type="Texture" id=37]
 
 [sub_resource type="DynamicFont" id=1]
 size = 140
@@ -46,6 +48,16 @@ font_data = ExtResource( 31 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "none",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 34 ) ],
+"loop": true,
+"name": "Sniper",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 29 ) ],
 "loop": true,
 "name": "Archer",
@@ -56,19 +68,14 @@ animations = [ {
 "name": "Aventurier",
 "speed": 5.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "none",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 28 ) ],
 "loop": true,
 "name": "Nya",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 34 ) ],
+"frames": [ ExtResource( 36 ) ],
 "loop": true,
-"name": "Sniper",
+"name": "Mystique",
 "speed": 5.0
 } ]
 
@@ -118,6 +125,14 @@ animations = [ {
 } ]
 
 [sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 37 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=11]
 animations = [ {
 "frames": [ ExtResource( 35 ) ],
 "loop": true,
@@ -194,7 +209,7 @@ rotation = 3.14159
 scale = Vector2( 12, 12 )
 z_index = 5
 frames = SubResource( 3 )
-animation = "Sniper"
+animation = "Mystique"
 playing = true
 centered = false
 flip_h = true
@@ -209,7 +224,7 @@ scale = Vector2( 4, 4 )
 z_index = 5
 frames = SubResource( 4 )
 animation = "free"
-frame = 12
+frame = 17
 playing = true
 script = ExtResource( 30 )
 
@@ -249,13 +264,18 @@ position = Vector2( 848, 628 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 8 )
 
+[node name="MystiqueIcone" type="AnimatedSprite" parent="UI/J1/Icones"]
+position = Vector2( 848, 720 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 9 )
+
 [node name="J2" type="Node2D" parent="UI"]
 
 [node name="selected" type="AnimatedSprite" parent="UI/J2"]
 position = Vector2( 1672, 480 )
 scale = Vector2( 12, 12 )
 frames = SubResource( 3 )
-animation = "Sniper"
+animation = "Mystique"
 flip_h = true
 
 [node name="Cursor J2" type="AnimatedSprite" parent="UI/J2"]
@@ -267,7 +287,7 @@ scale = Vector2( 4, 4 )
 z_index = 5
 frames = SubResource( 4 )
 animation = "free"
-frame = 11
+frame = 16
 playing = true
 script = ExtResource( 3 )
 
@@ -303,6 +323,11 @@ frames = SubResource( 7 )
 
 [node name="SniperIcone" type="AnimatedSprite" parent="UI/J2/Icones"]
 position = Vector2( 1072, 628 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 11 )
+
+[node name="MystiqueIcone" type="AnimatedSprite" parent="UI/J2/Icones"]
+position = Vector2( 1072, 720 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 9 )
 

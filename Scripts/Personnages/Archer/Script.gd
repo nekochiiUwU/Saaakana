@@ -329,6 +329,9 @@ func Modulate(s, Mod, Reset):
 func Dead(s):
 	Modulate(s, Color(0.5, 0.5, 0.5), -1)
 	s.Death = true
+
+func tree_entered(s):
+	pass
 	
 """ ===0===""""""""""""""""""
 """"""

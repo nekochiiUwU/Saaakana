@@ -57,9 +57,44 @@ shader_param/Color = Color( 0, 0, 1, 0.392157 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "ded",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "marche",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "stand",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "slide",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 21 ), ExtResource( 24 ) ],
+"loop": false,
+"name": "2 charge",
+"speed": 30.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "6 tir",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "5 tir",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 26 ) ],
@@ -67,30 +102,10 @@ animations = [ {
 "name": "2 tir",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "stand",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 15 ) ],
 "loop": true,
 "name": "6 charge",
 "speed": 60.0
-}, {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "5",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 10 ) ],
-"loop": false,
-"name": "6 tir",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 16 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "marche",
-"speed": 15.0
 }, {
 "frames": [ ExtResource( 22 ) ],
 "loop": true,
@@ -101,26 +116,12 @@ animations = [ {
 "loop": true,
 "name": "4",
 "speed": 18.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 21 ), ExtResource( 24 ) ],
-"loop": false,
-"name": "2 charge",
-"speed": 30.0
-}, {
-"frames": [ ExtResource( 19 ) ],
-"loop": true,
-"name": "5 tir",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 13 ) ],
-"loop": true,
-"name": "ded",
-"speed": 5.0
 } ]
 
 [node name="frames" type="AnimatedSprite"]
 material = SubResource( 2 )
 frames = SubResource( 3 )
-animation = "stand"
+animation = "marche"
+frame = 8
 playing = true
 offset = Vector2( -3, -6 )

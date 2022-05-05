@@ -14,7 +14,7 @@ var Champs = ["",""]
 var Scenes = [
 	["MainMenu", true, false],
 	["GamemodeSelect", false, false],
-	["ChampSelect",false , false],
+	["ChampSelect", false, false],
 	["MapSelect", false, false],
 	["Game", false, false],
 	["Pause", false, false],
